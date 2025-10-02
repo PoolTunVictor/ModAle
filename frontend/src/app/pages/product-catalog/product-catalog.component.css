@@ -1,0 +1,131 @@
+.catalog-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* --- Sección Superior --- */
+.support-section {
+  background: #f8f9fa;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.support-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.support-section p {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.support-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.support-item {
+  max-width: 200px;
+}
+
+.support-item i {
+  font-size: 36px;
+  color: #00ff11;
+  margin-bottom: 10px;
+}
+
+/* --- Sección Herramientas --- */
+.tools-section {
+  text-align: center;
+  padding: 80px 50px;
+}
+
+.tools-section h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.tools-section p {
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.tool-card {
+  background: #fff;
+  border: 1px solid #fffefe;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.tool-card:hover {
+  box-shadow: 0 4px 12px rgba(7, 15, 246, 0.1);
+  transform: translateY(-3px);
+}
+
+.tool-card i {
+  font-size: 32px;
+  color: #448e55;
+  margin-bottom: 15px;
+}
+
+.tool-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.tool-card p {
+  font-size: 14px;
+  color: #575656;
+  margin-bottom: 15px;
+}
+
+.tool-card a {
+  font-size: 14px;
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+/*JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ*/
+.support-section {
+  background: url('/assets/Fondo.png') no-repeat center;
+  background-size: cover;
+  text-align: center;
+  padding: 80px 20px;
+  color: #ffffff; /* Texto en blanco para contraste */
+  position: relative;
+}
+
+/* Para oscurecer la imagen y que el texto se lea mejor */
+.support-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(83, 82, 82, 0.4); /*filtro de la imagen*/
+}
+
+.support-content {
+  position: relative; /* Asegura que el texto quede arriba del overlay */
+  z-index: 1;
+}
+
+.support-section h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.support-section p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
