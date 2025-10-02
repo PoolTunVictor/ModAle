@@ -1,0 +1,140 @@
+/* Fondo degradado para toda la página */
+:host {
+     display: block;
+     min-height: 100vh;
+     background: linear-gradient(to bottom right, #FFD1DC, #d183d1);
+     font-family: Arial, sans-serif;
+     color: #333;
+   }
+   
+/* ================= Hero / Banner ================= */
+.hero {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     padding: 6rem 2rem;
+   }
+   
+.hero-content h1 {
+     font-size: 3rem;
+     margin-bottom: 1rem;
+   }
+   
+.hero-content p {
+     font-size: 1.2rem;
+     margin-bottom: 2rem;
+   }
+   
+.hero-content button {
+     padding: 0.8rem 2rem;
+     border: none;
+     border-radius: 8px;
+     background-color: #FFC0CB; /* rosa suave */
+     color: #fff;
+     font-size: 1rem;
+     cursor: pointer;
+     transition: background-color 0.3s;
+   }
+   
+.hero-content button:hover {
+     background-color: #D8BFD8; /* morado crema */
+   }
+   
+/* ================= Sección de Servicios ================= */
+.features {
+     padding: 4rem 2rem;
+     text-align: center;
+   }
+   
+.features h2 {
+     font-size: 2.5rem;
+     margin-bottom: 2rem;
+   }
+   
+.features-grid {
+     display: flex;
+     gap: 2rem;
+     justify-content: center;
+     flex-wrap: wrap;
+   }
+   
+.feature-card {
+     background: rgba(255, 255, 255, 0.6);
+     padding: 2rem;
+     border-radius: 12px;
+     width: 250px;
+     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+   }
+   
+.feature-card h3 {
+     margin-bottom: 1rem;
+     font-size: 1.5rem;
+   }
+   
+.feature-card p {
+     font-size: 1rem;
+   }
+   
+/* ================= Sección de Productos ================= */
+.products {
+     padding: 4rem 2rem;
+     text-align: center;
+   }
+   
+.products h2 {
+     font-size: 2.5rem;
+     margin-bottom: 2rem;
+   }
+   
+.product-grid {
+     display: flex;
+     gap: 2rem;
+     justify-content: center;
+     flex-wrap: wrap;
+   }
+   
+.product-card {
+     background: rgba(255, 255, 255, 0.6);
+     padding: 1rem;
+     border-radius: 12px;
+     width: 200px;
+     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+   }
+   
+.product-card img {
+     width: 100%;
+     border-radius: 8px;
+     margin-bottom: 1rem;
+   }
+   
+.product-card h4 {
+     font-size: 1.2rem;
+     margin: 0;
+   }
+
+/* ================= Footer Redes Sociales ================= */
+.footer {
+    padding: 2rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 4rem;
+}
+
+.footer p {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.social-icons a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    color: #D8BFD8; /* morado crema */
+    transform: scale(1.1);
+}
