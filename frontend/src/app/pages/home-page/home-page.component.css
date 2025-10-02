@@ -138,3 +138,59 @@
     color: #D8BFD8; /* morado crema */
     transform: scale(1.1);
 }
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column; /* coloca el texto debajo del icono */
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.social-icon {
+  width: 40px;    /* tamaño del logo */
+  height: 40px;
+  margin-bottom: 0.5rem; /* espacio entre logo y texto */
+  transition: transform 0.3s;
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.2); /* efecto hover */
+}
+/*sssssssssssssssssssssssssssssssssssssssssssssssss*/
+.social-icons {
+     display: flex;
+     justify-content: center;
+     gap: 2rem;
+     margin-top: 2rem;
+   }
+   
+   .social-link {
+     display: flex;
+     flex-direction: column; /* coloca el texto debajo del icono */
+     align-items: center;
+     text-decoration: none;
+     color: #333;
+     font-weight: bold;
+     font-size: 0.9rem;
+   }
+   
+   .social-icon {
+     width: 40px;    /* tamaño del logo */
+     height: 40px;
+     margin-bottom: 0.5rem; /* espacio entre logo y texto */
+     transition: transform 0.3s;
+   }
+   
+   .social-link:hover .social-icon {
+     transform: scale(1.2); /* efecto hover */
+   }
