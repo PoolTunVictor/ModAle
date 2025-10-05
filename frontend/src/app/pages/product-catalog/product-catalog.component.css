@@ -44,26 +44,29 @@
   top: 10px;
   right: 20px;
   display: flex;
-  gap: 35px;
+  gap: 20px;
   z-index: 2;
 }
 
 .top-buttons .btn {
-  background: none;             /* sin fondo */
-  color: #e4b8b8;               /* color del texto */
-  padding: 0;                   /* sin padding */
-  border: none;                 /* sin borde */
+  background: none;             
+  color: #ffffff;              
+  padding: 0;                 
+  border: none;                
   text-decoration: none; 
-  font-weight: normal;           /* opcional */
-  font-size: 30px;               /* tamaño del texto */
+  font-weight: normal;           
+  font-size: 25px;            
   cursor: pointer;
   transition: 0.3s;
 }
 
 .top-buttons .btn:hover {
-  color: #ffffff;               /* color al pasar el mouse */
+  color: #ffffff;              
       
 }
+
+
+
 .support-subtitle {
   font-size: 70px;                  
   color: #ffffff;                
@@ -73,6 +76,7 @@
 }
 
 /* --- Sección Herramientas --- */
+
 .tools-section {
   text-align: center;
   padding: 80px 50px;
@@ -109,11 +113,7 @@
   transform: translateY(-3px);
 }
 
-.tool-card i {
-  font-size: 32px;
-  color: #448e55;
-  margin-bottom: 15px;
-}
+
 
 .tool-card h3 {
   font-size: 25px;
@@ -183,11 +183,11 @@
   margin-bottom: 5px;
 }
 
-/* ===== Título centrado para la sección de productos ===== */
+
 .section-title {
-  text-align: center;       /* Centrado */
-  font-size: 30px;          /* Tamaño grande */
-  font-weight: 700;         /* Negrita */
-  color: #703d00;           /* Color blanco para que contraste con el fondo */
-  margin: 50px 0 30px 0;    /* Margen arriba y abajo */
+  text-align: center;       
+  font-size: 30px;        
+  font-weight: 700;         
+  color: #703d00;          
+  margin: 50px 0 30px 0;    
 }
