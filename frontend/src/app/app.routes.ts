@@ -5,4 +5,5 @@ import { CategoriPageComponent } from './pages/categori-page/categori-page.compo
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'categoria/:nombre', component: CategoriPageComponent },
+  { path: '**', redirectTo: '' }
 ];
