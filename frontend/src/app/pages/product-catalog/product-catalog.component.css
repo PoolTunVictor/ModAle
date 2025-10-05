@@ -1,6 +1,6 @@
 .catalog-container {
   font-family: Arial, sans-serif;
-  color: #333;
+  color: #fffcfc;
 }
 
 /* --- Sección Superior --- */
@@ -19,7 +19,7 @@
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(83, 82, 82, 0.4);
+  background: rgba(37, 24, 24, 0.4);
 }
 
 .support-content {
@@ -36,6 +36,40 @@
 .support-section p {
   font-size: 18px;
   margin-bottom: 40px;
+}
+
+/* ===== Botones en la esquina superior derecha ===== */
+.top-buttons {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  gap: 35px;
+  z-index: 2;
+}
+
+.top-buttons .btn {
+  background: none;             /* sin fondo */
+  color: #e4b8b8;               /* color del texto */
+  padding: 0;                   /* sin padding */
+  border: none;                 /* sin borde */
+  text-decoration: none; 
+  font-weight: normal;           /* opcional */
+  font-size: 30px;               /* tamaño del texto */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.top-buttons .btn:hover {
+  color: #ffffff;               /* color al pasar el mouse */
+      
+}
+.support-subtitle {
+  font-size: 70px;                  
+  color: #ffffff;                
+  margin-bottom: 50px;            
+  line-height:1;                 
+  font-weight:800;                 
 }
 
 /* --- Sección Herramientas --- */
@@ -82,19 +116,19 @@
 }
 
 .tool-card h3 {
-  font-size: 18px;
+  font-size: 25px;
   margin-bottom: 10px;
 }
 
 .tool-card p {
   font-size: 14px;
-  color: #575656;
+  color: #ffffff;
   margin-bottom: 15px;
 }
 
 .tool-card a {
-  font-size: 14px;
-  color: #007bff;
+  font-size: 30px;
+  color: #703d00;
   font-weight: bold;
   text-decoration: none;
 }
@@ -105,15 +139,17 @@
   width: 200px;
   height: auto;
 }
+
+/* --- Footer --- */
 .footer {
   background-image: url("/assets/Fondo.png");
   background-size: cover;   
   background-attachment: fixed; 
   background-position: center;   
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   padding: 30px 20px;
-  margin-top: 100px;        /* separación respecto a las tarjetas */
+  margin-top: 100px;
 }
 
 .footer p {
@@ -147,3 +183,11 @@
   margin-bottom: 5px;
 }
 
+/* ===== Título centrado para la sección de productos ===== */
+.section-title {
+  text-align: center;       /* Centrado */
+  font-size: 30px;          /* Tamaño grande */
+  font-weight: 700;         /* Negrita */
+  color: #703d00;           /* Color blanco para que contraste con el fondo */
+  margin: 50px 0 30px 0;    /* Margen arriba y abajo */
+}
