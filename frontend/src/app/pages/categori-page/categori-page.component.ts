@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-categori-page',
+  imports: [CommonModule],
   templateUrl: './categori-page.component.html',
   styleUrls: ['./categori-page.component.css'],
 })
