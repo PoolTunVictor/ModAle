@@ -1,20 +1,123 @@
-.productos {
-  text-align: center;
-  padding: 50px;
+.categoria-container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+  padding: 40px 60px;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
 }
 
-.lista-productos {
+.filtro {
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+.filtro h3 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.filtro-section {
+  margin-bottom: 40px;
+}
+
+.filtro-section h4 {
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.filtro-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filtro-section li {
+  padding: 6px 0;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.filtro-section li:hover,
+.filtro-section li.activo {
+  color: #000;
+  font-weight: 600;
+}
+
+.rango input[type="range"] {
+  width: 100%;
+}
+
+.rango-valores {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Productos */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px 20px;
 }
 
 .producto {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 20px;
-  width: 180px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: left;
+  padding: 15px;
+  background-color: #fffaf8;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.producto:hover {
+  transform: translateY(-4px);
+}
+
+.producto img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.etiqueta {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #d35400;
+  color: #fff;
+  font-size: 0.75em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.producto h5 {
+  margin: 5px 0;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+.precios {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.precio-original {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9em;
+}
+
+.precio-actual {
+  color: #000;
+  font-weight: 600;
+  font-size: 1em;
 }
