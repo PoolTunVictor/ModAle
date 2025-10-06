@@ -1,11 +1,42 @@
-<section class="productos">
-     <h2>{{ nombreCategoria | uppercase }}</h2>
-   
-     <div class="lista-productos">
-       <div class="producto" *ngFor="let producto of productos">
-         <h3>{{ producto.nombre }}</h3>
-         <p>${{ producto.precio }}</p>
-       </div>
-     </div>
-   </section>
-   
+<div class="categoria-container">
+  <!-- Filtro lateral -->
+  <aside class="filtro">
+    <h3>Filtrar por</h3>
+    <div class="filtro-section">
+      <h4>SKINCARE</h4>
+      <ul>
+        <li class="activo">Todos</li>
+        <li>Ofertas</li>
+        <li>Recién llegados</li>
+        <li>Más vendidos</li>
+      </ul>
+    </div>
+
+    <div class="filtro-section">
+      <h4>Precio</h4>
+      <div class="rango">
+        <input type="range" min="89" max="320" value="200" />
+        <div class="rango-valores">
+          <span>89 MXN</span>
+          <span>320 MXN</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Productos -->
+  <section class="productos">
+    <div class="producto" *ngFor="let p of productos">
+      <div class="etiqueta" *ngIf="p.etiqueta">{{ p.etiqueta }}</div>
+      <img [src]="p.imagen" [alt]="p.nombre" />
+      <h5>{{ p.nombre }}</h5>
+
+      <div class="precios">
+        <span *ngIf="p.precioOriginal" class="precio-original"
+          >${{ p.precioOriginal }}</span
+        >
+        <span class="precio-actual">${{ p.precio }}</span>
+      </div>
+    </div>
+  </section>
+</div>
