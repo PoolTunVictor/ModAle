@@ -1,6 +1,95 @@
+/* 🟢 HEADER PRINCIPAL */
+.header-catalogo {
+  position: relative;
+  background-image: url('/assets/banner/FondoPerfume.png'); /* Cambia la imagen según la tuya */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Oscurece el fondo para resaltar el texto */
+.header-catalogo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+/* Contenedor del contenido del header */
+.header-contenido {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Texto principal del header */
+.header-contenido h1 {
+  flex: 1;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Botón de inicio de sesión */
+.btn-login {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Responsivo del header */
+@media (max-width: 768px) {
+  .header-catalogo {
+    height: 180px;
+  }
+
+  .header-contenido h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn-login {
+    top: 15px;
+    right: 15px;
+    padding: 8px 15px;
+  }
+}
+
+/* 🟠 SECCIÓN CATÁLOGO */
 .catalogo {
   text-align: center;
-  padding: 50px 0;
+  padding: 150px 0;
+  background-image: url('/assets/FondoCatalogo.png'); 
+  background-size: cover;      
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  color: #0f0f0f;      
 }
 
 .catalogo h2 {
@@ -33,38 +122,36 @@
 }
 
 .imagen-categoria {
-  border: 2px solid #ff5e00;
-  border-radius: 50%; /* vuelve a ser circular */
+  border: 2px solid #a66a48;
+  border-radius: 50%;
   width: 200px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
-  overflow: hidden; /* recorta la imagen dentro del círculo */
+  overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .imagen-categoria img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* adapta la imagen al círculo */
-  border-radius: 50%; /* mantiene el contorno circular */
+  object-fit: cover;
+  border-radius: 50%;
 }
-/* parte de los anuncios*/
 
-
-
+/* 🟣 SECCIÓN DE ANUNCIOS */
 .anuncios-dobles-completos {
   display: flex;
-  width: 100%; /* ocupa todo el ancho de la página */
+  width: 100%;
   margin: 50px 0;
-  flex-wrap: nowrap; /* no se envuelven */
+  flex-wrap: nowrap;
 }
 
 .anuncio-banner {
   position: relative;
-  width: 50%; /* cada banner ocupa la mitad */
+  width: 50%;
   height: 500px;
   background-size: cover;
   background-position: center;
@@ -109,24 +196,24 @@
 }
 
 .btn-comprar {
-  font-family: inherit;         /* hereda la fuente de .anuncio-contenido */
+  font-family: inherit;
   font-weight: bold;
-  background-color: #000;       /* fondo negro */
-  color: #fff;                  /* texto blanco */
-  border: 2px solid #fff;       /* borde blanco */
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #efe7e7;
   padding: 10px 20px;
   font-size: 1rem;
-  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .btn-comprar:hover {
   background-color: #ffe6cc;
   color: #000; 
 }
 
-/* Responsive: en móviles se apilan */
+/* 🧩 Responsive: anuncios en móviles */
 @media (max-width: 900px) {
   .anuncios-dobles-completos {
     flex-direction: column;

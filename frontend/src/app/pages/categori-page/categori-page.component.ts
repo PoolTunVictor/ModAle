@@ -1,57 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-categori-page',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './categori-page.component.html',
-  styleUrls: ['./categori-page.component.css'],
+  styleUrls: ['./categori-page.component.css']
 })
-export class CategoriPageComponent {
-  productos = [
-    {
-      nombre: 'Crema de noche',
-      precioOriginal: 320,
-      precio: 318,
-      imagen: 'assets/categorias/crema.jpg',
-      etiqueta: 'Oferta',
-    },
-    {
-      nombre: 'Crema de manos',
-      precio: 89,
-      imagen: 'assets/categorias/manos.jpg',
-    },
-    {
-      nombre: 'Hidratante facial 15 SPF',
-      precio: 320,
-      imagen: 'assets/categorias/hidratante.jpg',
-    },
-    {
-      nombre: 'Retinol corrector nocturno',
-      precio: 320,
-      imagen: 'assets/categorias/retinol.jpg',
-      etiqueta: 'Nuevo',
-    },
-    {
-      nombre: 'Exfoliante facial nocturno',
-      precio: 150,
-      imagen: 'assets/categorias/exfoliante.jpg',
-    },
-    {
-      nombre: 'Reparador nocturno',
-      precio: 320,
-      imagen: 'assets/categorias/reparador.jpg',
-      etiqueta: 'Top venta',
-    },
-    {
-      nombre: 'Limpiador facial antioxidante',
-      precio: 220,
-      imagen: 'assets/categorias/limpiador.jpg',
-    },
-    {
-      nombre: 'Mascarilla de carbón vegetal',
-      precio: 180,
-      imagen: 'assets/categorias/mascarilla.jpg',
-    },
-  ];
+export class CategoriPageComponent implements OnInit {
+  nombreCategoria: string = '';
+  productos: any[] = [];
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.nombreCategoria = this.route.snapshot.paramMap.get('nombre') || '';
+    this.cargarProductos(this.nombreCategoria);
+  }
+
+  cargarProductos(nombre: string) {
+    const todosLosProductos: { [key: string]: { nombre: string; precio: number }[] } = {
+      'nuevo': [{ nombre: 'Crema AMICA', precio: 120 }, { nombre: 'Serum Glow', precio: 200 }],
+      'cuidado-facial': [{ nombre: 'JABON Night Cream', precio: 350 }, { nombre: 'Serúm de rosas', precio: 50 }, { nombre: 'Serúm 24k', precio: 50 }],
+      'accesorios': [{ nombre: 'Secadora Pro', precio: 450 }, { nombre: 'Scrunchies', precio: 18}],
+      'perfumes': [{ nombre: 'HOMME Eau de Parfum', precio: 520 }, { nombre: 'BOOS ORANGE', precio: 75 }, { nombre: 'PATTERN', precio: 75 }],
+      'maquillaje':[{ nombre: 'Iluminadores', precio: 40 }, { nombre: 'Base liquida de maquillaje', precio: 30 },],
+      'prendas':[{ nombre: 'Calcetines', precio: 30 }, { nombre: 'Shorts dama', precio: 65 }],
+      'cuidado-corporal':[{ nombre: 'Bloqueador solar', precio: 30 }, { nombre: 'Exfoliante "Body Scrub"', precio: 50 }, { nombre: 'Toallas húmedas antibacterianas', precio: 55 }], 
+      'ofertas':[{ nombre: 'Kit de maquillaje "ULTRAMO"', precio: 100 }, { nombre: 'Par de lápices', precio: 12 }]
+    };
+
+    this.productos = todosLosProductos[nombre] || [];
+  }
 }

@@ -1,5 +1,13 @@
+<!-- 🟩 Header con fondo e inicio de sesión -->
+<header class="header-catalogo">
+  <div class="header-contenido">
+    <h1>COMPRAR POR CATEGORÍA</h1>
+    <button class="btn-login" routerLink="/login">Iniciar Sesión</button>
+  </div>
+</header>
+
+<!-- 🟦 Sección de categorías -->
 <section class="catalogo">
-  <h2>COMPRAR POR CATEGORÍA</h2>
   <div class="categorias">
     <div
       class="categoria"
@@ -13,6 +21,8 @@
     </div>
   </div>
 </section>
+
+<!-- 🟨 Sección de anuncios -->
 <section class="anuncios-dobles-completos">
   <!-- Banner 1: Perfumes -->
   <div class="anuncio-banner" [routerLink]="['/categoria', 'perfumes']">
@@ -27,7 +37,7 @@
   <div class="anuncio-banner" [routerLink]="['/categoria', 'nuevo']">
     <div class="anuncio-contenido">
       <h4>15% DE DESCUENTO EN TU PRIMERA COMPRA</h4>
-      <p>Aplica automáticamente en el carrito</p>
+      <p>APLICA AUTOMÁTICAMENTE EN EL CARRITO</p>
       <button class="btn-comprar">Compra Ya</button>
     </div>
   </div>
