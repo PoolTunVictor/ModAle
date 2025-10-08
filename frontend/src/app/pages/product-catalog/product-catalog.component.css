@@ -3,22 +3,92 @@
   color: #333;
 }
 
-/* --- Sección Superior --- */
+.main-header {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.logo h1 {
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.menu-social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 50px; 
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: #000; 
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+  color: #fcbdb5;
+  transform: scale(1.05);
+}
+
+
+.social-icons-header {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons-header a {
+  color: #000;
+  font-size: 18px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons-header a:hover {
+  transform: scale(1.1);
+  color: #fcbdb5;
+}
+
 .support-section {
   background: url('/assets/Fondo.png') no-repeat center;
   background-size: cover;
   text-align: center;
   padding: 30px 50px;
-  background-attachment: fixed; 
-  color: #ffffff; 
+  background-attachment: fixed;
+  color: #ffffff;
   position: relative;
 }
 
-/* Oscurecer la imagen para que el texto sea legible */
 .support-section::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(83, 82, 82, 0.4);
 }
 
@@ -27,30 +97,13 @@
   z-index: 1;
 }
 
-/* Solo para el título principal */
 .support-title {
-  font-size: 150px;  
+  font-size: 150px;
   margin-bottom: 15px;
 }
 
 .support-section p {
   font-size: 18px;
-  margin-bottom: 40px;
-}
-
-/* --- Sección Herramientas --- */
-.tools-section {
-  text-align: center;
-  padding: 80px 50px;
-}
-
-.tools-section h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.tools-section p {
-  color: #000000;
   margin-bottom: 40px;
 }
 
@@ -73,12 +126,6 @@
 .tool-card:hover {
   box-shadow: 0 4px 12px rgba(7, 15, 246, 0.1);
   transform: translateY(-3px);
-}
-
-.tool-card i {
-  font-size: 32px;
-  color: #448e55;
-  margin-bottom: 15px;
 }
 
 .tool-card h3 {
@@ -105,45 +152,19 @@
   width: 200px;
   height: auto;
 }
+
 .footer {
   background-image: url("/assets/Fondo.png");
-  background-size: cover;   
-  background-attachment: fixed; 
-  background-position: center;   
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   color: #fff;
   text-align: center;
   padding: 30px 20px;
-  margin-top: 100px;        /* separación respecto a las tarjetas */
+  margin-top: 100px;
 }
 
 .footer p {
   font-size: 30px;
   margin-bottom: 20px;
 }
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.social-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.3s ease;
-}
-
-.social-link:hover {
-  transform: scale(1.1);
-}
-
-.social-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 5px;
-}
-
