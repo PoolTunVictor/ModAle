@@ -112,8 +112,8 @@
 .support-btn {
   display: inline-block;
   padding: 12px 30px;
-  background-color: #ff2da8;
-  color: #fff;
+  background-color: #ffe1ed;
+  color: #5d5b5b;
   font-weight: bold;
   text-decoration: none;
   border-radius: 25px;
@@ -121,7 +121,7 @@
 }
 
 .support-btn:hover {
-  background-color: #e02491;
+  background-color: #f070bb;
   transform: scale(1.05);
 }
 
@@ -206,7 +206,7 @@
 
 /* --- FOOTER --- */
 .main-footer {
-  background-color: #fff;
+  background-color: #ffe1ed;
   color: #000;
   text-align: center;
   padding: 40px 20px;
