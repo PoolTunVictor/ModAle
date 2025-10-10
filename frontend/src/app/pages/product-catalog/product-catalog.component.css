@@ -1,7 +1,19 @@
-/* --- CONTENEDOR GENERAL --- */
-.catalog-container {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Arial, sans-serif;
   color: #333;
+}
+
+/* --- CONTENEDOR GENERAL --- */
+.catalog-container {
+  width: 100%;
 }
 
 /* --- HEADER PRINCIPAL --- */
@@ -16,6 +28,7 @@
 
 .container-header {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -26,8 +39,7 @@
 .logo h1 {
   font-family: 'Times New Roman', serif;
   font-size: 28px;
-  font-weight: bold;
-  margin: 0;
+  font-weight: bold;  
 }
 
 .menu-social-wrapper {
@@ -39,47 +51,40 @@
 .nav-menu ul {
   list-style: none;
   display: flex;
-  gap: 50px;
-  margin: 0;
-  padding: 0;
-}
-
+  gap: 50px;   
+} 
 .nav-menu ul li a {
   text-decoration: none;
-  color: #000;
-  font-family: Arial, sans-serif;
+  color: #000;  
   font-weight: 500;
   transition: color 0.3s ease, transform 0.3s ease;
-}
-
+} 
 .nav-menu ul li a:hover {
   color: #fcbdb5;
   transform: scale(1.05);
-}
+} 
 
 .social-icons-header {
   display: flex;
   gap: 15px;
-}
-
+} 
 .social-icons-header a {
   color: #000;
   font-size: 18px;
   transition: transform 0.3s, color 0.3s;
-}
-
+} 
 .social-icons-header a:hover {
   transform: scale(1.1);
   color: #fcbdb5;
 }
-
-/* --- SECCIÓN SUPERIOR (SUPPORT) --- */
+  
 .support-section {
+  width: 100%;
   background: url('/assets/FondooM.png') no-repeat center;
   background-size: cover;
-  text-align: center;
-  padding: 50px 30px;
   background-attachment: fixed;
+  text-align: center;
+  padding: 50px 30px; 
   color: #ffffff;
   position: relative;
 }
@@ -125,10 +130,9 @@
   transform: scale(1.05);
 }
 
-
+/* --- TITULOS DE SECCIONES --- */
 .recent-title {
-  font-size: 30px;
-  font-style: normal;
+  font-size: 30px;  
   text-align: center;
   margin: 50px 0 20px;
 }
@@ -139,12 +143,13 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
   margin-top: 20px;
+  width: 100%;
+  padding: 0 20px; /* separa del borde de pantalla */
 }
 
 /* --- TARJETAS DE PRODUCTOS --- */
 .tool-card {
-  background: #fff;
-  border: 1px solid #ffffff;
+  background: #fff; 
   border-radius: 10px;
   padding: 10px;
   text-align: center;
@@ -153,6 +158,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  width: 100%; /* ocupa todo el ancho del grid */
 }
 
 .tool-card:hover {
@@ -170,33 +176,30 @@
   color: #000000;
   font-weight: bold;
   text-decoration: none;
-}
-
+} 
 .tool-card .product-image {
   width: 100%;
   height: 260px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
-}
-
+} 
 .rating {
   color: #FFD700;
   font-size: 16px;
   margin: 5px 0;
-}
-
+} 
 .rating span {
   margin-right: 2px;
 }
 
 /* --- SECCIÓN DE PRODUCTOS POPULARES --- */
 .popular-products-section {
-    background-color:#f8f2f4; 
-    padding: 20px 20px 80px;
-    margin-bottom: 0;
-}
-
+  width: 100%;
+  background-color:#f8f2f4; 
+  padding: 20px 20px 80px;
+  margin-bottom: 0;
+} 
 .popular-title {
   background-color: #f8f2f4; 
   padding: 20px 0;
@@ -205,20 +208,18 @@
   text-align: center;
   font-size: 32px;
   color: #000;
-}
-
+} 
 .popular-products-section .tool-card {
   background: #ffffff;
   border-radius: 12px;
   transition: 0.3s;
   padding: 10px;
-}
-
+  width: 100%;
+} 
 .popular-products-section .tool-card:hover {
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   transform: translateY(-3px);
-}
-
+} 
 .popular-products-section .tool-card .product-image {
   height: 280px; 
 }
@@ -228,40 +229,32 @@
   background-color: #ffe1ed;
   color: #000;
   text-align: center;
-  padding: 20px 20px;
-  width: 100%;
-  border-top: none; 
-  margin-top: 0;  
-}
-
+  padding: 20px;
+  width: 100%;  
+} 
 .footer-container {
   max-width: 1000px;
   margin: 0 auto;
-}
-
+} 
 .footer-info h2 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
   letter-spacing: 1px;
-}
-
+} 
 .footer-info p {
   font-size: 1rem;
   margin-bottom: 5px;
-}
-
+} 
 .footer-social {
   margin-top: 20px;
-}
-
+} 
 .footer-social a {
   color: #000;
   font-size: 1.3rem;
   margin: 0 10px;
   transition: color 0.3s;
-}
-
+} 
 .footer-social a:hover {
   color: #e98f81;
 }
