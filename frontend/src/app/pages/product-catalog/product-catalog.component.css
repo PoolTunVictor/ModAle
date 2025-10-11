@@ -156,7 +156,8 @@ body {
   gap: 25px;
   margin-top: 20px;
   width: 100%;
-  padding: 0 20px;
+  padding: 20 20px;
+  
 }
 
 /* --- TARJETAS DE PRODUCTOS --- */
@@ -179,16 +180,18 @@ body {
 }
 
 .tool-card h3 {
-  font-size: 22px;
+  font-size: 20px;
   margin: 10px 0 5px;
 }
 
-.tool-card a, 
+.tool-card a,
 .tool-card .price {
   font-size: 18px;
   color: #000000;
-  font-weight: bold;
+  font-weight: normal;
   text-decoration: none;
+  display: block;  
+  margin-top: 8px;
 } 
 
 .tool-card .product-image {
@@ -198,16 +201,6 @@ body {
   border-radius: 10px;
   margin-bottom: 10px;
 } 
-
-.rating {
-  color: #FFD700;
-  font-size: 16px;
-  margin: 5px 0;
-} 
-
-.rating span {
-  margin-right: 2px;
-}
 
 /* --- SECCIÓN DE PRODUCTOS POPULARES --- */
 .popular-products-section {
@@ -231,7 +224,7 @@ body {
   background: #ffffff;
   border-radius: 12px;
   transition: 0.3s;
-  padding: 10px;
+  padding: 5px;
   width: 100%;
 } 
 
@@ -273,20 +266,5 @@ body {
 
 .footer-info p {
   font-size: 1rem;
-  margin-bottom: 5px;
-} 
-
-.footer-social {
-  margin-top: 20px;
-} 
-
-.footer-social a {
-  color: #000;
-  font-size: 1.3rem;
-  margin: 0 10px;
-  transition: color 0.3s;
-} 
-
-.footer-social a:hover {
-  color: #e98f81;
+  margin-bottom: 10px;
 }
