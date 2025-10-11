@@ -241,7 +241,13 @@ body {
 } 
 
 .popular-products-section .tool-card .product-image {
-  height: 280px; 
+    width: 95%;            
+  height: 280px;            
+  object-fit: cover;         
+  border-radius: 10px;      
+  margin: 5px auto;         
+  display: block;            
+  transition: transform 0.3s ease;
 }
 
 /* --- FOOTER --- */
