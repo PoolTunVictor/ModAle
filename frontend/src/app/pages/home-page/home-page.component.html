@@ -8,16 +8,16 @@
 
 <!-- 🟦 Sección de categorías -->
 <section class="catalogo">
-  <div class="categorias">
-    <div
-      class="categoria"
-      *ngFor="let categoria of categorias"
-      (click)="irACategoria(categoria)"
-    >
-      <div class="imagen-categoria">
-        <img [src]="categoria.imagen" />
+  <h2 class="recent-title popular-title">Categorías</h2>
+  <div class="popular-products-section">
+    <div class="tools-grid">
+      <div
+        class="tool-card"
+        *ngFor="let categoria of categorias"
+      >
+        <img [src]="categoria.imagen" [alt]="categoria.nombre" class="product-image" />
+        <h3 (click)="irACategoria(categoria)" class="categoria-nombre">{{ categoria.nombre }}</h3>
       </div>
-      <p>{{ categoria.nombre }}</p>
     </div>
   </div>
 </section>
@@ -25,7 +25,7 @@
 <!-- 🟨 Sección de anuncios -->
 <section class="anuncios-dobles-completos">
   <!-- Banner 1: Perfumes -->
-  <div class="anuncio-banner anuncio-perfumes">
+  <div class="anuncio-banner" [routerLink]="['/categoria', 'perfumes']">
     <div class="anuncio-contenido">
       <h4>-25% EN PERFUMES</h4>
       <p>USA EL CÓDIGO <strong>AROMA123</strong></p>
@@ -34,7 +34,7 @@
   </div>
 
   <!-- Banner 2: Primera compra -->
-  <div class="anuncio-banner anuncio-nuevo">
+  <div class="anuncio-banner" [routerLink]="['/categoria', 'nuevo']">
     <div class="anuncio-contenido">
       <h4>15% DE DESCUENTO EN TU PRIMERA COMPRA</h4>
       <p>APLICA AUTOMÁTICAMENTE EN EL CARRITO</p>
