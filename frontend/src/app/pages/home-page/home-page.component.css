@@ -3,7 +3,7 @@
   position: relative;
   background-image: url('/assets/banner/FondoPerfume.png');
   background-size: cover;
-  background-position: center;
+  background-position: center; 
   background-repeat: no-repeat;
   height: 100px;
   display: flex;
@@ -12,14 +12,14 @@
   color: white;
   text-align: center;
   overflow: hidden;
-} 
+}
 .header-catalogo::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   z-index: 0;
-} 
+}
 .header-contenido {
   position: relative;
   z-index: 1;
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-} 
+}
 .header-contenido h1 {
   flex: 1;
   font-size: 2.8rem;
@@ -49,7 +49,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .btn-login:hover {
   background-color: #fff;
   color: #000;
@@ -71,25 +70,31 @@
 }
 
 /* 🟠 SECCIÓN CATEGORÍAS TIPO CARDS */
-.recent-title.popular-title {
-  font-size: 2.5rem;
-  font-weight: bold;
+.catalogo {
   text-align: center;
-  margin-bottom: 40px;
+  padding: 25px 0;
+  background-image: url('/assets/FondoCatalogo.png'); 
+  background-size: cover;      
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Paralaje simple */
+  color: #0f0f0f;      
 }
 
-.popular-products-section {
-  padding: 0 20px 60px 20px;
+.catalog-title {
+  font-family: 'Playwrite DE SAS', sans-serif;
+  font-size: 4rem; /* tamaño grande */
+  font-weight: 400;
+  margin-bottom: 60px;
 }
 
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-  gap: 20px;
-  justify-items: center;
+.categorias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
 }
 
-/* Cards de categoría */
 .tool-card {
   background-color: #f9f7f7;
   border-radius: 12px;
@@ -99,9 +104,8 @@
   text-align: center;
   cursor: default;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 10px; /* Margen interno para la imagen */
+  padding: 10px;
 }
-
 .tool-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 50px rgba(0,0,0,0.2);
@@ -115,49 +119,34 @@
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
-
 .tool-card:hover .product-image {
   transform: scale(1.05);
 }
 
 .categoria-nombre {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 10px 0 20px 0;
   color: #333;
   cursor: pointer;
   transition: color 0.3s ease;
 }
-
 .categoria-nombre:hover {
   color: #a66a48;
 }
 
 /* Responsivo */
 @media (max-width: 1024px) {
-  .tools-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
-    gap:20px;
-     justify-items: stretch;
+  .categorias {
+    gap: 30px;
   }
-}
-
-@media (max-width: 600px) {
-  .tools-grid {
-    grid-template-columns: 1fr; /* 1 columna en móvil */
-  }
-}
-
-/* Responsivo de cards */
-@media (max-width: 1024px) {
   .tool-card {
-    width: 90%;
+    width: 45%;
   }
 }
-
 @media (max-width: 600px) {
   .tool-card {
-    width: 50%;
+    width: 80%;
   }
 }
 
@@ -167,32 +156,27 @@
   width: 100%;
   margin: 50px 0;
   flex-wrap: nowrap;
-  
 }
-
 .anuncio-banner {
   position: relative;
   width: 50%;
   height: 500px;
   background-size: cover;
   background-position: center;
-  cursor: pointer;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-} 
-.anuncio-banner:nth-child(1) {
+  cursor: default; /* no clicable */
+}
+.anuncio-perfumes {
   background-image: url('/assets/banner/FondoPerfume.png');
 }
-
-.anuncio-banner:nth-child(2) {
+.anuncio-nuevo {
   background-image: url('/assets/banner/FondoProductos.png');
 }
-
 .anuncio-banner:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
-
 .anuncio-contenido {
   position: absolute;
   bottom: 20px;
@@ -200,20 +184,17 @@
   background-color: #000000;
   color: #fff;
   padding: 20px;
-  border-radius: 3px;
+  border-radius: 8px;
   max-width: 80%;
 }
-
 .anuncio-contenido h4 {
   font-size: 1.5rem;
   margin-bottom: 8px;
 }
-
 .anuncio-contenido p {
   font-size: 1rem;
   margin-bottom: 12px;
 }
-
 .btn-comprar {
   font-family: inherit;
   font-weight: bold;
@@ -226,28 +207,24 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .btn-comprar:hover {
   background-color: #ffe6cc;
   color: #000; 
 }
 
-/* Responsive: anuncios en móviles */
+/* 🧩 Responsive: anuncios en móviles */
 @media (max-width: 900px) {
   .anuncios-dobles-completos {
     flex-direction: column;
   }
-
   .anuncio-banner {
     width: 100%;
     height: 200px;
   }
-
   .anuncio-contenido {
     max-width: 90%;
     padding: 15px;
     bottom: 15px;
     left: 15px;
-    
   }
 }
