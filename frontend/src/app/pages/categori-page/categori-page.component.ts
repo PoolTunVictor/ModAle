@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // 🔹 Importa Router
 import { ProductosService } from '../../core/service/productos.service';
 import { CommonModule } from '@angular/common';
 
@@ -16,7 +16,8 @@ export class CategoriPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private router: Router // 🔹 Inyecta Router
   ) {}
 
   ngOnInit() {
@@ -30,7 +31,11 @@ export class CategoriPageComponent implements OnInit {
   }
 
   agregarACesta(producto: any) {
-    // Aquí puedes agregar la lógica para añadir al carrito
     console.log('Añadido al carrito:', producto.nombre);
+  }
+
+  // 🔹 Método para regresar al home
+  regresarHome() {
+    this.router.navigate(['/home-page']);
   }
 }
