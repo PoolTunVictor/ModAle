@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Serum 24K";
+    src: url("/assets/fonts/Serum24K.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ================= RESET ================= */
 *,
 *::before,
 *::after {
@@ -7,7 +15,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* 🔹 Fuente general */
   color: #333;
 }
 
@@ -59,6 +67,7 @@ body {
   color: #000;  
   font-weight: 500;
   transition: color 0.3s ease, transform 0.3s ease;
+  font-family: Arial, sans-serif;
 } 
 
 .nav-menu ul li a:hover {
@@ -75,14 +84,15 @@ body {
   color: #000;
   font-size: 18px;
   transition: transform 0.3s, color 0.3s;
+  font-family: Arial, sans-serif;
 } 
 
 .social-icons-header a:hover {
   transform: scale(1.1);
   color: #fcbdb5;
 }
-  
-/* --- SECCIÓN DE BIENVENIDA --- */
+
+/* --- SECCIÓN DE BIENVENIDA / HERO --- */
 .support-section {
   width: 100%;
   background: url('/assets/FondooM.png') no-repeat center;
@@ -92,6 +102,7 @@ body {
   padding: 50px 30px; 
   color: #ffffff;
   position: relative;
+  font-family: "Serum 24K", cursive; /* 🔹 SOLO HERO */
 }
 
 .support-section::before {
@@ -109,14 +120,9 @@ body {
   z-index: 1;
 }
 
-/* === FUENTE ESPECIAL PARA TÍTULO Y BIENVENIDA === */
-.support-title,
-.support-section p {
-  font-family: "Playwrite DE SAS", cursive;
-  letter-spacing: 1px;
-}
-
+/* TÍTULO GRANDE */
 .support-title {
+  font-family: "Playwrite DE SAS", cursive; /* Mantiene fuente original */
   font-size: 80px;
   margin-bottom: 20px;
 }
@@ -132,6 +138,7 @@ body {
   background-color: #ffe1ed;
   color: #5d5b5b;
   font-weight: bold;
+  font-family: "Serum 24K", cursive; /* Botón hero */
   text-decoration: none;
   border-radius: 25px;
   transition: background 0.3s, transform 0.3s;
@@ -147,6 +154,7 @@ body {
   font-size: 30px;  
   text-align: center;
   margin: 50px 0 20px;
+  font-family: Arial, sans-serif;
 }
 
 /* --- GRID DE PRODUCTOS --- */
@@ -157,7 +165,6 @@ body {
   margin-top: 20px;
   width: 100%;
   padding: 20 20px;
-  
 }
 
 /* --- TARJETAS DE PRODUCTOS --- */
@@ -172,11 +179,18 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  font-family: Arial, sans-serif;
 }
 
 .tool-card:hover {
   box-shadow: 0 4px 12px rgba(7, 15, 246, 0.1);
   transform: translateY(-3px);
+}
+
+.tool-card h3,
+.tool-card a,
+.tool-card .price {
+  font-family: Arial, sans-serif;
 }
 
 .tool-card h3 {
@@ -200,7 +214,7 @@ body {
   object-fit: contain;
   border-radius: 10px;
   margin-bottom: 10px;
-} 
+}
 
 /* --- SECCIÓN DE PRODUCTOS POPULARES --- */
 .popular-products-section {
@@ -208,6 +222,7 @@ body {
   background-color:#f8f2f4; 
   padding: 20px 20px 80px;
   margin-bottom: 0;
+  font-family: Arial, sans-serif;
 } 
 
 .popular-title {
@@ -218,7 +233,8 @@ body {
   text-align: center;
   font-size: 32px;
   color: #000;
-} 
+  font-family: Arial, sans-serif;
+}
 
 .popular-products-section .tool-card {
   background: #ffffff;
@@ -226,21 +242,28 @@ body {
   transition: 0.3s;
   padding: 5px;
   width: 100%;
-} 
+  font-family: Arial, sans-serif;
+}
 
 .popular-products-section .tool-card:hover {
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   transform: translateY(-3px);
 } 
 
+.popular-products-section .tool-card h3,
+.popular-products-section .tool-card a,
+.popular-products-section .tool-card .price {
+  font-family: Arial, sans-serif;
+}
+
 .popular-products-section .tool-card .product-image {
     width: 95%;            
-  height: 280px;            
-  object-fit: cover;         
-  border-radius: 10px;      
-  margin: 5px auto;         
-  display: block;            
-  transition: transform 0.3s ease;
+    height: 280px;            
+    object-fit: cover;         
+    border-radius: 10px;      
+    margin: 5px auto;         
+    display: block;            
+    transition: transform 0.3s ease;
 }
 
 /* --- FOOTER --- */
@@ -250,6 +273,7 @@ body {
   text-align: center;
   padding: 20px;
   width: 100%;  
+  font-family: Arial, sans-serif;
 } 
 
 .footer-container {
@@ -262,9 +286,11 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
   letter-spacing: 1px;
+  font-family: Arial, sans-serif;
 } 
 
 .footer-info p {
   font-size: 1rem;
   margin-bottom: 10px;
+  font-family: Arial, sans-serif;
 }
