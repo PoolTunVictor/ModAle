@@ -4,7 +4,15 @@
   gap: 30px;
   padding: 40px 60px;
   font-family: "Poppins", sans-serif;
-  background-color: #fff;
+  background-color: #e6d4db;
+}
+
+.titulo-categoria {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  color: #333;
 }
 
 .filtro {
@@ -120,4 +128,26 @@
   color: #000;
   font-weight: 600;
   font-size: 1em;
+}
+
+.btn-cesta {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #e3b1c8;
+  color: #000000;
+  border: none;
+  padding: 8px 0;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cesta:hover {
+  background-color: #c999af;
+  color: #000;
 }

@@ -24,7 +24,6 @@
     </div>
   </aside>
 
-
   <section class="productos">
     <div class="producto" *ngFor="let p of productos">
       <div class="etiqueta" *ngIf="p.etiqueta">{{ p.etiqueta }}</div>
@@ -32,11 +31,13 @@
       <h5>{{ p.nombre }}</h5>
 
       <div class="precios">
-        <span *ngIf="p.precioOriginal" class="precio-original"
-          >${{ p.precioOriginal }}</span
-        >
+        <span *ngIf="p.precioOriginal" class="precio-original">${{ p.precioOriginal }}</span>
         <span class="precio-actual">${{ p.precio }}</span>
       </div>
+
+      <button class="btn-cesta" (click)="agregarACesta(p)">
+        <i class="fa fa-shopping-cart"></i> Añadir a la cesta
+      </button>
     </div>
   </section>
 </div>

@@ -80,6 +80,12 @@
   background-attachment: fixed; /* Paralaje simple */
   color: #0f0f0f;      
 }
+.catalog-subtitle {
+  font-size: 4rem; /* ajusta a lo que quieras */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
 
 .catalog-title {
   font-family: 'Playwrite DE SAS', sans-serif;
