@@ -1,27 +1,18 @@
-<<<<<<< HEAD
-*,
-*::before,
-*::after {
+/* Reset general */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-=======
+/* Contenedor general */
 .catalog-container {
->>>>>>> home_page
+  width: 100%;
   font-family: Arial, sans-serif;
   color: #333;
 }
 
-<<<<<<< HEAD
-/* --- CONTENEDOR GENERAL --- */
-.catalog-container {
-  width: 100%;
-}
-
-/* --- HEADER PRINCIPAL --- */
+/* Header principal */
 .main-header {
   width: 100%;
   background-color: #fff;
@@ -57,37 +48,37 @@ body {
   list-style: none;
   display: flex;
   gap: 50px;   
-} 
+}
 
 .nav-menu ul li a {
   text-decoration: none;
   color: #000;  
   font-weight: 500;
   transition: color 0.3s ease, transform 0.3s ease;
-} 
+}
 
 .nav-menu ul li a:hover {
   color: #fcbdb5;
   transform: scale(1.05);
-} 
+}
 
 .social-icons-header {
   display: flex;
   gap: 15px;
-} 
+}
 
 .social-icons-header a {
   color: #000;
   font-size: 18px;
   transition: transform 0.3s, color 0.3s;
-} 
+}
 
 .social-icons-header a:hover {
   transform: scale(1.1);
   color: #fcbdb5;
 }
-  
-/* --- SECCIÓN DE BIENVENIDA --- */
+
+/* Sección de bienvenida */
 .support-section {
   width: 100%;
   background: url('/assets/FondooM.png') no-repeat center;
@@ -102,30 +93,8 @@ body {
 .support-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-=======
-/* --- Sección Superior --- */
-.support-section {
-  background: url('/assets/Fondo.png') no-repeat center;
-  background-size: cover;
-  text-align: center;
-  padding: 30px 50px;
-  background-attachment: fixed; 
-  color: #ffffff; 
-  position: relative;
-}
-
-/* Oscurecer la imagen para que el texto sea legible */
-.support-section::before {
-  content: "";
-  position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(83, 82, 82, 0.4);
->>>>>>> home_page
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .support-content {
@@ -133,15 +102,8 @@ body {
   z-index: 1;
 }
 
-<<<<<<< HEAD
-/* === FUENTE ESPECIAL PARA TÍTULO Y BIENVENIDA === */
-.support-title,
-.support-section p {
-  font-family: "Playwrite DE SAS", cursive;
-  letter-spacing: 1px;
-}
-
 .support-title {
+  font-family: "Playwrite DE SAS", cursive;
   font-size: 80px;
   margin-bottom: 20px;
 }
@@ -167,54 +129,24 @@ body {
   transform: scale(1.05);
 }
 
-/* --- TITULOS DE SECCIONES --- */
+/* Titulos de secciones */
 .recent-title {
-  font-size: 30px;  
+  font-size: 30px;
   text-align: center;
   margin: 50px 0 20px;
 }
 
-/* --- GRID DE PRODUCTOS --- */
-=======
-/* Solo para el título principal */
-.support-title {
-  font-size: 150px;  
-  margin-bottom: 15px;
-}
-
-.support-section p {
-  font-size: 18px;
-  margin-bottom: 40px;
-}
-
-/* --- Sección Herramientas --- */
-.tools-section {
-  text-align: center;
-  padding: 80px 50px;
-}
-
-.tools-section h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.tools-section p {
-  color: #000000;
-  margin-bottom: 40px;
-}
-
->>>>>>> home_page
+/* Grid de productos */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-<<<<<<< HEAD
   margin-top: 20px;
   width: 100%;
   padding: 0 20px;
 }
 
-/* --- TARJETAS DE PRODUCTOS --- */
+/* Tarjetas de productos */
 .tool-card {
   background: #fff; 
   border-radius: 10px;
@@ -226,18 +158,6 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-=======
-  margin-top: 60px;
-}
-
-.tool-card {
-  background: #fff;
-  border: 1px solid #fffefe;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  transition: 0.3s;
->>>>>>> home_page
 }
 
 .tool-card:hover {
@@ -245,7 +165,6 @@ body {
   transform: translateY(-3px);
 }
 
-<<<<<<< HEAD
 .tool-card h3 {
   font-size: 22px;
   margin: 10px 0 5px;
@@ -254,10 +173,10 @@ body {
 .tool-card a, 
 .tool-card .price {
   font-size: 18px;
-  color: #000000;
+  color: #000;
   font-weight: bold;
   text-decoration: none;
-} 
+}
 
 .tool-card .product-image {
   width: 100%;
@@ -265,25 +184,26 @@ body {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
-} 
+}
 
+/* Rating */
 .rating {
   color: #FFD700;
   font-size: 16px;
   margin: 5px 0;
-} 
+}
 
 .rating span {
   margin-right: 2px;
 }
 
-/* --- SECCIÓN DE PRODUCTOS POPULARES --- */
+/* Productos Populares */
 .popular-products-section {
   width: 100%;
   background-color:#f8f2f4; 
   padding: 20px 20px 80px;
   margin-bottom: 0;
-} 
+}
 
 .popular-title {
   background-color: #f8f2f4; 
@@ -293,7 +213,7 @@ body {
   text-align: center;
   font-size: 32px;
   color: #000;
-} 
+}
 
 .popular-products-section .tool-card {
   background: #ffffff;
@@ -301,128 +221,54 @@ body {
   transition: 0.3s;
   padding: 10px;
   width: 100%;
-} 
+}
 
 .popular-products-section .tool-card:hover {
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   transform: translateY(-3px);
-} 
+}
 
 .popular-products-section .tool-card .product-image {
   height: 280px; 
 }
 
-/* --- FOOTER --- */
+/* Footer */
 .main-footer {
   background-color: #ffe1ed;
   color: #000;
   text-align: center;
   padding: 20px;
-  width: 100%;  
-} 
+  width: 100%;
+}
 
 .footer-container {
   max-width: 1000px;
   margin: 0 auto;
-} 
+}
 
 .footer-info h2 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
   letter-spacing: 1px;
-} 
+}
 
 .footer-info p {
   font-size: 1rem;
   margin-bottom: 5px;
-} 
+}
 
 .footer-social {
   margin-top: 20px;
-} 
+}
 
 .footer-social a {
   color: #000;
   font-size: 1.3rem;
   margin: 0 10px;
   transition: color 0.3s;
-} 
+}
 
 .footer-social a:hover {
   color: #e98f81;
 }
-=======
-.tool-card i {
-  font-size: 32px;
-  color: #448e55;
-  margin-bottom: 15px;
-}
-
-.tool-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.tool-card p {
-  font-size: 14px;
-  color: #575656;
-  margin-bottom: 15px;
-}
-
-.tool-card a {
-  font-size: 14px;
-  color: #007bff;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.tool-card .product-image {
-  display: block;
-  margin: 10px auto;
-  width: 200px;
-  height: auto;
-}
-.footer {
-  background-image: url("/assets/Fondo.png");
-  background-size: cover;   
-  background-attachment: fixed; 
-  background-position: center;   
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
-  margin-top: 100px;        /* separación respecto a las tarjetas */
-}
-
-.footer p {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.social-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.3s ease;
-}
-
-.social-link:hover {
-  transform: scale(1.1);
-}
-
-.social-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 5px;
-}
-
->>>>>>> home_page

@@ -1,23 +1,28 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ProductCatalogComponent } from './pages/product-catalog/product-catalog.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CategoriPageComponent } from './pages/categori-page/categori-page.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 
 export const routes: Routes = [
-    // Ruta inicial va al login
+    // Ruta inicial → login
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
 
-    // Home page
-    { path: 'home', component: HomePageComponent },
+    // Después del login → ProductCatalogComponent
+    { path: 'product-catalog', component: ProductCatalogComponent },
 
-    // Catálogo de productos
-    { path: 'catalogo', component: ProductCatalogComponent },
+    // Catálogo principal (HomePage)
+    { path: 'catalogo', component: HomePageComponent },
 
-    // Página de categorías con parámetro
-    { path: 'categoria/:nombre', component: CategoriPageComponent },
+    // Página de categoría específica
+    { path: 'categoria/:categoria', component: CategoriPageComponent },
 
-    // Cualquier ruta inválida redirige al login
+    { path: 'carrito', component: CarritoComponent },
+
+    // Cualquier ruta inválida → login
     { path: '**', redirectTo: 'login' }
+
+    
 ];

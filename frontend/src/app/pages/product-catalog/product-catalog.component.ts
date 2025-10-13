@@ -1,15 +1,12 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-catalog',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './product-catalog.component.html',
   styleUrls: ['./product-catalog.component.css']
 })
-export class ProductCatalogComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    const script = document.createElement('script');
-    script.src = 'assets/script.js'; // <-- Carga desde assets
-    script.onload = () => console.log('Script cargado correctamente');
-    document.body.appendChild(script);
-  }
-}
+export class ProductCatalogComponent {}

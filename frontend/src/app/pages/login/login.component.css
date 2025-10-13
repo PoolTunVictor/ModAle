@@ -3,184 +3,206 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #e0e5ec;
+  background: #e0e0e0;
+  font-family: 'Arial', sans-serif;
 }
 
 .login-card {
-  background: #e0e5ec;
+  background: #e0e0e0;
+  padding: 2.5rem;
   border-radius: 20px;
-  padding: 2rem;
+  box-shadow: 8px 8px 16px #bebebe,
+              -8px -8px 16px #ffffff;
   width: 350px;
-  box-shadow: 9px 9px 16px #c3c9d9,
-              -9px -9px 16px #ffffff;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+.login-card:hover {
+  box-shadow: 4px 4px 8px #bebebe,
+              -4px -4px 8px #ffffff;
 }
 
 .login-icon {
-  background: #e0e5ec;
+  background: #e0e0e0;
+  border-radius: 50%;
   width: 60px;
   height: 60px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 5px 5px 10px #c3c9d9,
-              -5px -5px 10px #ffffff;
+  margin: 0 auto 1rem auto;
+  box-shadow: 6px 6px 12px #bebebe,
+              -6px -6px 12px #ffffff;
   font-size: 36px;
   color: #555;
 }
 
 h2 {
   margin-bottom: 0.5rem;
+  color: #333;
 }
 
 p {
   margin-bottom: 1.5rem;
-  color: #7a7a7a;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  background: #e0e5ec;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  box-shadow: inset 5px 5px 10px #c3c9d9,
-              inset -5px -5px 10px #ffffff;
   position: relative;
+  margin: 1rem 0;
+  width: 100%; /* Aseguramos que ocupe el 100% del contenedor */
 }
 
 .input-group input {
+  width: 100%;
+  padding: 12px 45px 12px 45px; /* Aumenté el padding lateral para los iconos */
+  border-radius: 12px;
   border: none;
+  background: #e0e0e0;
+  box-shadow: inset 6px 6px 12px #bebebe,
+              inset -6px -6px 12px #ffffff;
   outline: none;
-  background: transparent;
-  flex: 1;
-  padding: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.2s ease;
+  box-sizing: border-box; /* ¡IMPORTANTE! Esto incluye padding en el width */
 }
 
-.input-group .input-icon {
-  margin-right: 0.5rem;
+.input-group input:focus {
+  box-shadow: inset 3px 3px 6px #bebebe,
+              inset -3px -3px 6px #ffffff;
 }
 
-/* Ojo de visibilidad */
+.input-icon {
+  position: absolute;
+  left: 15px; /* Ajusté la posición */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .eye-icon {
-  background: transparent;
+  position: absolute;
+  right: 15px; /* Ajusté la posición */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #888;
+  font-size: 18px;
+  z-index: 1;
 }
 
-/* Checkbox estilo neumórfico */
+/* ESTILOS PARA REMEMBER ME */
 .options {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  align-items: center;
+  margin: 1rem 0;
+  text-align: left;
 }
 
 .checkbox-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  position: relative;
   cursor: pointer;
+  color: #666;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #e0e0e0;
+  box-shadow: 4px 4px 8px #bebebe,
+              -4px -4px 8px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.checkbox-container:hover {
+  box-shadow: inset 2px 2px 4px #bebebe,
+              inset -2px -2px 4px #ffffff;
 }
 
 .checkbox-container input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  display: none;
 }
 
-.checkbox-container .checkmark {
+.checkmark {
   width: 20px;
   height: 20px;
-  background: #e0e5ec;
   border-radius: 6px;
-  box-shadow: inset 5px 5px 10px #c3c9d9,
-              inset -5px -5px 10px #ffffff;
+  background: #e0e0e0;
+  box-shadow: inset 2px 2px 4px #bebebe,
+              inset -2px -2px 4px #ffffff;
+  margin-right: 10px;
   position: relative;
+  transition: all 0.3s ease;
 }
 
-.checkbox-container input:checked ~ .checkmark::after {
-  content: '';
+.checkbox-container input:checked + .checkmark {
+  box-shadow: 2px 2px 4px #bebebe,
+              -2px -2px 4px #ffffff;
+}
+
+.checkbox-container input:checked + .checkmark::after {
+  content: "✓";
   position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
-  border: solid #555;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #555;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .sign-in-btn {
   width: 100%;
-  padding: 0.75rem;
-  border: none;
+  padding: 12px;
+  margin-top: 1rem;
   border-radius: 12px;
-  background: #e0e5ec;
-  box-shadow: 5px 5px 10px #c3c9d9,
-              -5px -5px 10px #ffffff;
-  cursor: pointer;
+  border: none;
+  background: #e0e0e0;
+  box-shadow: 6px 6px 12px #bebebe,
+              -6px -6px 12px #ffffff;
   font-weight: bold;
-  margin-bottom: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Incluye padding en el width */
+}
+
+.sign-in-btn:hover {
+  box-shadow: inset 4px 4px 8px #bebebe,
+              inset -4px -4px 8px #ffffff;
 }
 
 .or-text {
+  margin: 1.5rem 0 1rem 0;
+  color: #888;
   font-size: 0.8rem;
-  color: #aaa;
-  margin-bottom: 1rem;
 }
 
 .social-buttons {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: space-around;
+  margin-top: 1rem;
 }
 
 .social-buttons button {
   width: 50px;
   height: 50px;
-  border: none;
   border-radius: 50%;
-  background: #e0e5ec;
-  box-shadow: 5px 5px 10px #c3c9d9,
-              -5px -5px 10px #ffffff;
+  border: none;
+  background: #e0e0e0;
+  box-shadow: 6px 6px 12px #bebebe,
+              -6px -6px 12px #ffffff;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
-
-.google-btn i {
-  font-size: 20px;
-  color: #DB4437; /* Rojo Google */
-}
-
-.github-btn i {
-  font-size: 20px;
-  color: #333; /* GitHub */
-}
-
-.facebook-btn i {
-  font-size: 20px;
-  color: #1877F2; /* Facebook */
-}
-.signup-text {
-  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  font-size: 18px;
   color: #555;
 }
 
-.signup-text a {
-  font-weight: bold;
-  text-decoration: none;
-  color: #555;
+.social-buttons button:hover {
+  box-shadow: inset 4px 4px 8px #bebebe,
+              inset -4px -4px 8px #ffffff;
 }
