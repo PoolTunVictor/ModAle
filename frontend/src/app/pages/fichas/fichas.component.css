@@ -1,0 +1,104 @@
+.fichas-container {
+  padding: 40px 60px;
+  background-color: #ffeef3;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  color: #333;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 5px;
+}
+
+.header p {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Filtros */
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.btn-filtro {
+  background-color: #ffd6e1;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-filtro:hover {
+  background-color: #ffb6c9;
+}
+
+.btn-filtro.activo {
+  background-color: #ff9fb8;
+  color: #fff;
+}
+
+/* Tabla */
+.tabla-pedidos {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #f3d9e1;
+}
+
+th {
+  color: #555;
+  font-weight: 600;
+  background-color: #fff6f8;
+}
+
+tr:hover {
+  background-color: #fff0f4;
+}
+
+/* Estado */
+.estado {
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Colores según estado */
+.estado.nuevo {
+  background-color: #ffe5ec;
+  color: #d6336c;
+}
+
+.estado.en {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.estado.completado {
+  background-color: #d4edda;
+  color: #155724;
+}

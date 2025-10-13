@@ -1,0 +1,39 @@
+<div class="fichas-container">
+     <header class="header">
+       <h1>Pending Orders</h1>
+       <p>Manage and prioritize customer orders by location.</p>
+   
+       <div class="filtros">
+         <button class="btn-filtro activo">All Locations</button>
+         <button class="btn-filtro">Calkiní</button>
+         <button class="btn-filtro">Dzibtaché</button>
+         <button class="btn-filtro">Bacabchén</button>
+       </div>
+     </header>
+   
+     <section class="tabla-pedidos">
+       <table>
+         <thead>
+           <tr>
+             <th>Customer Name</th>
+             <th>Order Date</th>
+             <th>Status</th>
+             <th>Location</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr *ngFor="let ficha of fichas">
+             <td>{{ ficha.nombre }}</td>
+             <td>{{ ficha.fecha | date:'yyyy-MM-dd' }}</td>
+             <td>
+               <span class="estado" [ngClass]="ficha.estado.toLowerCase().replace(' ','-')">
+                 {{ ficha.estado }}
+               </span>
+             </td>
+             <td>{{ ficha.ubicacion }}</td>
+           </tr>
+         </tbody>
+       </table>
+     </section>
+   </div>
+   
