@@ -1,0 +1,103 @@
+{
+     "nuevo": [
+       { "nombre": "Crema AMICA", "precio": 120, "imagen": "assets/Nuevo/Crema-AMICA.png" },
+       { "nombre": "Serum Glow", "precio": 200, "imagen": "assets/Nuevo/Serum-Glow.png" }
+     ],
+     "cuidado-facial": [
+       { "nombre": "JABON Night Cream", "precio": 350, "imagen": "assets/Cuidado-Facial/JabonNightCream.png" },
+       { "nombre": "Serúm de rosas", "precio": 50, "imagen": "assets/Cuidado-Facial/SerumRosas.png" },
+       { "nombre": "Serúm 24k", "precio": 50, "imagen": "assets/Cuidado-Facial/Serum24k.png" },
+       { "nombre": "Parches para el acne", "precio": 20, "imagen": "assets/Cuidado-Facial/ParchesAcne.png" },
+       { "nombre": "Parches para puntos negros en la nariz", "precio": 25, "imagen": "assets/Cuidado-Facial/ParchesNegros.png" },
+       { "nombre": "Mascarillas", "precio": 30, "imagen": "assets/Cuidado-Facial/Mascarilla.png" },
+       { "nombre": "Parches para ojeras", "precio": 35, "imagen": "assets/Cuidado-Facial/ParchesOjeras.png" },
+       { "nombre": "Primer de arroz", "precio": 40, "imagen": "assets/Cuidado-Facial/PrimerArroz.png" },
+       { "nombre": "Jabon de arroz", "precio": 15, "imagen": "assets/Cuidado-Facial/JabonArroz.png" },
+       { "nombre": "Cepillo facial", "precio": 45, "imagen": "assets/Cuidado-Facial/CepilloFacial.png" }
+     ],
+     "accesorios": [
+       { "nombre": "Monederos", "precio": 25, "imagen": "assets/Accesorios/Monederos.png" },
+       { "nombre": "Peines", "precio": 20, "imagen": "assets/Accesorios/Peines.png" },
+       { "nombre": "Pinzas de mariposa", "precio": 15, "imagen": "assets/Accesorios/PinzasMariposa.png" },
+       { "nombre": "Pinzas grandes", "precio": 30, "imagen": "assets/Accesorios/PinzasGrandes.png" },
+       { "nombre": "Pinzas pequeñas", "precio": 18, "imagen": "assets/Accesorios/PinzasPequeñas.png" },
+       { "nombre": "Pinzas de flor", "precio": 20, "imagen": "assets/Accesorios/PinzasFlor.png" },
+       { "nombre": "Moños largos", "precio": 25, "imagen": "assets/Accesorios/MoñoLargo.png" },
+       { "nombre": "Moños cortos", "precio": 20, "imagen": "assets/Accesorios/MoñosCortos.png" },
+       { "nombre": "Bandas para el cabello", "precio": 15, "imagen": "assets/Accesorios/BandasCabello.png" },
+       { "nombre": "Pañoletas", "precio": 20, "imagen": "assets/Accesorios/Pañoletas.png" },
+       { "nombre": "Lazos para el cabello", "precio": 18, "imagen": "assets/Accesorios/Lazos.png" },
+       { "nombre": "Aretes de cereza", "precio": 25, "imagen": "assets/Accesorios/AretesCereza.png" },
+       { "nombre": "Collares de cereza", "precio": 30, "imagen": "assets/Accesorios/CollarCereza.png" },
+       { "nombre": "Pinzas para depilar", "precio": 35, "imagen": "assets/Accesorios/Pinza.png" },
+       { "nombre": "Gorritos con movimientos en las orejas", "precio": 40, "imagen": "assets/Accesorios/Gorros.png" },
+       { "nombre": "Coletero grande en forma de lazo", "precio": 28, "imagen": "assets/Accesorios/Coletero.png" },
+       { "nombre": "Diademas", "precio": 25, "imagen": "assets/Accesorios/Diadema.png" },
+       { "nombre": "Cesto para ropa", "precio": 50, "imagen": "assets/Accesorios/CestoRopa.png" },
+       { "nombre": "Carteras para hombre", "precio": 45, "imagen": "assets/Accesorios/CarteraHombre.png" }
+     ],
+     "perfumes": [
+       { "nombre": "HOMME Eau de Parfum", "precio": 520, "imagen": "assets/Perfumes/Homme.png" },
+       { "nombre": "Salvace For Men", "precio": 75, "imagen": "assets/Perfumes/SalvaceForMen.png" },
+       { "nombre": "2i2 Hello Men", "precio": 75, "imagen": "assets/Perfumes/2i2.png" },
+       { "nombre": "Perfume Dama Flower Rococo", "precio": 40, "imagen": "assets/Perfumes/Perfume Rococo.png" },
+       { "nombre": "Perfume Noir Forét", "precio": 75, "imagen": "assets/Perfumes/PerfumeAmaderado.png" },
+       { "nombre": "Boss Orange For Men", "precio": 75, "imagen": "assets/Perfumes/Boss.png" },
+       { "nombre": "Gio For Men", "precio": 75, "imagen": "assets/Perfumes/Gio.png" }
+     ],
+     "maquillaje": [
+       { "nombre": "Iluminadores", "precio": 40, "imagen": "assets/Maquillaje/Iluminador.png" },
+       { "nombre": "Base liquida de maquillaje", "precio": 30, "imagen": "assets/Maquillaje/BaseLiquida.png" },
+       { "nombre": "Lip gloss norvina", "precio": 25, "imagen": "assets/Maquillaje/LipGloss.png" },
+       { "nombre": "Agua de rosa Norvina", "precio": 35, "imagen": "assets/Maquillaje/AguaRosas.png" },
+       { "nombre": "Labiales mate", "precio": 40, "imagen": "assets/Maquillaje/LabialesMatte.png" },
+       { "nombre": "Gloss Miss Betty", "precio": 20, "imagen": "assets/Maquillaje/GlossMisBetty.png" },
+       { "nombre": "Blush", "precio": 18, "imagen": "assets/Maquillaje/Blush.png" },
+       { "nombre": "Gloss Milk", "precio": 22, "imagen": "assets/Maquillaje/GlossMilk.png" },
+       { "nombre": "Gloss Magico de Sandía", "precio": 25, "imagen": "assets/Maquillaje/GlossDeSandia.png" },
+       { "nombre": "Balsamo tipo labello", "precio": 20, "imagen": "assets/Maquillaje/BalsamoLabello.png" },
+       { "nombre": "Esmalte para uñas", "precio": 15, "imagen": "assets/Maquillaje/Esmalte.png" },
+       { "nombre": "Gel para cejas", "precio": 18, "imagen": "assets/Maquillaje/GelCejas.png" },
+       { "nombre": "Labial en barra con brillo", "precio": 20, "imagen": "assets/Maquillaje/LabialBarraBrillo.png" },
+       { "nombre": "Labial Mate premiun", "precio": 25, "imagen": "assets/Maquillaje/LabialMatteP.png" },
+       { "nombre": "Labial en barra FavorBeuty", "precio": 28, "imagen": "assets/Maquillaje/LabialFBeauty.png" },
+       { "nombre": "Kit de maquillaje \"ULTRAMO\"", "precio": 100, "imagen": "assets/Maquillaje/KitUltramo.png" },
+       { "nombre": "Balsamo magico de lapicito", "precio": 20, "imagen": "assets/Maquillaje/BalsamoLapicito.png" },
+       { "nombre": "Fijador de Maquillaje tuipo fit mi", "precio": 30, "imagen": "assets/Maquillaje/Fijador.png" },
+       { "nombre": "Cera para cejas", "precio": 18, "imagen": "assets/Maquillaje/Cera.png" },
+       { "nombre": "Pestañas postizas", "precio": 22, "imagen": "assets/Maquillaje/Pestañas.png" },
+       { "nombre": "Tintas MocAllure", "precio": 25, "imagen": "assets/Maquillaje/TintasMocAllure.png" },
+       { "nombre": "Lip Gloss con brillo", "precio": 20, "imagen": "assets/Maquillaje/LipGlossBrillo.png" },
+       { "nombre": "Pegamento para pestañas", "precio": 15, "imagen": "assets/Maquillaje/PegamentoP.png" }
+     ],
+     "prendas": [
+       { "nombre": "Calcetines", "precio": 30, "imagen": "assets/Prendas/CalcetinesUnitalla.png" },
+       { "nombre": "Boxer de spiderman", "precio": 20, "imagen": "assets/Prendas/BoxerSpiderman.png" },
+       { "nombre": "Calcetines Kike", "precio": 25, "imagen": "assets/Prendas/CalcetinesKike.png" },
+       { "nombre": "Calcetines niño Super heroes", "precio": 30, "imagen": "assets/Prendas/CalcetinesSuperHero.png" },
+       { "nombre": "Short unitalla Levanta gluteos", "precio": 35, "imagen": "assets/Prendas/Shorts.png" },
+       { "nombre": "Mangas protectoras para el sol", "precio": 20, "imagen": "assets/Prendas/Mangas.png" }
+     ],
+     "cuidado-corporal": [
+       { "nombre": "Protector solar", "precio": 30, "imagen": "assets/Cuidado-Corporal/ProtectorSolar.png" },
+       { "nombre": "Exfoliante \"Body Scrub\"", "precio": 50, "imagen": "assets/Cuidado-Corporal/Exfoliante.png" },
+       { "nombre": "Lata de toallitas Húmedas", "precio": 55, "imagen": "assets/Cuidado-Corporal/Lata.png" },
+       { "nombre": "Crema hidratante", "precio": 40, "imagen": "assets/Cuidado-Corporal/CremaHidratante.png" },
+       { "nombre": "Pezoneras", "precio": 20, "imagen": "assets/Cuidado-Corporal/Pezoneras.png" },
+       { "nombre": "Parches para el abdomen", "precio": 25, "imagen": "assets/Cuidado-Corporal/ParcheAbdomen.png" }
+     ],
+     "ofertas": [
+       { "nombre": "Kit de maquillaje \"ULTRAMO\"", "precio": 100, "imagen": "assets/Ofertas/KitMaquillaje.png" },
+       { "nombre": "Par de lápices", "precio": 12, "imagen": "assets/Ofertas/Lapices.png" },
+       { "nombre": "Fibra de acero", "precio": 12, "imagen": "assets/Ofertas/BrilloFibra.png" },
+       { "nombre": "Cinta doble cara", "precio": 12, "imagen": "assets/Ofertas/Cinta.png" },
+       { "nombre": "Cuters", "precio": 12, "imagen": "assets/Ofertas/Cutter.png" },
+       { "nombre": "Ganchos para ropa", "precio": 12, "imagen": "assets/Ofertas/GanchosRopa.png" },
+       { "nombre": "Juegos de geometria", "precio": 12, "imagen": "assets/Ofertas/JuegoGeometria.png" },
+       { "nombre": "Lipiador de polvo", "precio": 12, "imagen": "assets/Ofertas/Limpiador.png" },
+       { "nombre": "Manitas", "precio": 12, "imagen": "assets/Ofertas/Manitas.png" },
+       { "nombre": "Mantel para mesa", "precio": 12, "imagen": "assets/Ofertas/Mantel.png" },
+       { "nombre": "Par de lápices", "precio": 12, "imagen": "assets/Ofertas/Lapices.png" }
+     ]
+   }
+   

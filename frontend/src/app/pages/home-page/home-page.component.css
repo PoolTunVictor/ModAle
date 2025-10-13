@@ -1,0 +1,271 @@
+/* ================= HEADER PRINCIPAL ================= */
+.header-catalogo {
+  position: relative;
+  background-color: #f9f9f9; /* fondo blanco */
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo izquierda, menú + redes derecha */
+  padding: 0 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: #000;
+  z-index: 1000;
+}
+
+.header-contenido { 
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* logo a la izquierda, todo lo demás a la derecha */
+}
+
+.header-contenido h1 {
+  font-family: "Playwrite DE SAS", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.menu-social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+.nav-menu ul li a:hover {
+  color: #fcbdb5;
+  transform: scale(1.05);
+}
+
+.social-icons-header {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons-header a {
+  color: #000;
+  font-size: 18px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons-header a:hover {
+  transform: scale(1.1);
+  color: #fcbdb5;
+}
+
+/* ================= SECCIÓN CATEGORÍAS ================= */
+.catalogo {
+  text-align: center;
+  background-color: #e8d1dc; 
+  padding: 25px 10px;  
+  background-size: cover;      
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #0f0f0f;      
+}
+
+.catalog-subtitle {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.catalog-title {
+  font-family: 'Playwrite DE SAS', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  margin-bottom: 60px;
+}
+
+.categorias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.tool-card {
+  background-color: #f9f7f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  cursor: default;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;  
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.tool-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.categoria-nombre {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 10px 0 20px 0;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.categoria-nombre:hover {
+  color: #a66a48;
+}
+
+/* Responsivo categorías */
+@media (max-width: 1024px) {
+  .categorias {
+    gap: 30px;
+  }
+  .tool-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .tool-card {
+    width: 80%;
+  }
+}
+
+/* ================= SECCIÓN ANUNCIOS ================= */
+.anuncios-dobles-completos {
+  display: flex;
+  width: 100%;
+  margin: 0px 0;
+  flex-wrap: nowrap;
+}
+
+.anuncio-banner {
+  position: relative;
+  width: 50%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.anuncio-perfumes {
+  background-image: url('/assets/banner/FondoPerfume.png');
+}
+
+.anuncio-nuevo {
+  background-image: url('/assets/banner/FondoProductos.png');
+}
+
+.anuncio-banner:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.anuncio-contenido {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #000000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.anuncio-contenido h4 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.anuncio-contenido p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.btn-comprar {
+  font-family: inherit;
+  font-weight: bold;
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #efe7e7;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #ffe6cc;
+  color: #000; 
+}
+
+/* Responsive anuncios */
+@media (max-width: 900px) {
+  .anuncios-dobles-completos {
+    flex-direction: column;
+  }
+  .anuncio-banner {
+    width: 100%;
+    height: 200px;
+  }
+  .anuncio-contenido {
+    max-width: 90%;
+    padding: 15px;
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+/* ================= RESPONSIVO HEADER ================= */
+@media (max-width: 768px) {
+  .header-catalogo {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+  .header-contenido {
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center; 
+  }
+  .header-contenido h1 {
+    font-size: 22px;
+  }
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

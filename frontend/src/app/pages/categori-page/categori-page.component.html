@@ -1,0 +1,61 @@
+<div class="categoria-container">
+
+  <!-- 🟩 Título de la categoría -->
+  <div class="titulo-filtro-wrapper">
+    <!-- Botón funcional para regresar -->
+    <button class="btn-regresar" (click)="regresarHome()">
+      <i class="fa fa-arrow-left"></i> Regresar
+    </button>
+
+    <!-- Título de la categoría -->
+    <h2 class="titulo-categoria">{{ nombreCategoria | titlecase }}</h2>
+  </div>
+
+  <!-- 🟦 Filtro lateral -->
+  <aside class="filtro">
+    <h3>Filtrar por</h3>
+
+    <div class="filtro-section">
+      <h4>SKINCARE</h4>
+      <ul>
+        <li class="activo">Todos</li>
+        <li>Ofertas</li>
+        <li>Recién llegados</li>
+        <li>Más vendidos</li>
+      </ul>
+    </div>
+
+    <div class="filtro-section">
+  <h4>Precio</h4>
+  <div class="rango">
+    <input type="range" min="15" max="200" [value]="precioMax" (input)="filtrarPorPrecio($event)" />
+    <div class="rango-valores">
+      <span>15 MXN</span>
+      <span>{{ precioMax }} MXN</span>
+    </div>
+  </div>
+</div>
+
+  </aside>
+
+  <!-- 🟧 Productos -->
+  <section class="productos">
+    <div class="grid-productos">
+      <div class="producto" *ngFor="let p of productos">
+        <div class="etiqueta" *ngIf="p.etiqueta">{{ p.etiqueta }}</div>
+        <img [src]="p.imagen" [alt]="p.nombre" />
+        <h5>{{ p.nombre }}</h5>
+
+        <div class="precios">
+          <span *ngIf="p.precioOriginal" class="precio-original">${{ p.precioOriginal }}</span>
+          <span class="precio-actual">${{ p.precio }}</span>
+        </div>
+
+        <button class="btn-cesta" (click)="agregarACesta(p)">
+          <i class="fa fa-shopping-cart"></i> Añadir a la cesta
+        </button>
+      </div>
+    </div>
+  </section>
+
+</div>
