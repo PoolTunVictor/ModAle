@@ -1,0 +1,58 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-icon">
+      <span class="material-icons">person</span>
+    </div>
+    <h2>Welcome back</h2>
+    <p>Please sign in to continue</p>
+
+    <form>
+      <!-- Email -->
+      <div class="input-group">
+        <span class="material-icons input-icon" *ngIf="!email">email</span>
+        <input type="email" placeholder="Email address" [(ngModel)]="email" name="email"/>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <span class="material-icons input-icon" *ngIf="!password">lock</span>
+        <input 
+          [type]="passwordVisible ? 'text' : 'password'" 
+          placeholder="Password" 
+          [(ngModel)]="password"
+          name="password"
+        />
+        <button type="button" class="eye-icon" (click)="togglePassword()">
+          <span class="material-icons">{{ passwordVisible ? 'visibility_off' : 'visibility' }}</span>
+        </button>
+      </div>
+
+      <!-- Remember me -->
+      <div class="options">
+        <label class="checkbox-container">
+          Remember me
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="sign-in-btn">Sign In</button>
+    </form>
+
+<p class="or-text">OR CONTINUE WITH</p>
+
+    <div class="social-buttons">
+  <button class="google-btn" (click)="loginWithGoogle()">
+    <i class="fab fa-google"></i>
+  </button>
+  <button class="github-btn" (click)="loginWithGitHub()">
+    <i class="fab fa-github"></i>
+  </button>
+  <button class="facebook-btn" (click)="loginWithFacebook()">
+    <i class="fab fa-facebook-f"></i>
+  </button>
+</div>
+
+</div>
+
