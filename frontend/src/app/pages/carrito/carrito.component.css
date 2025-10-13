@@ -15,8 +15,9 @@
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
+ font-family: "Playwrite DE SAS", cursive;
+  font-size: 28px;
+  font-weight: 400;
   color: #333;
   margin: 0;
 }
