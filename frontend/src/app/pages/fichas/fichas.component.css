@@ -23,7 +23,6 @@
   margin-bottom: 20px;
 }
 
-/* Filtros */
 .filtros {
   display: flex;
   gap: 10px;
@@ -49,7 +48,7 @@
   color: #fff;
 }
 
-/* Tabla */
+
 .tabla-pedidos {
   background: #fff;
   border-radius: 12px;
@@ -79,7 +78,7 @@ tr:hover {
   background-color: #fff0f4;
 }
 
-/* Estado */
+
 .estado {
   padding: 6px 10px;
   border-radius: 12px;
@@ -93,9 +92,9 @@ tr:hover {
   color: #d6336c;
 }
 
-.estado.en {
-  background-color: #fff3cd;
-  color: #856404;
+.estado{
+  background-color: #000000;
+  color: #cea621;
 }
 
 .estado.completado {
