@@ -8,6 +8,7 @@
   padding: 20px 60px;
   font-family: "Poppins", sans-serif;
   background-color: #e6d4db;
+  min-height: 100vh; 
 }
 
 /* Wrapper para botón y título */
@@ -111,6 +112,7 @@
 /* 🔹 Productos */
 .productos {
   grid-area: productos;
+
 }
 
 .grid-productos {

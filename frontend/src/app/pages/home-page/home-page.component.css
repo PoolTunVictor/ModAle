@@ -1,87 +1,88 @@
-/* 🟢 HEADER PRINCIPAL */
+/* ================= HEADER PRINCIPAL ================= */
 .header-catalogo {
   position: relative;
-  background-image: url('/assets/banner/FondoPerfume.png');
-  background-size: cover;
-  background-position: center; 
-  background-repeat: no-repeat;
-  height: 100px;
+  background-color: #f9f9f9; /* fondo blanco */
+  height: 80px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  overflow: hidden;
-}
-.header-catalogo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 0;
-}
-.header-contenido {
-  position: relative;
-  z-index: 1;
-  width: 100%;
+  justify-content: space-between; /* logo izquierda, menú + redes derecha */
   padding: 0 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: #000;
+  z-index: 1000;
+}
+
+.header-contenido { 
   display: flex;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-between; /* logo a la izquierda, todo lo demás a la derecha */
 }
+
 .header-contenido h1 {
-  flex: 1;
-  font-size: 2.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}   
-.btn-login {
-  position: absolute;
-  right: 40px;
-  top: 30px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 2px solid #fff;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-family: "Playwrite DE SAS", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
 }
-.btn-login:hover {
-  background-color: #fff;
+
+.menu-social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
   color: #000;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-family: Arial, sans-serif;
 }
 
-/* Responsivo del header */
-@media (max-width: 768px) {
-  .header-catalogo {
-    height: 180px;
-  } 
-  .header-contenido h1 {
-    font-size: 1.8rem;
-  } 
-  .btn-login {
-    top: 15px;
-    right: 15px;
-    padding: 8px 15px;
-  }
+.nav-menu ul li a:hover {
+  color: #fcbdb5;
+  transform: scale(1.05);
 }
 
-/* 🟠 SECCIÓN CATEGORÍAS TIPO CARDS */
+.social-icons-header {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons-header a {
+  color: #000;
+  font-size: 18px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons-header a:hover {
+  transform: scale(1.1);
+  color: #fcbdb5;
+}
+
+/* ================= SECCIÓN CATEGORÍAS ================= */
 .catalogo {
   text-align: center;
-  padding: 25px 0;
-  background-image: url('/assets/FondoCatalogo.png'); 
+  background-color: #e8d1dc; 
+  padding: 25px 10px;  
   background-size: cover;      
   background-position: center; 
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Paralaje simple */
+  background-attachment: fixed;
   color: #0f0f0f;      
 }
+
 .catalog-subtitle {
-  font-size: 4rem; /* ajusta a lo que quieras */
+  font-size: 4rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 40px;
@@ -89,7 +90,7 @@
 
 .catalog-title {
   font-family: 'Playwrite DE SAS', sans-serif;
-  font-size: 4rem; /* tamaño grande */
+  font-size: 4rem;
   font-weight: 400;
   margin-bottom: 60px;
 }
@@ -112,6 +113,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   padding: 10px;
 }
+
 .tool-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 50px rgba(0,0,0,0.2);
@@ -125,6 +127,7 @@
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
+
 .tool-card:hover .product-image {
   transform: scale(1.05);
 }
@@ -137,11 +140,12 @@
   cursor: pointer;
   transition: color 0.3s ease;
 }
+
 .categoria-nombre:hover {
   color: #a66a48;
 }
 
-/* Responsivo */
+/* Responsivo categorías */
 @media (max-width: 1024px) {
   .categorias {
     gap: 30px;
@@ -150,19 +154,21 @@
     width: 45%;
   }
 }
+
 @media (max-width: 600px) {
   .tool-card {
     width: 80%;
   }
 }
 
-/* 🟣 SECCIÓN DE ANUNCIOS */
+/* ================= SECCIÓN ANUNCIOS ================= */
 .anuncios-dobles-completos {
   display: flex;
   width: 100%;
-  margin: 50px 0;
+  margin: 0px 0;
   flex-wrap: nowrap;
 }
+
 .anuncio-banner {
   position: relative;
   width: 50%;
@@ -171,18 +177,22 @@
   background-position: center;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default; /* no clicable */
+  cursor: default;
 }
+
 .anuncio-perfumes {
   background-image: url('/assets/banner/FondoPerfume.png');
 }
+
 .anuncio-nuevo {
   background-image: url('/assets/banner/FondoProductos.png');
 }
+
 .anuncio-banner:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
 .anuncio-contenido {
   position: absolute;
   bottom: 20px;
@@ -193,14 +203,17 @@
   border-radius: 8px;
   max-width: 80%;
 }
+
 .anuncio-contenido h4 {
   font-size: 1.5rem;
   margin-bottom: 8px;
 }
+
 .anuncio-contenido p {
   font-size: 1rem;
   margin-bottom: 12px;
 }
+
 .btn-comprar {
   font-family: inherit;
   font-weight: bold;
@@ -213,12 +226,13 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .btn-comprar:hover {
   background-color: #ffe6cc;
   color: #000; 
 }
 
-/* 🧩 Responsive: anuncios en móviles */
+/* Responsive anuncios */
 @media (max-width: 900px) {
   .anuncios-dobles-completos {
     flex-direction: column;
@@ -232,5 +246,26 @@
     padding: 15px;
     bottom: 15px;
     left: 15px;
+  }
+}
+
+/* ================= RESPONSIVO HEADER ================= */
+@media (max-width: 768px) {
+  .header-catalogo {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+  .header-contenido {
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center; 
+  }
+  .header-contenido h1 {
+    font-size: 22px;
+  }
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 15px;
   }
 }

@@ -26,15 +26,16 @@
     </div>
 
     <div class="filtro-section">
-      <h4>Precio</h4>
-      <div class="rango">
-        <input type="range" min="89" max="320" value="200" />
-        <div class="rango-valores">
-          <span>89 MXN</span>
-          <span>320 MXN</span>
-        </div>
-      </div>
+  <h4>Precio</h4>
+  <div class="rango">
+    <input type="range" min="15" max="200" [value]="precioMax" (input)="filtrarPorPrecio($event)" />
+    <div class="rango-valores">
+      <span>15 MXN</span>
+      <span>{{ precioMax }} MXN</span>
     </div>
+  </div>
+</div>
+
   </aside>
 
   <!-- 🟧 Productos -->
