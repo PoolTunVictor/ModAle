@@ -11,7 +11,7 @@
   min-height: 100vh; 
 }
 
-/* Wrapper para botón y título */
+
 .titulo-filtro-wrapper {
   grid-area: titulo;
   position: relative;
@@ -19,7 +19,6 @@
   text-align: center;
 }
 
-/* Botón de regresar */
 .btn-regresar {
   position: absolute;
   left: 0;
@@ -45,16 +44,14 @@
   color: #000;
 }
 
-/* Título de la categoría */
 .titulo-categoria {
-  font-size: 2.5rem; /* 🔹 Aquí puedes hacer más grande el título de la categoría */
+  font-size: 2.5rem; 
   font-weight: 700;
   text-transform: uppercase;
   color: #333;
   letter-spacing: 1px;
 }
 
-/* Filtro lateral */
 .filtro {
   grid-area: filtro;
   border-right: 1px solid #ddd;
@@ -96,7 +93,6 @@
   font-weight: 600;
 }
 
-/* 🔹 Rango de precio */
 .rango input[type="range"] {
   width: 100%;
 }
@@ -109,7 +105,7 @@
   margin-top: 5px;
 }
 
-/* 🔹 Productos */
+
 .productos {
   grid-area: productos;
 
@@ -159,7 +155,6 @@
   font-weight: 500;
 }
 
-/* 🔹 Precios */
 .precios {
   display: flex;
   align-items: center;
@@ -178,7 +173,7 @@
   font-size: 1em;
 }
 
-/* 🔹 Botón "Añadir a la cesta" */
+
 .btn-cesta {
   margin-top: 10px;
   width: 100%;

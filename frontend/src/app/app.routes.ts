@@ -6,23 +6,11 @@ import { CategoriPageComponent } from './pages/categori-page/categori-page.compo
 import { CarritoComponent } from './pages/carrito/carrito.component';
 
 export const routes: Routes = [
-    // Ruta inicial → login
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-
-    // Después del login → ProductCatalogComponent
     { path: 'product-catalog', component: ProductCatalogComponent },
-
-    // Catálogo principal (HomePage)
     { path: 'catalogo', component: HomePageComponent },
-
-    // Página de categoría específica
     { path: 'categoria/:categoria', component: CategoriPageComponent },
-
     { path: 'carrito', component: CarritoComponent },
-
-    // Cualquier ruta inválida → login
     { path: '**', redirectTo: 'login' }
-
-    
 ];

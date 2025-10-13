@@ -1,11 +1,10 @@
-/* ================= HEADER PRINCIPAL ================= */
 .header-catalogo {
   position: relative;
-  background-color: #f9f9f9; /* fondo blanco */
+  background-color: #f9f9f9;
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* logo izquierda, menú + redes derecha */
+  justify-content: space-between;
   padding: 0 40px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   color: #000;
@@ -16,7 +15,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  justify-content: space-between; /* logo a la izquierda, todo lo demás a la derecha */
+  justify-content: space-between; 
 }
 
 .header-contenido h1 {
@@ -69,7 +68,7 @@
   color: #fcbdb5;
 }
 
-/* ================= SECCIÓN CATEGORÍAS ================= */
+
 .catalogo {
   text-align: center;
   background-color: #e8d1dc; 
@@ -161,7 +160,7 @@
   }
 }
 
-/* ================= SECCIÓN ANUNCIOS ================= */
+
 .anuncios-dobles-completos {
   display: flex;
   width: 100%;
@@ -232,7 +231,7 @@
   color: #000; 
 }
 
-/* Responsive anuncios */
+
 @media (max-width: 900px) {
   .anuncios-dobles-completos {
     flex-direction: column;
@@ -249,7 +248,7 @@
   }
 }
 
-/* ================= RESPONSIVO HEADER ================= */
+
 @media (max-width: 768px) {
   .header-catalogo {
     flex-direction: column;

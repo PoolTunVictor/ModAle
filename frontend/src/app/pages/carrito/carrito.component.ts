@@ -47,7 +47,7 @@ export class CarritoComponent {
     });
   }
 
-  // Métodos del carrito
+
   eliminarProducto(producto: ProductoCarrito) {
     this.carrito = this.carrito.filter(p => p.id !== producto.id);
   }
@@ -66,14 +66,14 @@ export class CarritoComponent {
   }
 
   camposCompletos(): boolean {
-    return true; // simulación
+    return true; 
   }
 
   generarFicha() {
     alert('Ficha generada (simulada)');
   }
 
-  // ✅ Navegar al catálogo
+
   irCatalogo() {
     this.router.navigate(['/catalogo']).then(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });

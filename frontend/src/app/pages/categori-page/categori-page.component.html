@@ -1,17 +1,14 @@
 <div class="categoria-container">
 
-  <!-- 🟩 Título de la categoría -->
   <div class="titulo-filtro-wrapper">
-    <!-- Botón funcional para regresar -->
+
     <button class="btn-regresar" (click)="regresarHome()">
       <i class="fa fa-arrow-left"></i> Regresar
     </button>
 
-    <!-- Título de la categoría -->
     <h2 class="titulo-categoria">{{ nombreCategoria | titlecase }}</h2>
   </div>
 
-  <!-- 🟦 Filtro lateral -->
   <aside class="filtro">
     <h3>Filtrar por</h3>
 
@@ -37,8 +34,6 @@
 </div>
 
   </aside>
-
-  <!-- 🟧 Productos -->
   <section class="productos">
     <div class="grid-productos">
       <div class="producto" *ngFor="let p of productos">
