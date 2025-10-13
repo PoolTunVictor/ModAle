@@ -1,7 +1,13 @@
 {
   "nuevo": [
     { "id": 1, "nombre": "Crema AMICA", "precio": 120, "imagen": "assets/Nuevo/Crema-AMICA.png" },
-    { "id": 2, "nombre": "Serum Glow", "precio": 200, "imagen": "assets/Nuevo/Serum-Glow.png" }
+    { "id": 2, "nombre": "Serum Glow", "precio": 200, "imagen": "assets/Nuevo/Serum-Glow.png" },
+    { "id": 9, "nombre": "Parches para ojeras", "precio": 35, "imagen": "assets/Cuidado-Facial/ParchesOjeras.png" },
+    { "id": 10, "nombre": "Primer de arroz", "precio": 40, "imagen": "assets/Cuidado-Facial/PrimerArroz.png" },
+    { "id": 11, "nombre": "Jabon de arroz", "precio": 15, "imagen": "assets/Cuidado-Facial/JabonArroz.png" },
+    { "id": 23, "nombre": "Lazos para el cabello", "precio": 18, "imagen": "assets/Accesorios/Lazos.png" },
+    { "id": 24, "nombre": "Aretes de cereza", "precio": 25, "imagen": "assets/Accesorios/AretesCereza.png" },
+    { "id": 25, "nombre": "Collares de cereza", "precio": 30, "imagen": "assets/Accesorios/CollarCereza.png" }
   ],
   "cuidado-facial": [
     { "id": 3, "nombre": "JABON Night Cream", "precio": 25, "imagen": "assets/Cuidado-Facial/JabonNightCream.png" },
