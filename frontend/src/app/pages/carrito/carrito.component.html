@@ -10,7 +10,7 @@
      <div class="main-content">
    
        <div class="productos-section">
-         <h2 class="section-title">TU CESTA</h2>
+         <h2 class="section-title">CESTA🛒</h2>
    
          <div class="productos-frame">
            <div class="producto-item" *ngFor="let producto of carrito; let i = index">
@@ -20,7 +20,7 @@
              <div class="producto-info">
                <h4>{{ producto.nombre }}</h4>
                <div class="cantidad-section">
-                 <span class="cantidad-label">Qty</span>
+                 <span class="cantidad-label">U</span>
                  <div class="cantidad-control">
                    <span class="cantidad-numero">{{ producto.cantidad }}</span>
                  </div>
@@ -35,36 +35,33 @@
        </div>
    
        <div class="resumen-section">
-         <div class="resumen-frame">
-           <h3 class="resumen-title">Order Summary</h3>
-   
-           <div class="resumen-line">
-             <span>Subtotal</span>
-             <span>${{ getSubtotal().toFixed(2) }}</span>
-           </div>
-   
-           <div class="resumen-line">
-             <span>Shipping</span>
-             <span>$5.00</span>
-           </div>
-   
-           <div class="resumen-line">
-             <span>Tax</span>
-             <span>${{ getTax().toFixed(2) }}</span>
-           </div>
-   
-           <div class="resumen-total">
-             <span>Total</span>
-             <span>${{ getTotal().toFixed(2) }}</span>
-           </div>
-   
-           <button class="checkout-btn" (click)="generarFicha()">Proceed to Checkout</button>
-   
-           <p class="continue-shopping">
-             or <span (click)="irCatalogo()" style="cursor:pointer;" class="continue-link">Continue Shopping →</span>
-           </p>
-         </div>
-       </div>
+  <div class="resumen-frame">
+    <h3 class="resumen-title">RESUMEN DEL PEDIDO</h3>
+
+    <form class="resumen-form">
+      <label for="telefono">Número de teléfono</label>
+      <input type="text" id="telefono" placeholder="">
+
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" placeholder="">
+
+      <label for="referencia">Referencia</label>
+      <input type="text" id="referencia" placeholder="">
+    </form>
+
+    <div class="resumen-total">
+      <span>Total</span>
+      <span>${{ getTotal().toFixed(2) }}</span>
+    </div>
+
+    <button class="checkout-btn">Generar Ficha</button>
+
+    <p class="continue-shopping">
+      Continuar comprando →
+    </p>
+  </div>
+</div>
+
      </div>
    </div>
    

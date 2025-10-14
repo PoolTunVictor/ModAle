@@ -5,6 +5,7 @@
   padding: 0;
 }
 
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -15,7 +16,7 @@
 }
 
 .logo {
- font-family: "Playwrite DE SAS", cursive;
+  font-family: "Playwrite DE SAS", cursive;
   font-size: 28px;
   font-weight: 400;
   color: #333;
@@ -29,7 +30,7 @@
 
 .nav a {
   text-decoration: none;
-  color: #666;
+  color: #000000;
   font-weight: 500;
   transition: color 0.3s;
 }
@@ -41,21 +42,22 @@
 
 .main-content {
   display: flex;
-  gap: 30px;
+  gap: 60px;
   padding: 30px 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+ 
 .productos-section {
   flex: 2;
 }
 
 .section-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 1.9rem;
+  font-weight: 450;
+  margin: 10px 0 20px 0;
+  color: #0b0808;
 }
 
 .productos-frame {
@@ -157,7 +159,6 @@
   color: #c999af;
 }
 
-
 .resumen-section {
   flex: 1;
 }
@@ -179,30 +180,52 @@
   text-align: center;
 }
 
-.resumen-line {
+
+.resumen-form {
   display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-  color: #666;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
 }
+
+.resumen-form label {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.resumen-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+}
+
+.resumen-form input:focus {
+  border-color: #e3b1c8;
+  outline: none;
+}
+
 
 .resumen-total {
   display: flex;
   justify-content: space-between;
-  padding: 15px 0;
+  align-items: center;
+  margin-top: 15px;
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
-  border-top: 2px solid #f0f0f0;
-  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
 }
+
 
 .checkout-btn {
   width: 100%;
   padding: 15px;
   background-color: #e3b1c8;
-  color: #000;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -213,7 +236,7 @@
 }
 
 .checkout-btn:hover:not(:disabled) {
-  background-color: #c999af;
+  background-color: #d09db7;
 }
 
 .checkout-btn:disabled {
@@ -222,18 +245,15 @@
   color: #999;
 }
 
+
 .continue-shopping {
   text-align: center;
   margin-top: 15px;
-  color: #666;
+  color: #c3a6b5;
+  font-size: 0.9rem;
 }
 
-.continue-link {
-  color: #e3b1c8;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.continue-link:hover {
+.continue-shopping:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
