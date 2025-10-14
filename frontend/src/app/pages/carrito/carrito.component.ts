@@ -23,6 +23,10 @@ interface ProductoCarrito {
 })
 export class CarritoComponent {
   carrito: ProductoCarrito[] = [];
+  mensajeFicha = '';
+  telefono: string = '';
+  direccion: string = '';
+  referencia: string = '';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -43,10 +47,8 @@ export class CarritoComponent {
         });
       });
       this.carrito = todosProductos;
-      console.log('Carrito inicial cargado con todos los productos:', this.carrito);
     });
   }
-
 
   eliminarProducto(producto: ProductoCarrito) {
     this.carrito = this.carrito.filter(p => p.id !== producto.id);
@@ -56,23 +58,23 @@ export class CarritoComponent {
     return this.carrito.reduce((total, p) => total + p.precio * p.cantidad, 0);
   }
 
-  getSubtotal(): number {
-    return this.getTotal();
-  }
-
-  getTax(): number {
-    const taxRate = 0.16; 
-    return this.getSubtotal() * taxRate;
-  }
-
   camposCompletos(): boolean {
-    return true; 
+    return this.telefono.trim() !== '' &&
+           this.direccion.trim() !== '' &&
+           this.referencia.trim() !== '';
   }
 
   generarFicha() {
-    alert('Ficha generada (simulada)');
+    if (this.camposCompletos()) {
+      this.mensajeFicha = '¡Ficha generada exitosamente!.';
+      setTimeout(() => {
+        this.mensajeFicha = '';
+        this.telefono = '';
+        this.direccion = '';
+        this.referencia = '';
+      }, 3000);
+    }
   }
-
 
   irCatalogo() {
     this.router.navigate(['/catalogo']).then(() => {

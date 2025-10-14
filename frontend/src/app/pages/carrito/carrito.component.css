@@ -97,7 +97,7 @@
 .producto-info h4 {
   margin: 0 0 8px 0;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #333;
 }
 
@@ -140,7 +140,7 @@
 .precio {
   display: block;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #333;
   margin-bottom: 8px;
 }
@@ -242,7 +242,7 @@
 .checkout-btn:disabled {
   background-color: #ddd;
   cursor: not-allowed;
-  color: #999;
+  color: #8f8b8b;
 }
 
 
@@ -256,4 +256,19 @@
 .continue-shopping:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+.mensaje-exito {
+  color: #a36e97;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 16px;
+  animation: fadeIn 0.3s ease-in-out;
+  display: block;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }

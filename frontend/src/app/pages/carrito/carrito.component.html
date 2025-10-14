@@ -1,67 +1,66 @@
 <div class="carrito-container">
 
-     <div class="header">
-       <h1 class="logo">MODALE & CO</h1>
-       <nav class="nav">
-         <a (click)="irCatalogo()" style="cursor:pointer;">CATÁLOGO</a>
-       </nav>
-     </div>
-   
-     <div class="main-content">
-   
-       <div class="productos-section">
-         <h2 class="section-title">CESTA🛒</h2>
-   
-         <div class="productos-frame">
-           <div class="producto-item" *ngFor="let producto of carrito; let i = index">
-             <div class="producto-imagen">
-               <img [src]="producto.imagen" [alt]="producto.nombre" />
-             </div>
-             <div class="producto-info">
-               <h4>{{ producto.nombre }}</h4>
-               <div class="cantidad-section">
-                 <span class="cantidad-label">U</span>
-                 <div class="cantidad-control">
-                   <span class="cantidad-numero">{{ producto.cantidad }}</span>
-                 </div>
-               </div>
-             </div>
-             <div class="producto-precio">
-               <span class="precio">${{ (producto.precio * producto.cantidad).toFixed(2) }}</span>
-               <button class="remove-btn" (click)="eliminarProducto(producto)">Remove</button>
-             </div>
-           </div>
-         </div>
-       </div>
-   
-       <div class="resumen-section">
-  <div class="resumen-frame">
-    <h3 class="resumen-title">RESUMEN DEL PEDIDO</h3>
+  <div class="header">
+    <h1 class="logo">MODALE & CO</h1>
+    <nav class="nav">
+      <a (click)="irCatalogo()" style="cursor:pointer;">CATÁLOGO</a>
+    </nav>
+  </div>
 
-    <form class="resumen-form">
-      <label for="telefono">Número de teléfono</label>
-      <input type="text" id="telefono" placeholder="">
+  <div class="main-content">
 
-      <label for="direccion">Dirección</label>
-      <input type="text" id="direccion" placeholder="">
+    <div class="productos-section">
+      <h2 class="section-title">CESTA🛒</h2>
 
-      <label for="referencia">Referencia</label>
-      <input type="text" id="referencia" placeholder="">
-    </form>
-
-    <div class="resumen-total">
-      <span>Total</span>
-      <span>${{ getTotal().toFixed(2) }}</span>
+      <div class="productos-frame">
+        <div class="producto-item" *ngFor="let producto of carrito; let i = index">
+          <div class="producto-imagen">
+            <img [src]="producto.imagen" [alt]="producto.nombre" />
+          </div>
+          <div class="producto-info">
+            <h4>{{ producto.nombre }}</h4>
+            <div class="cantidad-section">
+              <span class="cantidad-label">U</span>
+              <div class="cantidad-control">
+                <span class="cantidad-numero">{{ producto.cantidad }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="producto-precio">
+            <span class="precio">${{ (producto.precio * producto.cantidad).toFixed(2) }}</span>
+            <button class="remove-btn" (click)="eliminarProducto(producto)">Remove</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <button class="checkout-btn">Generar Ficha</button>
+    <div class="resumen-section">
+      <div class="resumen-frame">
+        <h3 class="resumen-title">RESUMEN DEL PEDIDO</h3>
 
-    <p class="continue-shopping">
-      Continuar comprando →
-    </p>
+        <form class="resumen-form">
+          <label for="telefono">Número de teléfono</label>
+          <input type="text" id="telefono" [(ngModel)]="telefono" name="telefono">
+
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" [(ngModel)]="direccion" name="direccion">
+
+          <label for="referencia">Referencia</label>
+          <input type="text" id="referencia" [(ngModel)]="referencia" name="referencia">
+        </form>
+
+        <div class="resumen-total">
+          <span>Total</span>
+          <span>${{ getTotal().toFixed(2) }}</span>
+        </div>
+
+        <button class="checkout-btn" (click)="generarFicha()" [disabled]="!camposCompletos()">Generar Ficha</button>
+
+        <p *ngIf="mensajeFicha" class="mensaje-exito">{{ mensajeFicha }}</p>
+
+        <p class="continue-shopping" (click)="irCatalogo()">Continuar comprando →</p>
+      </div>
+    </div>
+
   </div>
 </div>
-
-     </div>
-   </div>
-   
