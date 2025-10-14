@@ -1,17 +1,15 @@
 <div class="carrito-container">
 
   <div class="header">
-    <h1 class="logo">MODALE & CO</h1>
+     <h2 class="section-title">CESTA🛒</h2>
+   
     <nav class="nav">
       <a (click)="irCatalogo()" style="cursor:pointer;">CATÁLOGO</a>
     </nav>
   </div>
 
   <div class="main-content">
-
-    <div class="productos-section">
-      <h2 class="section-title">CESTA🛒</h2>
-
+    <div class="productos-section"> 
       <div class="productos-frame">
         <div class="producto-item" *ngFor="let producto of carrito; let i = index">
           <div class="producto-imagen">
@@ -19,10 +17,11 @@
           </div>
           <div class="producto-info">
             <h4>{{ producto.nombre }}</h4>
-            <div class="cantidad-section">
-              <span class="cantidad-label">U</span>
+            <div class="cantidad-section">  
               <div class="cantidad-control">
-                <span class="cantidad-numero">{{ producto.cantidad }}</span>
+                <button class="cantidad-btn" (click)="disminuirCantidad(producto)">-</button>
+    <span class="cantidad-numero">{{ producto.cantidad }}</span>
+    <button class="cantidad-btn" (click)="aumentarCantidad(producto)">+</button>
               </div>
             </div>
           </div>
@@ -36,7 +35,7 @@
 
     <div class="resumen-section">
       <div class="resumen-frame">
-        <h3 class="resumen-title">RESUMEN DEL PEDIDO</h3>
+        <h3 class="resumen-title">DETALLES DEL PEDIDO</h3>
 
         <form class="resumen-form">
           <label for="telefono">Número de teléfono</label>

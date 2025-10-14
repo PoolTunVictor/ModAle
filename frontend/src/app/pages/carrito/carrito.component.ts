@@ -49,6 +49,15 @@ export class CarritoComponent {
       this.carrito = todosProductos;
     });
   }
+  aumentarCantidad(producto: ProductoCarrito) {
+  producto.cantidad++;
+}
+
+disminuirCantidad(producto: ProductoCarrito) {
+  if (producto.cantidad > 1) {
+    producto.cantidad--;
+  }
+}
 
   eliminarProducto(producto: ProductoCarrito) {
     this.carrito = this.carrito.filter(p => p.id !== producto.id);
@@ -66,6 +75,8 @@ export class CarritoComponent {
 
   generarFicha() {
     if (this.camposCompletos()) {
+       const confirmar = confirm('¿Estás segura de generar la ficha?');
+    if (confirmar) {
       this.mensajeFicha = '¡Ficha generada exitosamente!.';
       setTimeout(() => {
         this.mensajeFicha = '';
@@ -75,6 +86,7 @@ export class CarritoComponent {
       }, 3000);
     }
   }
+}
 
   irCatalogo() {
     this.router.navigate(['/catalogo']).then(() => {
