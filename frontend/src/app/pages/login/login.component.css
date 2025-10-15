@@ -8,21 +8,14 @@
 }
 
 .login-card {
-  background: #e0e0e0;
-  padding: 2.5rem;
+  background: linear-gradient(145deg, rgba(255,255,255,0.3), rgba(200,200,200,0.1));
+  backdrop-filter: blur(5px);
   border-radius: 20px;
-  box-shadow: 8px 8px 16px #bebebe,
-              -8px -8px 16px #ffffff;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   width: 350px;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.login-card:hover {
-  box-shadow: 4px 4px 8px #bebebe,
-              -4px -4px 8px #ffffff;
-}
-
+} 
 .login-icon {
   background: #e0e0e0;
   border-radius: 50%;
