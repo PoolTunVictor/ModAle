@@ -1,14 +1,21 @@
 <div class="categoria-container">
- <header>
-  <div class="titulo-filtro-wrapper">
-    <button class="btn-regresar" (click)="regresarHome()">
-      <i class="fa fa-arrow-left"></i> Regresar
-    </button>
+  <!-- HEADER -->
+  <header class="header-categoria">
+    <div class="header-container">
+      <!-- Botón regresar (reemplaza logo) -->
+      <button class="btn-regresar" (click)="regresarHome()">
+        <i class="fa fa-arrow-left"></i>
+      </button>
 
-    <h2 class="titulo-categoria">{{ nombreCategoria | titlecase }}</h2>
-  </div>
-</header>
+      <!-- Título centrado -->
+      <h2 class="titulo-categoria-header">{{ nombreCategoria | titlecase }}</h2>
 
+      <!-- Espaciador a la derecha -->
+      <div class="espaciador"></div>
+    </div>
+  </header>
+
+  <!-- FILTRO -->
   <aside class="filtro">
     <h3>Filtrar por</h3>
 
@@ -23,17 +30,24 @@
     </div>
 
     <div class="filtro-section">
-  <h4>Precio</h4>
-  <div class="rango">
-    <input type="range" min="15" max="200" [value]="precioMax" (input)="filtrarPorPrecio($event)" />
-    <div class="rango-valores">
-      <span>15 MXN</span>
-      <span>{{ precioMax }} MXN</span>
+      <h4>Precio</h4>
+      <div class="rango">
+        <input
+          type="range"
+          min="15"
+          max="200"
+          [value]="precioMax"
+          (input)="filtrarPorPrecio($event)"
+        />
+        <div class="rango-valores">
+          <span>15 MXN</span>
+          <span>{{ precioMax }} MXN</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   </aside>
+
+  <!-- PRODUCTOS -->
   <section class="productos">
     <div class="grid-productos">
       <div class="producto" *ngFor="let p of productos">
@@ -52,5 +66,4 @@
       </div>
     </div>
   </section>
-
 </div>
