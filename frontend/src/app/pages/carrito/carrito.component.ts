@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -19,7 +18,7 @@ interface ProductoCarrito {
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule]
+  imports: [CommonModule, FormsModule]
 })
 export class CarritoComponent {
   carrito: ProductoCarrito[] = [];
@@ -28,39 +27,31 @@ export class CarritoComponent {
   direccion: string = '';
   referencia: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.http.get<any>('assets/data/productos.json').subscribe(data => {
-      const todosProductos: ProductoCarrito[] = [];
-      Object.values(data).forEach((categoria: any) => {
-        categoria.forEach((p: any) => {
-          todosProductos.push({
-            id: p.id,
-            nombre: p.nombre,
-            precio: p.precio,
-            cantidad: 1,
-            imagen: p.imagen,
-            etiqueta: p.etiqueta,
-            precioOriginal: p.precioOriginal
-          });
-        });
-      });
-      this.carrito = todosProductos;
-    });
+    this.cargarCarrito();
   }
-  aumentarCantidad(producto: ProductoCarrito) {
-  producto.cantidad++;
-}
 
-disminuirCantidad(producto: ProductoCarrito) {
-  if (producto.cantidad > 1) {
-    producto.cantidad--;
+  cargarCarrito() {
+    this.carrito = JSON.parse(localStorage.getItem('cesta') || '[]');
   }
-}
+
+  aumentarCantidad(producto: ProductoCarrito) {
+    producto.cantidad++;
+    this.guardarCarrito();
+  }
+
+  disminuirCantidad(producto: ProductoCarrito) {
+    if (producto.cantidad > 1) {
+      producto.cantidad--;
+      this.guardarCarrito();
+    }
+  }
 
   eliminarProducto(producto: ProductoCarrito) {
     this.carrito = this.carrito.filter(p => p.id !== producto.id);
+    this.guardarCarrito();
   }
 
   getTotal(): number {
@@ -75,22 +66,26 @@ disminuirCantidad(producto: ProductoCarrito) {
 
   generarFicha() {
     if (this.camposCompletos()) {
-       const confirmar = confirm('¿Estás segura de generar la ficha?');
-    if (confirmar) {
-      this.mensajeFicha = '¡Ficha generada exitosamente!.';
-      setTimeout(() => {
-        this.mensajeFicha = '';
-        this.telefono = '';
-        this.direccion = '';
-        this.referencia = '';
-      }, 3000);
+      const confirmar = confirm('¿Estás segura de generar la ficha?');
+      if (confirmar) {
+        this.mensajeFicha = '¡Ficha generada exitosamente!';
+        setTimeout(() => {
+          this.mensajeFicha = '';
+          this.telefono = '';
+          this.direccion = '';
+          this.referencia = '';
+          this.carrito = [];
+          localStorage.removeItem('cesta');
+        }, 3000);
+      }
     }
   }
-}
 
   irCatalogo() {
-    this.router.navigate(['/catalogo']).then(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    this.router.navigate(['/catalogo']).then(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  private guardarCarrito() {
+    localStorage.setItem('cesta', JSON.stringify(this.carrito));
   }
 }

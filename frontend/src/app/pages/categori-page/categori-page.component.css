@@ -36,7 +36,7 @@
 
 .btn-regresar {
   position: absolute;
-  left: 0;               /* inicio del contenedor */
+  left: 0;               
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -212,7 +212,7 @@
   transform: translateY(-2px);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 1024px) {
   .header-container {
     width: 90%;

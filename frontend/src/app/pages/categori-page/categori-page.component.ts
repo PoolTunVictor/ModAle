@@ -60,8 +60,28 @@ export class CategoriPageComponent {
     );
   }
 
+  
   agregarACesta(producto: Producto) {
-    console.log('🛒 Agregado al carrito (NO funciona realmente):', producto);
+    const cesta: Producto[] = JSON.parse(localStorage.getItem('cesta') || '[]');
+    const index = cesta.findIndex(p => p.id === producto.id);
+
+    if (index > -1) {
+      cesta[index].cantidad! += 1;
+    } else {
+      cesta.push({ ...producto, cantidad: 1 });
+    }
+
+    localStorage.setItem('cesta', JSON.stringify(cesta));
+    console.log('🛒 Producto agregado al carrito:', producto);
+  }
+
+  obtenerCantidadCesta(): number {
+    const cesta: Producto[] = JSON.parse(localStorage.getItem('cesta') || '[]');
+    return cesta.reduce((acc, item) => acc + (item.cantidad || 0), 0);
+  }
+
+  irAlCarrito() {
+    this.router.navigate(['/carrito']);
   }
 
   filtrarPorPrecio(event: Event) {
