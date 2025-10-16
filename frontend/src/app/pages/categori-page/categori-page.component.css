@@ -69,6 +69,26 @@
   min-height: 100vh;
   box-sizing: border-box;
 }
+.btn-carrito {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-carrito:hover {
+  color: #b47a95;
+  transform: translateY(-50%) translateX(3px);
+}
+
 
 .filtro {
   grid-area: filtro;

@@ -1,14 +1,18 @@
 
 <header class="header-categoria">
   <div class="header-container">
-     <div class="espaciador"></div>
+    <div class="espaciador"></div>
     <button class="btn-regresar" (click)="regresarHome()">
       <i class="fa fa-arrow-left"></i>
     </button>
     <h2 class="titulo-categoria-header">{{ nombreCategoria | titlecase }}</h2>
-        
+    <button class="btn-carrito" (click)="irAlCarrito()">
+      <i class="fa fa-shopping-cart"></i>
+    </button>    
   </div>
+  
 </header>
+    
 
 <div class="categoria-container">
   <aside class="filtro">
@@ -41,7 +45,7 @@
     </div>
   </aside>
 
-  <!-- PRODUCTOS -->
+
   <section class="productos">
     <div class="grid-productos">
       <div class="producto" *ngFor="let p of productos">
