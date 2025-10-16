@@ -1,24 +1,17 @@
+
+<header class="header-categoria">
+  <div class="header-container">
+     <div class="espaciador"></div>
+    <button class="btn-regresar" (click)="regresarHome()">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+    <h2 class="titulo-categoria-header">{{ nombreCategoria | titlecase }}</h2>
+  </div>
+</header>
+
 <div class="categoria-container">
-  <!-- HEADER -->
-  <header class="header-categoria">
-    <div class="header-container">
-      <!-- Botón regresar (reemplaza logo) -->
-      <button class="btn-regresar" (click)="regresarHome()">
-        <i class="fa fa-arrow-left"></i>
-      </button>
-
-      <!-- Título centrado -->
-      <h2 class="titulo-categoria-header">{{ nombreCategoria | titlecase }}</h2>
-
-      <!-- Espaciador a la derecha -->
-      <div class="espaciador"></div>
-    </div>
-  </header>
-
-  <!-- FILTRO -->
   <aside class="filtro">
-    <h3>Filtrar por</h3>
-
+    <h3>Filtrar por</h3>  
     <div class="filtro-section">
       <h4>SKINCARE</h4>
       <ul>
