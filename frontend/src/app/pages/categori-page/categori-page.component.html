@@ -1,4 +1,3 @@
-
 <header class="header-categoria">
   <div class="header-container">
     <div class="espaciador"></div>
@@ -10,9 +9,11 @@
       <i class="fa fa-shopping-cart"></i>
     </button>    
   </div>
-  
 </header>
-    
+
+<div class="mensaje-cesta" *ngIf="mostrarMensaje">
+  {{ mensajeAgregado }}
+</div>
 
 <div class="categoria-container">
   <aside class="filtro">
@@ -44,7 +45,6 @@
       </div>
     </div>
   </aside>
-
 
   <section class="productos">
     <div class="grid-productos">

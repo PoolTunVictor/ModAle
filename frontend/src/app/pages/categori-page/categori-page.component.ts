@@ -23,8 +23,13 @@ interface Producto {
 })
 export class CategoriPageComponent {
   productos: Producto[] = [];
+  productosOriginales: Producto[] = [];
   nombreCategoria: string = '';
-  precioMax: number = 500;
+  precioMax: number = 200;
+
+
+  mensajeAgregado: string = '';
+  mostrarMensaje: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -43,16 +48,17 @@ export class CategoriPageComponent {
   }
 
   cargarProductosPorCategoria(categoria: string): void {
-    this.getProductosPorCategoria(categoria).subscribe({
-      next: (productos) => {
-        this.productos = productos;
-        console.log(`✅ Productos de ${categoria}:`, this.productos);
-      },
-      error: (err) => {
-        console.error('❌ Error al cargar productos:', err);
-      }
-    });
-  }
+  this.getProductosPorCategoria(categoria).subscribe({
+    next: (productos) => {
+      this.productosOriginales = productos; 
+      this.productos = [...productos];     
+      console.log(`✅ Productos de ${categoria}:`, this.productos);
+    },
+    error: (err) => {
+      console.error('❌ Error al cargar productos:', err);
+    }
+  });
+}
 
   getProductosPorCategoria(categoria: string): Observable<Producto[]> {
     return this.http.get<any>('assets/data/productos.json').pipe(
@@ -60,7 +66,6 @@ export class CategoriPageComponent {
     );
   }
 
-  
   agregarACesta(producto: Producto) {
     const cesta: Producto[] = JSON.parse(localStorage.getItem('cesta') || '[]');
     const index = cesta.findIndex(p => p.id === producto.id);
@@ -73,6 +78,13 @@ export class CategoriPageComponent {
 
     localStorage.setItem('cesta', JSON.stringify(cesta));
     console.log('🛒 Producto agregado al carrito:', producto);
+
+    
+    this.mensajeAgregado = `${producto.nombre} se ha agregado a la cesta`;
+    this.mostrarMensaje = true;
+    setTimeout(() => {
+      this.mostrarMensaje = false;
+    }, 2500);
   }
 
   obtenerCantidadCesta(): number {
@@ -87,6 +99,9 @@ export class CategoriPageComponent {
   filtrarPorPrecio(event: Event) {
     const input = event.target as HTMLInputElement;
     this.precioMax = Number(input.value);
+
+      this.productos = this.productosOriginales.filter(p => p.precio <= this.precioMax);
+
   }
 
   regresarHome() {
