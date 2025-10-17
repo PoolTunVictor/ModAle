@@ -16,7 +16,7 @@ export class LoginComponent {
   password: string = '';
 
   users = [
-    { username: 'admin', password: '123456' },
+    { username: 'AzielH', password: '2004' },
     { username: 'editor', password: '123456' },
     { username: 'basic', password: '123456' }
   ];
@@ -33,7 +33,7 @@ export class LoginComponent {
     );
 
     if (user) {
-      this.router.navigate(['/product-catalog']); // Página inicial después de login
+      this.router.navigate(['/product-catalog']);
     } else {
       alert('Usuario o contraseña incorrectos');
     }

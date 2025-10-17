@@ -3,12 +3,12 @@
 })
 export class AuthService {
   private users = [
-    { username: 'admin', password: '123456' },
+    { username: 'AzielH', password: '2004' },
     { username: 'editor', password: '123456' },
     { username: 'basic', password: '123456' }
   ];
 
-  private loggedIn = true; // <-- auto-login para pruebas
+  private loggedIn = true;
 
   constructor() {}
 

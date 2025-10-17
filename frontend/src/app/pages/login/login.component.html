@@ -4,10 +4,9 @@
       <span class="material-icons">person</span>
     </div>
     <h2>Welcome back</h2>
-    <p>Please sign in to continue</p>
 
     <form (ngSubmit)="login()">
-      <!-- Email -->
+      
       <div class="input-group">
         <span class="material-icons input-icon" *ngIf="!email">email</span>
         <input type="text" placeholder="Email address" [(ngModel)]="email" name="email"/>
@@ -27,7 +26,6 @@
         </button>
       </div>
 
-      <!-- Remember me (ACTUALIZADO) -->
       <div class="options">
         <label class="checkbox-container">
           <input type="checkbox" />
