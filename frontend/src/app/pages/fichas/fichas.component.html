@@ -1,38 +1,40 @@
 <div class="fichas-container">
-     <header class="header">
-       <h1>FICHAS</h1>
-         
-       <div class="filtros">
-         <button class="btn-filtro activo">All Locations</button>
-         <button class="btn-filtro">Calkiní</button>
-         <button class="btn-filtro">Dzibtaché</button>
-         <button class="btn-filtro">Bacabchén</button>
-       </div>
-     </header>
-   
-     <section class="tabla-pedidos">
-       <table>
-         <thead>
-           <tr>
-             <th>Usuario</th>
-             <th>Order Date</th>
-             <th>Status</th>
-             <th>Locación</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr *ngFor="let ficha of fichas">
-             <td>{{ ficha.nombre }}</td>
-             <td>{{ ficha.fecha | date:'yyyy-MM-dd' }}</td>
-             <td>
-               <span class="estado" [ngClass]="ficha.estado.toLowerCase().replace(' ','-')">
-                 {{ ficha.estado }}
-               </span>
-             </td>
-             <td>{{ ficha.ubicacion }}</td>
-           </tr>
-         </tbody>
-       </table>
-     </section>
-   </div>
-   
+  <header class="header">
+    <h1>FICHAS</h1>
+    <div class="filtros">
+      <button class="btn-filtro activo">All Locations</button>
+      <button class="btn-filtro">Calkiní</button>
+      <button class="btn-filtro">Dzibtaché</button>
+      <button class="btn-filtro">Bacabchén</button>
+    </div>
+  </header>
+
+  <section class="tabla-pedidos">
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Order Date</th>
+          <th>Status</th>
+          <th>Locación</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ficha of fichas">
+          <td>{{ ficha.nombre }}</td>
+          <td>{{ ficha.fecha | date:'yyyy-MM-dd' }}</td>
+          <td>
+            <span class="estado" [ngClass]="ficha.estado.toLowerCase().replace(' ','-')">
+              {{ ficha.estado }}
+            </span>
+          </td>
+          <td>{{ ficha.ubicacion }}</td>
+          <td>
+            <button class="btn-view" (click)="verDetalle()">View</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

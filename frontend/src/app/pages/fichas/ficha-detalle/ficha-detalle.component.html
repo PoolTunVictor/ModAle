@@ -1,38 +1,48 @@
 <div class="detalle-container">
-     <h2>Order #{{ ficha.id }}</h2>
-     <p>Placed on October 12, 2025, 10:30 AM</p>
-   
-     <div class="estado">
-       <span class="status">Pending</span>
-     </div>
-   
-     <div class="info-cliente">
-       <h3>Customer Information</h3>
-       <p><strong>Name:</strong> {{ ficha.cliente }}</p>
-       <p><strong>Contact:</strong> {{ ficha.email }}</p>
-       <p><strong>Location:</strong> {{ ficha.location }}</p>
-     </div>
-   
-     <div class="resumen">
-       <h3>Order Summary</h3>
-       <table>
-         <tr>
-           <th>Product</th>
-           <th>Quantity</th>
-           <th>Price</th>
-           <th>Total</th>
-         </tr>
-         <tr *ngFor="let p of ficha.productos">
-           <td>{{ p.producto }}</td>
-           <td>{{ p.cantidad }}</td>
-           <td>${{ p.precio.toFixed(2) }}</td>
-           <td>${{ (p.cantidad * p.precio).toFixed(2) }}</td>
-         </tr>
-         <tr class="total">
-           <td colspan="3">Total</td>
-           <td>${{ calcularTotal().toFixed(2) }}</td>
-         </tr>
-       </table>
-     </div>
-   </div>
-   
+  <div class="detalle-header">
+    <h2>Order #{{ ficha.id }}</h2>
+    <div class="header-buttons">
+      <button class="btn-imprimir" (click)="imprimir()">
+        🖨 Imprimir
+      </button>
+    <button class="btn-regresar" (click)="volver()">
+      ← Volver
+    </button>
+  </div>
+</div>
+
+  <p>Placed on October 12, 2025, 10:30 AM</p>
+
+  <div class="estado">
+    <span class="status">Pending</span>
+  </div>
+
+  <div class="info-cliente">
+    <h3>Customer Information</h3>
+    <p><strong>Name:</strong> {{ ficha.cliente }}</p>
+    <p><strong>Contact:</strong> {{ ficha.email }}</p>
+    <p><strong>Location:</strong> {{ ficha.location }}</p>
+  </div>
+
+  <div class="resumen">
+    <h3>Order Summary</h3>
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr *ngFor="let p of ficha.productos">
+        <td>{{ p.producto }}</td>
+        <td>{{ p.cantidad }}</td>
+        <td>${{ p.precio.toFixed(2) }}</td>
+        <td>${{ (p.cantidad * p.precio).toFixed(2) }}</td>
+      </tr>
+      <tr class="total">
+        <td colspan="3">Total</td>
+        <td>${{ calcularTotal().toFixed(2) }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

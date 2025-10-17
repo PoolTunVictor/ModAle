@@ -6,4 +6,5 @@ export const routes: Routes = [
   { path: '', redirectTo: 'fichas', pathMatch: 'full' },
   { path: 'fichas', component: FichasComponent },
   { path: 'fichas/:id', component: FichaDetalleComponent },
+   { path: 'fichas-detalle', component: FichaDetalleComponent },
 ];

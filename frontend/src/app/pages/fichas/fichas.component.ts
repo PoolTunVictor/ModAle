@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fichas',
@@ -9,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./fichas.component.css']
 })
 export class FichasComponent {
+  constructor(private router: Router) {}
+
   fichas = [
     { nombre: 'Sophia Clark', fecha: '2024-01-15', estado: 'Nuevo', ubicacion: 'Calkiní' },
     { nombre: 'Liam Walker', fecha: '2024-01-16', estado: 'En proceso', ubicacion: 'Dzibtaché' },
@@ -19,4 +22,8 @@ export class FichasComponent {
     { nombre: 'Isabella Hayes', fecha: '2024-01-21', estado: 'Nuevo', ubicacion: 'Bacabchén' },
     { nombre: 'Jackson Powell', fecha: '2024-01-22', estado: 'Completado', ubicacion: 'Calkiní' },
   ];
+
+  verDetalle() {
+    this.router.navigate(['/fichas-detalle']);
+  }
 }

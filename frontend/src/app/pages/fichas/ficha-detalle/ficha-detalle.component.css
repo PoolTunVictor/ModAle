@@ -7,6 +7,60 @@
      font-family: 'Arial', sans-serif;
      color: #333;
    }
+   .detalle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.detalle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px; /* espacio entre botones */
+}
+
+.btn-regresar, .btn-imprimir {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.btn-regresar {
+  background-color: #ffb6c9;
+}
+
+.btn-regresar:hover {
+  background-color: #ff94af;
+}
+
+.btn-imprimir {
+  background-color: #6c63ff;
+}
+
+.btn-imprimir:hover {
+  background-color: #574fd6;
+}
+
+
+.detalle-container {
+  background-color: #ffeef3;
+  padding: 30px;
+  border-radius: 16px;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
    
    .estado {
      margin-bottom: 20px;

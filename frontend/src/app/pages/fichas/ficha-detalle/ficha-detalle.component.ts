@@ -13,7 +13,6 @@ export class FichaDetalleComponent implements OnInit {
   fichaId!: string;
   ficha: any;
 
-  // Simulación temporal de datos
   fichas = [
     { id: 1, nombre: 'Ficha 1', cliente: 'Sophia Rodríguez', email: 'sophia.rodriguez@email.com', location: 'Calkiní', productos: [
       { producto: 'Organic Apples', cantidad: 2, precio: 2.50 },
@@ -40,4 +39,13 @@ export class FichaDetalleComponent implements OnInit {
   calcularTotal() {
     return this.ficha.productos.reduce((acc: number, p: any) => acc + p.cantidad * p.precio, 0);
   }
+
+  volver() {
+  window.history.back();
+}
+imprimir() {
+  window.print();
+}
+
+
 }
