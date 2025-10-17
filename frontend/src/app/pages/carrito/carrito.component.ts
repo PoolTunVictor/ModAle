@@ -25,6 +25,7 @@ export class CarritoComponent {
   mensajeFicha = '';
   telefono: string = '';
   direccion: string = '';
+  localidad: string = '';
   referencia: string = '';
 
   constructor(private router: Router) {}
