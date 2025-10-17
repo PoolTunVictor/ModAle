@@ -1,40 +1,74 @@
 <div class="fichas-container">
-  <header class="header">
-    <h1>FICHAS</h1>
-    <div class="filtros">
-      <button class="btn-filtro activo">All Locations</button>
-      <button class="btn-filtro">Calkiní</button>
-      <button class="btn-filtro">Dzibtaché</button>
-      <button class="btn-filtro">Bacabchén</button>
-    </div>
+  <header class="fichas-header">
+    <h1 class="titulo">FICHAS</h1>
+    <p class="subtitulo">Manage and prioritize customer orders by location.</p>
   </header>
 
-  <section class="tabla-pedidos">
-    <table>
+  <div class="filtro">
+    <nav class="nav">
+      <button 
+        class="nav-btn" 
+        [class.active]="selectedLocation === 'all'"
+        (click)="filtrarPorUbicacion('all')"
+      >All Locations</button>
+
+      <button 
+        class="nav-btn" 
+        [class.active]="selectedLocation === 'Calkiní'"
+        (click)="filtrarPorUbicacion('Calkiní')"
+      >Calkiní</button>
+
+      <button 
+        class="nav-btn" 
+        [class.active]="selectedLocation === 'Dzibalché'"
+        (click)="filtrarPorUbicacion('Dzibalché')"
+      >Dzibalché</button>
+
+            <button 
+        class="nav-btn" 
+        [class.active]="selectedLocation === 'Becal'"
+        (click)="filtrarPorUbicacion('Becal')"
+      >Becal</button>
+
+      <button 
+        class="nav-btn" 
+        [class.active]="selectedLocation === 'Bacabchén'"
+        (click)="filtrarPorUbicacion('Bacabchén')"
+      >Bacabchén</button>
+    </nav>
+  </div>
+
+  <div class="tabla-container">
+    <table class="tabla-fichas">
       <thead>
         <tr>
-          <th>Usuario</th>
+          <th>Customer Name</th>
           <th>Order Date</th>
           <th>Status</th>
-          <th>Locación</th>
-          <th></th>
+          <th>Location</th>
+          <th>View</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let ficha of fichas">
-          <td>{{ ficha.nombre }}</td>
-          <td>{{ ficha.fecha | date:'yyyy-MM-dd' }}</td>
+        <tr *ngFor="let ficha of fichasFiltradas">
+          <td>{{ ficha.name }}</td>
+          <td>{{ ficha.date }}</td>
           <td>
-            <span class="estado" [ngClass]="ficha.estado.toLowerCase().replace(' ','-')">
-              {{ ficha.estado }}
+            <span 
+              class="status" 
+              [ngClass]="{
+                'nuevo': ficha.status === 'Nuevo',
+                'proceso': ficha.status === 'En proceso',
+                'completado': ficha.status === 'Completado'
+              }"
+            >
+              {{ ficha.status }}
             </span>
           </td>
-          <td>{{ ficha.ubicacion }}</td>
-          <td>
-            <button class="btn-view" (click)="verDetalle()">View</button>
-          </td>
+          <td>{{ ficha.location }}</td>
+          <td><button class="view-btn" (click)="verDetalle(ficha)">View</button></td>
         </tr>
       </tbody>
     </table>
-  </section>
+  </div>
 </div>
