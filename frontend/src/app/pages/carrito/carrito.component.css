@@ -3,6 +3,7 @@
   background-color: #e7c3d5;
   font-family: "Poppins", sans-serif;
   padding: 0;
+  
 }
 
 .header {
@@ -52,7 +53,6 @@
 .productos-frame {
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 8px 8px 15px #d6a8bb, -8px -8px 15px #ffffff;
   padding: 0;
 }
 
@@ -117,7 +117,6 @@
   border: none;
   border-radius: 50%;
   background: #f3dcee;
-  box-shadow: 5px 5px 10px #d4b0c3, -5px -5px 10px #ffffff;
   font-size: 1.2rem;
   font-weight: bold;
   color: #7d5c6a;
@@ -180,7 +179,6 @@
 .resumen-frame {
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 8px 8px 15px #d6a8bb, -8px -8px 15px #ffffff;
   padding: 25px;
   position: sticky;
   top: 30px;
@@ -212,7 +210,6 @@
   border-radius: 10px;
   border: none;
   background: #f3dcee;
-  box-shadow: inset 4px 4px 8px #d4b0c3, inset -4px -4px 8px #ffffff;
   font-size: 0.9rem;
   transition: all 0.3s ease;
 }

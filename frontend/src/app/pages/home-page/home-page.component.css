@@ -4,7 +4,7 @@
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  
   padding: 0 40px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   color: #000;
@@ -16,6 +16,7 @@
   align-items: center;
   width: 100%;
   justify-content: space-between; 
+  
 }
 
 .header-contenido h1 {
@@ -23,18 +24,27 @@
   font-size: 28px;
   font-weight: 400;
   margin: 0;
+    flex: 1;  
+    text-align: left;
 }
 
 .menu-social-wrapper {
+ 
   display: flex;
   align-items: center;
   gap: 40px;
+  
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
 }
 
 .nav-menu ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 40px;
   margin: 0;
   padding: 0;
 }
@@ -54,6 +64,8 @@
 
 .social-icons-header {
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
   gap: 15px;
 }
 
@@ -67,7 +79,19 @@
   transform: scale(1.1);
   color: #fcbdb5;
 }
+@media (max-width: 768px) {
+  .nav-menu ul {
+    gap: 25px;
+  }
 
+  .header-contenido h1 {
+    font-size: 22px;
+  }
+
+  .nav-menu ul li a {
+    font-size: 13px;
+  }
+}
 
 .catalogo {
   text-align: center;
@@ -247,7 +271,6 @@
     left: 15px;
   }
 }
-
 
 @media (max-width: 768px) {
   .header-catalogo {
