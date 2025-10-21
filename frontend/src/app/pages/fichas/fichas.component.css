@@ -7,32 +7,23 @@
   flex-direction: column;
 }
 
-/* --- HEADER --- */
-.fichas-header {
-  display: flex;
-  font-family: Arial, Helvetica, sans-serif;
+.fichas-header{
+  display: flex;  
   justify-content: space-between;
   align-items: center;
   background: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  padding: 15px 40px;
-  border-bottom: 2px solid #f0dcdc;
+  padding: 15px 40px; 
   flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
 
 .header-left {
   flex: 1;
   text-align: left;
-}
-
-.marca {
-  font-size: 20px;
-  font-weight: 700;
-  color: #d14a4a;
-  letter-spacing: 1px;
-}
+} 
 
 .header-center {
   flex: 1;
@@ -44,13 +35,7 @@
   font-weight: 700;
   color: #1d1d1d;
   margin: 0;
-}
-
-.subtitulo {
-  font-size: 14px;
-  color: #666;
-  margin-top: 4px;
-}
+} 
 
 .header-right {
   flex: 1;
@@ -63,9 +48,8 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: flex-end;
-}
+}   
 
-/* --- BOTONES DE FILTRO --- */
 .nav-btn {
   border: none;
   background: #fff;
@@ -89,7 +73,7 @@
   box-shadow: inset 3px 3px 7px #e1bcbc, inset -3px -3px 7px #ffffff;
 }
 
-/* --- TABLA --- */
+
 .tabla-container {
   background: #fff;
   border-radius: 10px;
@@ -143,7 +127,7 @@
 }
 
 .view-btn {
-  background: #f0f0f0;
+  background: #fbcccc;
   border: none;
   padding: 6px 12px;
   border-radius: 6px;
@@ -154,9 +138,7 @@
 
 .view-btn:hover {
   background: #e4e4e4;
-}
-
-/* --- RESPONSIVE DESIGN --- */
+} 
 @media (max-width: 1024px) {
   .fichas-header {
     flex-direction: column;
