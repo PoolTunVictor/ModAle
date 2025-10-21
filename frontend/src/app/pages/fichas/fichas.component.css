@@ -1,46 +1,81 @@
 .fichas-container {
   background: #fdf5f5;
   min-height: 100vh;
-  padding: 40px 60px;
-  font-family: "Inter", sans-serif;
+  padding: 0;
+  font-family:Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
+/* --- HEADER --- */
 .fichas-header {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 15px 40px;
+  border-bottom: 2px solid #f0dcdc;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-left {
+  flex: 1;
+  text-align: left;
+}
+
+.marca {
+  font-size: 20px;
+  font-weight: 700;
+  color: #d14a4a;
+  letter-spacing: 1px;
+}
+
+.header-center {
+  flex: 1;
   text-align: center;
-  margin-bottom: 30px;
 }
 
 .titulo {
   font-size: 28px;
   font-weight: 700;
   color: #1d1d1d;
+  margin: 0;
 }
 
 .subtitulo {
   font-size: 14px;
   color: #666;
+  margin-top: 4px;
 }
 
-.filtro {
+.header-right {
+  flex: 1;
   display: flex;
-  justify-content: flex-start;
-  margin-bottom: 25px;
+  justify-content: flex-end;
 }
 
 .nav {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
+/* --- BOTONES DE FILTRO --- */
 .nav-btn {
   border: none;
   background: #fff;
-  padding: 10px 22px;
+  padding: 10px 18px;
   border-radius: 8px;
   font-weight: 500;
   box-shadow: 3px 3px 7px #dcdcdc, -3px -3px 7px #ffffff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  white-space: nowrap;
 }
 
 .nav-btn:hover {
@@ -54,17 +89,21 @@
   box-shadow: inset 3px 3px 7px #e1bcbc, inset -3px -3px 7px #ffffff;
 }
 
+/* --- TABLA --- */
 .tabla-container {
   background: #fff;
   border-radius: 10px;
   box-shadow: 5px 5px 12px #e4dede, -5px -5px 12px #fff;
   padding: 15px;
+  margin: 30px 40px;
+  overflow-x: auto;
 }
 
 .tabla-fichas {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
+  min-width: 700px;
 }
 
 .tabla-fichas th,
@@ -115,4 +154,51 @@
 
 .view-btn:hover {
   background: #e4e4e4;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1024px) {
+  .fichas-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .header-left,
+  .header-center,
+  .header-right {
+    flex: unset;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .header-right .nav {
+    justify-content: center;
+  }
+
+  .tabla-container {
+    margin: 20px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .titulo {
+    font-size: 22px;
+  }
+
+  .marca {
+    font-size: 18px;
+  }
+
+  .nav-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .tabla-fichas {
+    font-size: 14px;
+    min-width: 500px;
+  }
 }

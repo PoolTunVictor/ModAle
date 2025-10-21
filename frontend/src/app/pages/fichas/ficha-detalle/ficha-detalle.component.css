@@ -14,16 +14,9 @@
   margin-bottom: 20px;
 }
 
-.detalle-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .header-buttons {
   display: flex;
-  gap: 10px; /* espacio entre botones */
+  gap: 10px; 
 }
 
 .btn-regresar, .btn-imprimir {

@@ -1,42 +1,46 @@
 <div class="fichas-container">
   <header class="fichas-header">
-    <h1 class="titulo">FICHAS</h1>
-    <p class="subtitulo">KATIA NO SE BAÑA</p>
+
+
+    <div class="header-left">
+      <h1 class="titulo">FICHAS</h1>
+      <p class="subtitulo">KATIA SI SE BAÑA</p>
+    </div>
+
+    <div class="header-right">
+      <nav class="nav">
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'all'"
+          (click)="filtrarPorUbicacion('all')"
+        >All Locations</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Calkiní'"
+          (click)="filtrarPorUbicacion('Calkiní')"
+        >Calkiní</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Dzibalché'"
+          (click)="filtrarPorUbicacion('Dzibalché')"
+        >Dzibalché</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Becal'"
+          (click)="filtrarPorUbicacion('Becal')"
+        >Becal</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Bacabchén'"
+          (click)="filtrarPorUbicacion('Bacabchén')"
+        >Bacabchén</button>
+      </nav>
+    </div>
   </header>
-
-  <div class="filtro">
-    <nav class="nav">
-      <button 
-        class="nav-btn" 
-        [class.active]="selectedLocation === 'all'"
-        (click)="filtrarPorUbicacion('all')"
-      >All Locations</button>
-
-      <button 
-        class="nav-btn" 
-        [class.active]="selectedLocation === 'Calkiní'"
-        (click)="filtrarPorUbicacion('Calkiní')"
-      >Calkiní</button>
-
-      <button 
-        class="nav-btn" 
-        [class.active]="selectedLocation === 'Dzibalché'"
-        (click)="filtrarPorUbicacion('Dzibalché')"
-      >Dzibalché</button>
-
-            <button 
-        class="nav-btn" 
-        [class.active]="selectedLocation === 'Becal'"
-        (click)="filtrarPorUbicacion('Becal')"
-      >Becal</button>
-
-      <button 
-        class="nav-btn" 
-        [class.active]="selectedLocation === 'Bacabchén'"
-        (click)="filtrarPorUbicacion('Bacabchén')"
-      >Bacabchén</button>
-    </nav>
-  </div>
 
   <div class="tabla-container">
     <table class="tabla-fichas">
