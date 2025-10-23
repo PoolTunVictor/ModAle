@@ -60,7 +60,7 @@
 .menu-social-wrapper {
   display: flex;
   align-items: center; 
-  gap: 10px; 
+  gap: 40px; 
   white-space: nowrap; 
 }
 
@@ -68,10 +68,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
- 
    display: flex; 
    flex-direction: row; 
-   gap: 8px; 
+   gap: 40px; 
 }
 
 .nav-menu ul li a {

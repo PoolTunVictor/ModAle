@@ -32,7 +32,7 @@ export class CarritoComponent {
   
   constructor(private router: Router) {}
    regresarCatalogo() {
-    this.router.navigate(['/catalogo']); // '/catalogo' es tu ruta de home-page
+    this.router.navigate(['/catalogo']); 
   }
 
  
@@ -69,7 +69,9 @@ export class CarritoComponent {
   camposCompletos(): boolean {
     return this.telefono.trim() !== '' &&
            this.direccion.trim() !== '' &&
-           this.referencia.trim() !== '';
+           this.referencia.trim() !== ''&&
+           this.localidad.trim() !== '';
+
   }
 
   generarFicha() {
@@ -82,6 +84,7 @@ export class CarritoComponent {
           this.telefono = '';
           this.direccion = '';
           this.referencia = '';
+          this.localidad = '';
           this.carrito = [];
           localStorage.removeItem('cesta');
         }, 3000);
