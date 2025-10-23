@@ -1,27 +1,34 @@
 <header class="header-categoria">
   <div class="header-container">
-    <div class="espaciador"></div>
-    <button class="btn-regresar" (click)="regresarHome()">
-      <i class="fa fa-arrow-left"></i>
-    </button>
-    <h2 class="titulo-categoria-header">{{ nombreCategoria | titlecase }}</h2>
-    <button class="btn-carrito" (click)="irAlCarrito()">
+  <a (click)="regresarHome()" class="btn-vovler"> 
+      <i class="fas fa-arrow-left"></i>
+    </a>
+ 
+    <h2 class="titulo-categoria-header">
+      {{ nombreCategoria | titlecase }}
+    </h2>
+    
+
+   <button (click)="irAlCarrito()" class="btn-carrito" style="z-index:2; position:relative;">
       <i class="fa fa-shopping-cart"></i>
-    </button>    
+    </button>
   </div>
 </header>
+
 
 <div class="mensaje-cesta" *ngIf="mostrarMensaje">
   {{ mensajeAgregado }}
 </div>
 
-<div class="categoria-container">
+<main class="categoria-container">
   <aside class="filtro">
-    <h3>Filtrar por</h3>  
+    <h4>Filtrar por</h4>
+
     <div class="filtro-section">
-      <h4>SKINCARE</h4>
+  
       <ul>
         <li class="activo">Todos</li>
+        <li>Skincare</li>
         <li>Ofertas</li>
         <li>Recién llegados</li>
         <li>Más vendidos</li>
@@ -29,7 +36,7 @@
     </div>
 
     <div class="filtro-section">
-      <h4>Precio</h4>
+      <h5>Precio</h5>
       <div class="rango">
         <input
           type="range"
@@ -50,7 +57,9 @@
     <div class="grid-productos">
       <div class="producto" *ngFor="let p of productos">
         <div class="etiqueta" *ngIf="p.etiqueta">{{ p.etiqueta }}</div>
+
         <img [src]="p.imagen" [alt]="p.nombre" />
+
         <h5>{{ p.nombre }}</h5>
 
         <div class="precios">
@@ -64,4 +73,4 @@
       </div>
     </div>
   </section>
-</div>
+</main>

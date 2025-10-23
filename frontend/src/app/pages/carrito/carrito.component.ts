@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
 
 interface ProductoCarrito {
   id: number;
@@ -28,7 +29,13 @@ export class CarritoComponent {
   localidad: string = '';
   referencia: string = '';
 
+  
   constructor(private router: Router) {}
+   regresarCatalogo() {
+    this.router.navigate(['/catalogo']); // '/catalogo' es tu ruta de home-page
+  }
+
+ 
 
   ngOnInit(): void {
     this.cargarCarrito();

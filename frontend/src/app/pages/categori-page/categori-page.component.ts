@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { Location } from '@angular/common';
 
+  
 interface Producto {
   id: number;
   nombre: string;
@@ -103,6 +105,7 @@ export class CategoriPageComponent {
       this.productos = this.productosOriginales.filter(p => p.precio <= this.precioMax);
 
   }
+  
 
   regresarHome() {
     this.router.navigate(['/catalogo']).then(() => {
