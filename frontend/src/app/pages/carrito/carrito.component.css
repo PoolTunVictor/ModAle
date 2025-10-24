@@ -42,6 +42,32 @@
 .productos-section {
   flex: 2;
 }
+.btn-regresar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: #f3dcee;
+  color: #4b2f3d;
+  border-radius: 50%;
+  box-shadow: 4px 4px 8px #d4b0c3, -4px -4px 8px #ffffff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-regresar:hover {
+  background-color: #f2d4e5;
+  color: #3a2631;
+  box-shadow: inset 4px 4px 8px #d4b0c3, inset -4px -4px 8px #ffffff;
+}
+
+.btn-regresar i {
+  pointer-events: none; /* evita conflictos con el click */
+}
+
 
 .section-title {
   font-size: 2rem;
