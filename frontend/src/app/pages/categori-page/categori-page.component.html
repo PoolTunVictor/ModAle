@@ -1,20 +1,17 @@
 <header class="header-categoria">
   <div class="header-container">
-  <a (click)="regresarHome()" class="btn-vovler"> 
+    <a (click)="regresarHome()" class="btn-regresar"> 
       <i class="fas fa-arrow-left"></i>
     </a>
- 
+
     <h2 class="titulo-categoria-header">
       {{ nombreCategoria | titlecase }}
     </h2>
-    
-
-   <button (click)="irAlCarrito()" class="btn-carrito" style="z-index:2; position:relative;">
+    <button (click)="irAlCarrito()" class="btn-carrito">
       <i class="fa fa-shopping-cart"></i>
     </button>
   </div>
 </header>
-
 
 <div class="mensaje-cesta" *ngIf="mostrarMensaje">
   {{ mensajeAgregado }}
@@ -25,7 +22,6 @@
     <h4>Filtrar por</h4>
 
     <div class="filtro-section">
-  
       <ul>
         <li class="activo">Todos</li>
         <li>Skincare</li>

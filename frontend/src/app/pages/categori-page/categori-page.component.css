@@ -5,6 +5,7 @@
   top: 0;
   z-index: 1000;
   font-family: Helvetica, Arial, sans-serif;
+  position: relative;
 }
 
 .header-container {
@@ -35,75 +36,51 @@
 
 .btn-regresar,
 .btn-carrito {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-120%);
-
-    background: transparent !important; 
-    border: none !important;            
-    text-decoration: none !important; 
-    
-    color: #cb3688;
-    font-size: 1.9rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0; 
-    transition: transform 0.2s ease, color 0.2s ease;
-
-    
-    appearance: none; 
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
-    outline: none !important; 
-    box-shadow: none !important;
-}
-
-
-.btn-regresar:focus,
-.btn-carrito:focus,
-.btn-regresar:active,
-.btn-carrito:active,
-.btn-regresar:hover,
-.btn-carrito:hover { 
-
-    background: transparent !important; 
-    border: none !important; 
-    outline: none !important;
-    box-shadow: none !important;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%; 
+  background: #f0e3f0; 
+  box-shadow: 8px 8px 15px #d1c1c8, -8px -8px 15px #ffffff; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cb3688;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
 }
 
 
 .btn-regresar {
-    left: 15px;
+  left: 20px;
 }
 
 .btn-carrito {
-    right: 15px;
+  right: 20px;
 }
 
-
-.btn-regresar i,
-.btn-carrito i {
-    background: transparent !important;
-}
-
-
-.btn-regresar:hover {
-    color: #b47a95;
-    transform: translateY(-50%) translateX(-3px);
-}
-
+.btn-regresar:hover,
 .btn-carrito:hover {
-    color: #b47a95;
-    transform: translateY(-50%) translateX(3px);
+  transform: translateY(-50%) scale(1.1);
+  color: #b47a95;
+  box-shadow: inset 4px 4px 10px #d1c1c8, inset -4px -4px 10px #ffffff;
 }
+
+
+.header-container i {
+  pointer-events: none;
+}
+
 
 .categoria-container {
   display: grid;
   grid-template-areas: "filtro productos";
-  grid-template-columns: 250px 1fr; 
+  grid-template-columns: 250px 1fr;
   gap: 30px;
   padding: 20px 60px;
   font-family: Helvetica, Arial, sans-serif !important;
@@ -112,13 +89,14 @@
   box-sizing: border-box;
 }
 
+
 .filtro {
   grid-area: filtro;
   border-right: 1px solid #ddd;
   padding-right: 20px;
 }
 
-.filtro h3 {
+.filtro h4 {
   font-size: 1.4em;
   margin-bottom: 20px;
   font-weight: 600;
@@ -128,7 +106,7 @@
   margin-bottom: 40px;
 }
 
-.filtro-section h4 {
+.filtro-section h5 {
   font-size: 1em;
   font-weight: 600;
   margin-bottom: 10px;
@@ -145,7 +123,7 @@
   cursor: pointer;
   color: #555;
   transition: color 0.2s;
-  text-align: left; 
+  text-align: left;
 }
 
 .filtro-section li:hover,
@@ -232,6 +210,7 @@
   font-size: 1em;
 }
 
+/* BOTÓN AÑADIR A CESTA */
 .btn-cesta {
   margin-top: 10px;
   width: 100%;
@@ -241,7 +220,7 @@
   padding: 8px 0;
   font-weight: bold;
   border-radius: 6px;
-  cursor: pointer;  
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,7 +234,7 @@
   transform: translateY(-2px);
 }
 
-
+/* MENSAJE DE CESTA */
 .mensaje-cesta {
   position: fixed;
   top: 100px;
@@ -279,8 +258,7 @@
   100% { opacity: 0; transform: translateX(-50%) translateY(-10px);}
 }
 
-
-
+/* RESPONSIVE */
 @media (max-width: 700px) { 
   .header-container {
     height: 60px;
@@ -293,7 +271,9 @@
 
   .btn-regresar,
   .btn-carrito {
-    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
   }
 
   .categoria-container {
@@ -345,25 +325,28 @@
     height: 100px;
   }
 
-.header-categoria {
-  position: relative;
-  z-index: 2000;
-}
+  .btn-regresar,
+  .btn-carrito {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
 
-.header-container {
-  position: relative;
-  z-index: 2100;
-}
+  .header-categoria {
+    position: relative;
+    z-index: 2000;
+  }
 
-.header-container button {
-  position: relative;
-  z-index: 2200;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+  .header-container {
+    position: relative;
+    z-index: 2100;
+  }
 
-.header-container i {
-  pointer-events: none;
-}
+  .header-container button {
+    position: relative;
+    z-index: 2200;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 }
