@@ -12,7 +12,7 @@
 
 .main-header {
    width: 100%;
-   background-color: #fff;
+   background-color: #f9f9f9;
    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
    position: sticky;
    top: 0;
@@ -106,7 +106,7 @@
 
 .support-section {
   width: 100%;
-  background: url('/assets/FondooM.png') no-repeat center;
+  background: url('/assets/HomePage.png') no-repeat center;
   background-size: cover;
   background-attachment: fixed;
   text-align: center;

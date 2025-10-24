@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background:  url('/assets/FondoLogin.png');
+  background:  url('/assets/FondoL.png');
   font-family: 'Arial', sans-serif;
 }
 
@@ -25,8 +25,6 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto 1rem auto;
-  box-shadow: 6px 6px 12px #bebebe,
-              -6px -6px 12px #ffffff;
   font-size: 36px;
   color: #555;
 }
@@ -61,11 +59,6 @@ p {
   color: #141212;
   transition: all 0.2s ease;
   box-sizing: border-box; 
-}
-
-.input-group input:focus {
-  box-shadow: inset 3px 3px 6px #bebebe,
-              inset -3px -3px 6px #ffffff;
 }
 
 .input-icon {
@@ -111,11 +104,6 @@ p {
   transition: all 0.3s ease;
 }
 
-.checkbox-container:hover {
-  box-shadow: inset 2px 2px 4px #bebebe,
-              inset -2px -2px 4px #ffffff;
-}
-
 .checkbox-container input {
   display: none;
 }
@@ -130,11 +118,6 @@ p {
   margin-right: 10px;
   position: relative;
   transition: all 0.3s ease;
-}
-
-.checkbox-container input:checked + .checkmark {
-  box-shadow: 2px 2px 4px #bebebe,
-              -2px -2px 4px #ffffff;
 }
 
 .checkbox-container input:checked + .checkmark::after {
