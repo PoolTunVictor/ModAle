@@ -15,11 +15,11 @@ export class FichasComponent {
     { name: 'Sophia Clark', date: '2024-01-15', status: 'Nuevo', location: 'Calkiní' },
     { name: 'Liam Walker', date: '2024-01-16', status: 'En proceso', location: 'Dzibalché' },
      { name: 'Liam Walker', date: '2024-01-16', status: 'En proceso', location: 'Becal' },
-    { name: 'Olivia Carter', date: '2024-01-17', status: 'Nuevo', location: 'Bacabchén' },
+    { name: 'Olivia Carter', date: '2024-01-17', status: 'Nuevo', location: 'Calkiní' },
     { name: 'Noah Evans', date: '2024-01-18', status: 'Completado', location: 'Calkiní' },
     { name: 'Ava Bennett', date: '2024-01-19', status: 'Nuevo', location: 'Calkiní' },
     { name: 'Ethan Reed', date: '2024-01-20', status: 'En proceso', location: 'Dzibalché' },
-    { name: 'Isabella Hayes', date: '2024-01-21', status: 'Nuevo', location: 'Bacabchén' },
+    { name: 'Isabella Hayes', date: '2024-01-21', status: 'Nuevo', location: 'Becal' },
     { name: 'Jackson Powell', date: '2024-01-22', status: 'Completado', location: 'Calkiní' }
   ];
 
