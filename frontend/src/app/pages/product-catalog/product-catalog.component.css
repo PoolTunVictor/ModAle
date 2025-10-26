@@ -1,24 +1,18 @@
+/* === TU CÓDIGO ORIGINAL COMPLETO === */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;}
-
-.catalog-container {
-   width: 100%;
-  font-family: Arial, sans-serif;
-  color: #333;
+  padding: 0;
 }
-
 
 .main-header {
-   width: 100%;
-   background-color: #f9f9f9;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-   position: fixed;
-   top: 0;
-   z-index: 10;
+  width: 100%;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
-
 
 .container-header {
   display: flex;
@@ -31,21 +25,13 @@
 }
 
 .logo-link {
-    text-decoration: none; 
-    color: inherit; 
-   
-    display: block;       
+  text-decoration: none; 
+  color: inherit; 
+  display: block;       
 }
-
 
 .logo-link h1 {
-    color: #000; 
-}
-
-
-.logo h1 {
-
-    color: #000; 
+  color: #000; 
 }
 
 .logo h1 {
@@ -55,7 +41,6 @@
   margin: 0; 
   white-space: nowrap; 
 }
-
 
 .menu-social-wrapper {
   display: flex;
@@ -68,9 +53,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
-   display: flex; 
-   flex-direction: row; 
-   gap: 40px; 
+  display: flex; 
+  flex-direction: row; 
+  gap: 40px; 
 }
 
 .nav-menu ul li a {
@@ -102,8 +87,6 @@
   color: #fcbdb5;
 }
 
-
-
 .support-section {
   width: 100%;
   background: url('/assets/HomePage.png') no-repeat center;
@@ -112,7 +95,8 @@
   text-align: center;
   padding: 50px 30px; 
   color: #ffffff;
-   position: relative;
+  position: relative;
+  margin-top: 70px; /* evita que el header tape el contenido */
 }
 
 .support-section::before {
@@ -153,7 +137,6 @@
   background-color: #f4b6da;
   transform: scale(1.05);
 }
-
 
 .recent-title {
   font-size: 30px;
@@ -216,7 +199,7 @@
 }
 
 .rating span {
-   margin-right: 2px;
+  margin-right: 2px;
 }
 
 .popular-products-section {
@@ -237,7 +220,7 @@
 }
 
 .popular-products-section .tool-card {
-  background: #ffffff;
+  background: #f9f9f9;
   border-radius: 12px;
   transition: 0.3s;
   padding: 10px;
@@ -253,13 +236,16 @@
   height: 280px; 
 }
 
-
 .main-footer {
-  background-color: #ffe1ed;
+  background-color: #f9f9f9;
   color: #000;
   text-align: center;
   padding: 20px;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
 }
 
 .footer-container {
@@ -294,10 +280,13 @@
   color: #e98f81;
 }
 
-
-
+/* ==== RESPONSIVE ==== */
 @media (max-width: 900px) {
   .support-title {
-  font-size: 60px;
+    font-size: 60px;
   }
+}
+
+main {
+  margin-bottom: 100px; 
 }
