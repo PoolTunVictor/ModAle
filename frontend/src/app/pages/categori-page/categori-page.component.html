@@ -1,73 +1,50 @@
-<header class="header-categoria">
+<header class="header-catalogo">
   <div class="header-container">
-    <a class="btn-regresar" (click)="regresarHome()"> 
-      <i class="fas fa-arrow-left"></i>
-    </a>
+     <div class="logo">
+      <a [routerLink]="['/catalogo']" class="logo-link">
+        <h1>MODALE & Co</h1>
+      </a>
+    </div>
 
-    <h2 class="titulo-categoria-header">
-      {{ nombreCategoria | titlecase }}
-    </h2>
-    
-    <button (click)="irAlCarrito()" class="btn-carrito">
-      <i class="fa fa-shopping-cart"></i>
-    </button>
+    <nav class="nav-links">
+      <a [routerLink]="['/catalogo']" class="nav-link">CATÁLOGO</a>
+      <a [routerLink]="['/carrito']" class="nav-link carrito-link">
+        CARRITO ({{ obtenerCantidadCesta() }})
+      </a>
+      <div class="social-icons-header">
+        <a href="https://www.facebook.com/profile.php?id=61568465109559" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>  
+      </div>
+    </nav>
   </div>
 </header>
 
-<div class="mensaje-cesta" *ngIf="mostrarMensaje">
-  {{ mensajeAgregado }}
-</div>
+<h2 class="titulo-categoria">{{ nombreCategoria | uppercase }}</h2>
 
-<main class="categoria-container">
-  <aside class="filtro">
-    <h4>Filtrar por</h4>
+<main class="contenido">
+  <div class="filtro-precio">
+    <label for="rango">Filtrar por precio (máx: {{ precioMax | currency:'USD' }}):</label>
+    <input type="range" id="rango" min="0" max="200" [value]="precioMax" (input)="filtrarPorPrecio($event)">
+  </div>
 
-    <div class="filtro-section">
-      <ul>
-        <li class="activo">Todos</li>
-        <li>Skincare</li>
-        <li>Ofertas</li>
-        <li>Recién llegados</li>
-        <li>Más vendidos</li>
-      </ul>
+  
+  <div class="productos-grid">
+    <div *ngFor="let producto of productos" class="producto-card">
+      <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto">
+      <h3>{{ producto.nombre }}</h3>
+      <p class="precio">{{ producto.precio | currency:'USD' }}</p>
+      <button (click)="agregarACesta(producto)">Agregar al carrito</button>
     </div>
+  </div>
 
-    <div class="filtro-section">
-      <h5>Precio</h5>
-      <div class="rango">
-        <input
-          type="range"
-          min="15"
-          max="200"
-          [value]="precioMax"
-          (input)="filtrarPorPrecio($event)"
-        />
-        <div class="rango-valores">
-          <span>15 MXN</span>
-          <span>{{ precioMax }} MXN</span>
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <section class="productos">
-    <div class="grid-productos">
-      <div class="producto" *ngFor="let p of productos">
-        <div class="etiqueta" *ngIf="p.etiqueta">{{ p.etiqueta }}</div>
-
-        <img [src]="p.imagen" [alt]="p.nombre" />
-
-        <h5>{{ p.nombre }}</h5>
-
-        <div class="precios">
-          <span *ngIf="p.precioOriginal" class="precio-original">${{ p.precioOriginal }}</span>
-          <span class="precio-actual">${{ p.precio }}</span>
-        </div>
-
-        <button class="btn-cesta" (click)="agregarACesta(p)">
-          <i class="fa fa-shopping-cart"></i> Añadir a la cesta
-        </button>
-      </div>
-    </div>
-  </section>
+  <div *ngIf="mostrarMensaje" class="mensaje-agregado">
+    {{ mensajeAgregado }}
+  </div>
 </main>
+
+<footer class="footer">
+        <h2>VISÍTANOS</h2>
+      <p class="direccion">📍 Calle 18, Bacabchén, México, 24925</p>
+      <p class="horarios">🕒 Lunes a Sábado: 9:00 AM - 8:00 PM | Domingo
+</footer>

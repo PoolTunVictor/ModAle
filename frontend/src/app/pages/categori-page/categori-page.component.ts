@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router'; // ✅ Se agrega RouterModule para usar routerLink
 import { Observable, map } from 'rxjs';
-import { Location } from '@angular/common';
 
-  
 interface Producto {
   id: number;
   nombre: string;
@@ -21,22 +19,20 @@ interface Producto {
   templateUrl: './categori-page.component.html',
   styleUrls: ['./categori-page.component.css'],
   standalone: true,
-  imports: [CommonModule, HttpClientModule]
+  imports: [CommonModule, HttpClientModule, RouterModule] // ✅ Agregado RouterModule
 })
 export class CategoriPageComponent {
   productos: Producto[] = [];
   productosOriginales: Producto[] = [];
-  nombreCategoria: string = '';
-  precioMax: number = 200;
+  nombreCategoria = '';
+  precioMax = 200;
 
-
-  mensajeAgregado: string = '';
-  mostrarMensaje: boolean = false;
+  mensajeAgregado = '';
+  mostrarMensaje = false;
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -50,25 +46,24 @@ export class CategoriPageComponent {
   }
 
   cargarProductosPorCategoria(categoria: string): void {
-  this.getProductosPorCategoria(categoria).subscribe({
-    next: (productos) => {
-      this.productosOriginales = productos; 
-      this.productos = [...productos];     
-      console.log(`✅ Productos de ${categoria}:`, this.productos);
-    },
-    error: (err) => {
-      console.error('❌ Error al cargar productos:', err);
-    }
-  });
-}
+    this.getProductosPorCategoria(categoria).subscribe({
+      next: productos => {
+        this.productosOriginales = productos;
+        this.productos = [...productos];
+      },
+      error: err => {
+        console.error('❌ Error al cargar productos:', err);
+      }
+    });
+  }
 
   getProductosPorCategoria(categoria: string): Observable<Producto[]> {
     return this.http.get<any>('assets/data/productos.json').pipe(
-      map((data) => data[categoria] || [])
+      map(data => data[categoria] || [])
     );
   }
 
-  agregarACesta(producto: Producto) {
+  agregarACesta(producto: Producto): void {
     const cesta: Producto[] = JSON.parse(localStorage.getItem('cesta') || '[]');
     const index = cesta.findIndex(p => p.id === producto.id);
 
@@ -79,14 +74,10 @@ export class CategoriPageComponent {
     }
 
     localStorage.setItem('cesta', JSON.stringify(cesta));
-    console.log('🛒 Producto agregado al carrito:', producto);
 
-    
     this.mensajeAgregado = `${producto.nombre} se ha agregado a la cesta`;
     this.mostrarMensaje = true;
-    setTimeout(() => {
-      this.mostrarMensaje = false;
-    }, 2500);
+    setTimeout(() => (this.mostrarMensaje = false), 2500);
   }
 
   obtenerCantidadCesta(): number {
@@ -94,22 +85,11 @@ export class CategoriPageComponent {
     return cesta.reduce((acc, item) => acc + (item.cantidad || 0), 0);
   }
 
-  irAlCarrito() {
-    this.router.navigate(['/carrito']);
-  }
-
-  filtrarPorPrecio(event: Event) {
+  filtrarPorPrecio(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.precioMax = Number(input.value);
-
-      this.productos = this.productosOriginales.filter(p => p.precio <= this.precioMax);
-
-  }
-  
-
-  regresarHome() {
-    this.router.navigate(['/catalogo']).then(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    this.productos = this.productosOriginales.filter(
+      p => p.precio <= this.precioMax
+    );
   }
 }
