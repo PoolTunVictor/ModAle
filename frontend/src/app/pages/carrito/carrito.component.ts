@@ -95,6 +95,9 @@ export class CarritoComponent {
   irCatalogo() {
     this.router.navigate(['/catalogo']).then(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+  irProductCatalog() {
+    this.router.navigate(['/product-catalog']).then(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
   private guardarCarrito() {
     localStorage.setItem('cesta', JSON.stringify(this.carrito));
