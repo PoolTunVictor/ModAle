@@ -4,7 +4,7 @@ import { ProductCatalogComponent } from './pages/product-catalog/product-catalog
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CategoriPageComponent } from './pages/categori-page/categori-page.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
-
+import { ProductAddComponent } from './pages/product-add/product-add.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
@@ -12,5 +12,7 @@ export const routes: Routes = [
     { path: 'catalogo', component: HomePageComponent },
     { path: 'categoria/:categoria', component: CategoriPageComponent },
     { path: 'carrito', component: CarritoComponent },
+    { path: 'product-add', component: ProductAddComponent },
     { path: '**', redirectTo: 'login' }
+
 ];

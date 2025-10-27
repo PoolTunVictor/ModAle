@@ -3,16 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, RouterModule } from '@angular/router'; // ✅ Se agrega RouterModule para usar routerLink
 import { Observable, map } from 'rxjs';
+import { Producto } from '../../core/models/producto';
+import { ProductService } from '../../core/service/product/product.service';
 
-interface Producto {
-  id: number;
-  nombre: string;
-  precio: number;
-  cantidad?: number;
-  imagen?: string;
-  etiqueta?: string;
-  precioOriginal?: number;
-}
 
 @Component({
   selector: 'app-categori-page',
@@ -32,24 +25,28 @@ export class CategoriPageComponent {
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const categoria = params.get('categoria');
       if (categoria) {
         this.nombreCategoria = categoria;
-        this.cargarProductosPorCategoria(categoria);
+        const categoriaFormateada = categoria
+          .replace(/-/g, ' ')
+          .replace(/\b\w/g, l => l.toUpperCase());
+        this.cargarProductosPorCategoria(categoriaFormateada);
       }
     });
   }
 
   cargarProductosPorCategoria(categoria: string): void {
-    this.getProductosPorCategoria(categoria).subscribe({
+    this.productService.getCategoria(categoria).subscribe({
       next: productos => {
-        this.productosOriginales = productos;
-        this.productos = [...productos];
+        this.productosOriginales = Array.isArray(productos) ? productos : [productos];
+        this.productos = [...this.productosOriginales];
       },
       error: err => {
         console.error('❌ Error al cargar productos:', err);
@@ -65,12 +62,12 @@ export class CategoriPageComponent {
 
   agregarACesta(producto: Producto): void {
     const cesta: Producto[] = JSON.parse(localStorage.getItem('cesta') || '[]');
-    const index = cesta.findIndex(p => p.id === producto.id);
+    const index = cesta.findIndex(p => p.id_producto === producto.id_producto);
 
     if (index > -1) {
-      cesta[index].cantidad! += 1;
+      cesta[index].stock! += 1;
     } else {
-      cesta.push({ ...producto, cantidad: 1 });
+      cesta.push({ ...producto, stock: 1 });
     }
 
     localStorage.setItem('cesta', JSON.stringify(cesta));
@@ -82,7 +79,7 @@ export class CategoriPageComponent {
 
   obtenerCantidadCesta(): number {
     const cesta: Producto[] = JSON.parse(localStorage.getItem('cesta') || '[]');
-    return cesta.reduce((acc, item) => acc + (item.cantidad || 0), 0);
+    return cesta.reduce((acc, item) => acc + (item.stock || 0), 0);
   }
 
   filtrarPorPrecio(event: Event): void {
