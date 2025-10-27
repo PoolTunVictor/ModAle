@@ -1,0 +1,106 @@
+/* === HEADER GLOBAL === */
+.main-header {
+     width: 100%;
+     background-color: #f9f9f9;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     position: fixed;
+     top: 0;
+     z-index: 10;
+   }
+   
+   .container-header {
+     display: flex;
+     flex-direction: row;   
+     justify-content: space-between; 
+     align-items: center;
+     padding: 10px 10px; 
+     width: 100%;  
+     min-height: 50px;
+   }
+   
+   .logo-link {
+     text-decoration: none; 
+     color: inherit; 
+     display: block;       
+   }
+   
+   .logo-link h1 {
+     color: #000; 
+   }
+   
+   .logo h1 {
+     font-family: "Playwrite DE SAS", cursive;
+     font-size: 24px; 
+     font-weight: 400;
+     margin: 0; 
+     white-space: nowrap; 
+   }
+   
+   .menu-social-wrapper {
+     display: flex;
+     align-items: center; 
+     gap: 40px; 
+     white-space: nowrap; 
+   }
+   
+   .nav-menu ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: flex; 
+     flex-direction: row; 
+     gap: 40px; 
+   }
+   
+   .nav-menu ul li a {
+     text-decoration: none;
+     color: #000; 
+     font-weight: 500;
+     transition: color 0.3s ease, transform 0.3s ease;
+     font-size: 14px; 
+   }
+   
+   .nav-menu ul li a:hover {
+     color: #fcbdb5;
+     transform: scale(1.05);
+   }
+   
+   .social-icons-header {
+     display: flex;
+     gap: 8px; 
+   }
+   
+   .social-icons-header a {
+     color: #000;
+     font-size: 18px;
+     transition: transform 0.3s, color 0.3s;
+   }
+   
+   .social-icons-header a:hover {
+     transform: scale(1.1);
+     color: #fcbdb5;
+   }
+   
+   /* RESPONSIVE HEADER */
+   @media (max-width: 768px) {
+     .container-header {
+       flex-direction: column;
+       gap: 10px;
+       padding: 5px 10px;
+     }
+   
+     .nav-menu ul {
+       flex-direction: column;
+       gap: 10px;
+     }
+   
+     .nav-menu ul li a {
+       font-size: 12px;
+     }
+   
+     .menu-social-wrapper {
+       flex-direction: row;
+       gap: 10px;
+     }
+   }
+   

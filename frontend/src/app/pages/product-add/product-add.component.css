@@ -1,14 +1,21 @@
-/* === TU CÓDIGO ORIGINAL COMPLETO === */
+/* === CSS PROFESIONAL CON LABELS FLOTANTES Y HEADER CORREGIDO === */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #fefefe;
+  color: #222;
+}
+
+/* =================== HEADER =================== */
 .main-header {
   width: 100%;
   background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   position: fixed;
   top: 0;
   z-index: 10;
@@ -16,287 +23,68 @@
 
 .container-header {
   display: flex;
-  flex-direction: row;   
   justify-content: space-between; 
   align-items: center;
-  padding: 10px 10px; 
-  width: 100%;  
+  padding: 10px 20px;
   min-height: 50px;
-}
-
-.logo-link {
-  text-decoration: none; 
-  color: inherit; 
-  display: block;       
-}
-
-.logo-link h1 {
-  color: #000; 
+  gap: 20px;
 }
 
 .logo h1 {
   font-family: "Playwrite DE SAS", cursive;
-  font-size: 24px; 
+  font-size: 24px;
   font-weight: 400;
-  margin: 0; 
-  white-space: nowrap; 
-}
-
-.menu-social-wrapper {
-  display: flex;
-  align-items: center; 
-  gap: 40px; 
-  white-space: nowrap; 
+  color: #222;
 }
 
 .nav-menu ul {
+  display: flex;
+  gap: 25px;
   list-style: none;
-  padding: 0;
   margin: 0;
-  display: flex; 
-  flex-direction: row; 
-  gap: 40px; 
+  padding: 0;
 }
 
 .nav-menu ul li a {
   text-decoration: none;
-  color: #000; 
+  color: #222;
   font-weight: 500;
+  font-size: 14px;
   transition: color 0.3s ease, transform 0.3s ease;
-  font-size: 14px; 
 }
 
 .nav-menu ul li a:hover {
-  color: #fcbdb5;
+  color: #f4b6da;
   transform: scale(1.05);
+}
+
+.menu-social-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* separa nav y redes */
 }
 
 .social-icons-header {
   display: flex;
-  gap: 8px; 
+  align-items: center;
+  gap: 10px;
 }
 
 .social-icons-header a {
-  color: #000;
+  color: #222;
   font-size: 18px;
   transition: transform 0.3s, color 0.3s;
 }
 
 .social-icons-header a:hover {
+  color: #f4b6da;
   transform: scale(1.1);
-  color: #fcbdb5;
 }
 
-.support-section {
-  width: 100%;
-  background: url('/assets/HomePage.png') no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
-  text-align: center;
-  padding: 50px 30px; 
-  color: #ffffff;
-  position: relative;
-  margin-top: 70px; /* evita que el header tape el contenido */
-}
-
-.support-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.support-content {
-  position: relative;
-  z-index: 1;
-}
-
-.support-title {
-  font-family: "Playwrite DE SAS", cursive;
-  font-size: 80px;
-  margin-bottom: 20px;
-}
-
-.support-section p {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.support-btn {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #ffe1ed;
-  color: #5d5b5b;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 25px;
-  transition: background 0.3s, transform 0.3s;
-}
-
-.support-btn:hover {  
-  background-color: #f4b6da;
-  transform: scale(1.05);
-}
-
-.recent-title {
-  font-size: 30px;
-  text-align: center;
-  margin: 50px 0 20px;
-}
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 20px;
-  width: 100%;
-  padding: 0 20px;
-}
-
-.tool-card {
-  background: #fff; 
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.tool-card:hover {
-  box-shadow: 0 4px 12px rgba(7, 15, 246, 0.1);
-  transform: translateY(-3px);
-}
-
-.tool-card h3 {
-  font-size: 22px;
-  margin: 10px 0 5px;
-}
-
-.tool-card a, 
-.tool-card .price {
-  font-size: 18px;
-  color: #000;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.tool-card .product-image {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.rating {
-  color: #FFD700;
-  font-size: 16px;
-  margin: 5px 0;
-}
-
-.rating span {
-  margin-right: 2px;
-}
-
-.popular-products-section {
-  width: 100%;
-  background-color:#ffffff; 
-  padding: 20px 20px 80px;
-  margin-bottom: 0;
-}
-
-.popular-title {
-  background-color: #ffffff; 
-  padding: 20px 0;
-  border-radius: 15px 15px 0 0;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 32px;
-  color: #000;
-}
-
-.popular-products-section .tool-card {
-  background: #f9f9f9;
-  border-radius: 12px;
-  transition: 0.3s;
-  padding: 10px;
-  width: 100%;
-}
-
-.popular-products-section .tool-card:hover {
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  transform: translateY(-3px);
-}
-
-.popular-products-section .tool-card .product-image {
-  height: 280px; 
-}
-
-.main-footer {
-  background-color: #f9f9f9;
-  color: #000;
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 999;
-}
-
-.footer-container {
-  max-width: 1000px; 
-  margin: 0 auto;
-}
-
-.footer-info h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-.footer-info p { 
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-.footer-social {
-  margin-top: 20px;
-}
-
-.footer-social a {
-  color: #000;
-  font-size: 1.3rem;
-  margin: 0 10px;
-  transition: color 0.3s;
-}
-
-.footer-social a:hover {
-  color: #e98f81;
-}
-
-/* ==== RESPONSIVE ==== */
-@media (max-width: 900px) {
-  .support-title {
-    font-size: 60px;
-  }
-}
-
-main {
-  margin-bottom: 100px; 
-}
-
-
-
-.add-product-section {
+/* =================== MAIN =================== */
+main.add-product-section {
   margin-top: 100px;
   padding: 40px 20px;
-  background: #fff8fb;
   min-height: calc(100vh - 160px);
 }
 
@@ -308,42 +96,80 @@ main {
   color: #333;
 }
 
+/* =================== FORMULARIO =================== */
 .product-form {
   max-width: 700px;
   margin: 0 auto;
   background: #ffffff;
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
+/* =================== FORM-GROUP =================== */
 .form-group {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  margin-bottom: 25px;
 }
 
-label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #333;
-}
-
-input, textarea {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
+/* Inputs, textarea y select */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 12px 14px 12px;
   font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fafafa;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
   outline: none;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input:focus, textarea:focus {
+/* Focus */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
   border-color: #f4b6da;
+  box-shadow: 0 0 8px rgba(244,182,218,0.3);
 }
 
+/* =================== LABELS FLOTANTES =================== */
+.form-group label {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 6px;
+  color: #777;
+  font-size: 16px;
+  font-weight: 500;
+  pointer-events: none;
+  transition: 0.3s ease all;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* Label flotante cuando el input tiene texto o está enfocado */
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group select:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group select:not([value=""]) + label {
+  top: -10px;
+  font-size: 13px;
+  color: #f4b6da;
+  transform: translateY(0);
+}
+
+/* =================== CHECKBOXES =================== */
 .form-checkboxes {
   display: flex;
   justify-content: space-around;
@@ -351,6 +177,7 @@ input:focus, textarea:focus {
   font-weight: 500;
 }
 
+/* =================== BOTÓN =================== */
 .submit-btn {
   padding: 12px 25px;
   background-color: #f4b6da;
@@ -360,18 +187,35 @@ input:focus, textarea:focus {
   border-radius: 25px;
   cursor: pointer;
   align-self: center;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 10px rgba(244,182,218,0.3);
 }
 
 .submit-btn:hover {
   background-color: #e98f81;
   transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(233,143,129,0.3);
 }
 
+/* =================== VISTA PREVIA =================== */
 .preview-img {
   width: 200px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-top: 10px;
   border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* =================== FOOTER =================== */
+.main-footer {
+  background-color: #f9f9f9;
+  color: #222;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
 }

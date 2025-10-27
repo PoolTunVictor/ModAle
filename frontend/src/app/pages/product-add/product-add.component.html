@@ -26,37 +26,38 @@
   <h2 class="form-title">Agregar nuevo producto 🛍️</h2>
 
   <form class="product-form" (ngSubmit)="agregarProducto()" #productoForm="ngForm">
+
     <div class="form-group">
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="producto.nombre" placeholder=" " required>
       <label for="nombre">Nombre del producto:</label>
-      <input type="text" id="nombre" name="nombre" [(ngModel)]="producto.nombre" required>
     </div>
 
     <div class="form-group">
-      <label for="categoria">Categoría:</label>
-      <select id="categoria" name="categoria" [(ngModel)]="producto.categoria" required>
-        <option value="" disabled selected>Selecciona una categoría</option>
+      <select id="categoria" name="categoria" [(ngModel)]="producto.categoria" placeholder=" " required>
+        <option value="" disabled selected hidden></option>
         <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
       </select>
+      <label for="categoria">Categoría:</label>
     </div>
 
     <div class="form-group">
+      <textarea id="descripcion" name="descripcion" [(ngModel)]="producto.descripcion" rows="3" placeholder=" " required></textarea>
       <label for="descripcion">Descripción:</label>
-      <textarea id="descripcion" name="descripcion" [(ngModel)]="producto.descripcion" rows="3" required></textarea>
     </div>
 
     <div class="form-group">
+      <textarea id="caracteristicas" name="caracteristicas" [(ngModel)]="producto.caracteristicas" rows="3" placeholder=" "></textarea>
       <label for="caracteristicas">Características:</label>
-      <textarea id="caracteristicas" name="caracteristicas" [(ngModel)]="producto.caracteristicas" rows="3"></textarea>
     </div>
 
     <div class="form-group">
+      <input type="number" id="precio" name="precio" [(ngModel)]="producto.precio" min="0" placeholder=" " required>
       <label for="precio">Precio:</label>
-      <input type="number" id="precio" name="precio" [(ngModel)]="producto.precio" min="0" required>
     </div>
 
     <div class="form-group">
+      <input type="number" id="stock" name="stock" [(ngModel)]="producto.stock" min="0" placeholder=" " required>
       <label for="stock">Stock:</label>
-      <input type="number" id="stock" name="stock" [(ngModel)]="producto.stock" min="0" required>
     </div>
 
     <div class="form-checkboxes">
@@ -66,8 +67,8 @@
     </div>
 
     <div class="form-group">
+      <input type="text" id="imagen" name="imagen" [(ngModel)]="producto.imagen" placeholder=" ">
       <label for="imagen">Imagen (URL o archivo):</label>
-      <input type="text" id="imagen" name="imagen" [(ngModel)]="producto.imagen" placeholder="https://...">
       <input type="file" id="imagenFile" (change)="onFileSelected($event)">
       <img *ngIf="previewUrl" [src]="previewUrl" alt="Vista previa" class="preview-img">
     </div>
