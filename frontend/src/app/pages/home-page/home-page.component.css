@@ -12,24 +12,25 @@
   left: 0;
   width: 100%;
   background-color: #f9f9f9;
-  height: 80px;
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  justify-content: space-between; /* logo izq / menú der */
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   backdrop-filter: blur(5px);
-  color: #000;
   z-index: 1000;
+  padding: 10px 0; /* sin padding lateral para que quede totalmente al borde */
 }
 
+/* LOGO */
 .logo-link {
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-.logo-link h1 {
-  color: #000;
+.logo {
+  margin-left: 0;
+  padding-left: 20px; /* 🔧 separa solo un poco del borde izquierdo si quieres */
 }
 
 .logo h1 {
@@ -37,99 +38,108 @@
   font-size: 24px;
   font-weight: 400;
   margin: 0;
+  color: #000;
 }
 
-.header-contenido {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.header-contenido h1 {
-  font-family: "Playwrite DE SAS", cursive;
-  font-size: 28px;
-  font-weight: 400;
-  margin: 0;
-  flex: 1;
-  text-align: left;
-}
-
+/* CONTENEDOR DE MENÚ Y REDES (lado derecho) */
 .menu-social-wrapper {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 25px;
+  margin-left: auto;
+  padding-right: 20px; /* 🔧 deja el menú pegado al borde derecho */
 }
 
-.nav-menu {
-  display: flex;
-  justify-content: center;
-}
-
+/* MENÚ DE NAVEGACIÓN */
 .nav-menu ul {
   list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
 
-.nav-menu ul li a {
+.nav-menu a {
   text-decoration: none;
   color: #000;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
-  font-family: Arial, sans-serif;
+  font-size: 0.8rem; /* tamaño de letra */
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
-.nav-menu ul li a:hover {
-  color: #fcbdb5;
-  transform: scale(1.05);
+.nav-menu a:hover {
+  color: #a66a48;
 }
 
-.social-icons-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 15px;
-}
-
+/* ÍCONO DE FACEBOOK */
 .social-icons-header a {
   color: #000;
-  font-size: 18px;
-  transition: transform 0.3s, color 0.3s;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
 .social-icons-header a:hover {
-  transform: scale(1.1);
-  color: #fcbdb5;
+  color: #a66a48;
+}
+
+/* === BANNER CATALOGO === */
+.catalogo-banner {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: url('/assets/banner/HomePage.png') no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 90px;
+  overflow: hidden;
+}
+
+.catalogo-banner .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.catalog-subtitle {
+  font-family: "Playwrite DE SAS", cursive;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 8px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  margin-bottom: 20px;
+}
+
+.btn-banner {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-banner:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 /* === CATALOGO === */
 .catalogo {
   text-align: center;
   background-color: #ffffff;
-  padding: 120px 10px 10px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: #0f0f0f;
-}
-
-.catalog-subtitle {
-  font-size: 4rem;
-  font-weight: bold;
-  font-family: "Playwrite DE SAS", cursive;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.catalog-title {
-  font-family: 'Playwrite DE SAS', sans-serif;
-  font-size: 4rem;
-  font-weight: 400;
-  margin-bottom: 60px;
+  padding: 60px 10px 10px;
 }
 
 /* === CATEGORÍAS === */
@@ -138,31 +148,30 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
+  margin-top: 30px;
 }
 
 .tool-card {
   background-color: #f9f9f9;
   border-radius: 12px;
   border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   overflow: hidden;
   width: 300px;
   text-align: center;
-  cursor: default;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   padding: 10px;
 }
 
 .tool-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 .product-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  object-position: center;
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
@@ -174,7 +183,7 @@
 .categoria-nombre {
   font-size: 1.2rem;
   font-weight: 600;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 20px;
   color: #0b0808;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -184,27 +193,10 @@
   color: #a66a48;
 }
 
-/* === RESPONSIVO CATEGORÍAS === */
-@media (max-width: 1024px) {
-  .categorias {
-    gap: 30px;
-  }
-  .tool-card {
-    width: 45%;
-  }
-}
-
-@media (max-width: 600px) {
-  .tool-card {
-    width: 80%;
-  }
-}
-
 /* === ANUNCIOS === */
 .anuncios-dobles-completos {
   display: flex;
   width: 100%;
-  margin: 0;
   flex-wrap: nowrap;
 }
 
@@ -214,9 +206,7 @@
   height: 500px;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
 }
 
 .anuncio-perfumes {
@@ -229,7 +219,6 @@
 
 .anuncio-banner:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .anuncio-contenido {
@@ -240,30 +229,17 @@
   color: #fff;
   padding: 20px;
   border-radius: 8px;
-  max-width: 80%;
-}
-
-.anuncio-contenido h4 {
-  font-size: 1.5rem;
-  margin-bottom: 8px;
-}
-
-.anuncio-contenido p {
-  font-size: 1rem;
-  margin-bottom: 12px;
 }
 
 .btn-comprar {
-  font-family: inherit;
-  font-weight: bold;
   background-color: #000;
   color: #fff;
   border: 2px solid #efe7e7;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .btn-comprar:hover {
@@ -271,99 +247,22 @@
   color: #000;
 }
 
-/* === RESPONSIVO ANUNCIOS === */
-@media (max-width: 900px) {
-  .anuncios-dobles-completos {
-    flex-direction: column;
-  }
-  .anuncio-banner {
-    width: 100%;
-    height: 200px;
-  }
-  .anuncio-contenido {
-    max-width: 90%;
-    padding: 15px;
-    bottom: 15px;
-    left: 15px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header-catalogo {
-    flex-direction: row;
-    height: 60px;
-    padding: 5px 10px;
-  }
-  .header-contenido {
-    flex-direction: row;
-    gap: 15px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  .header-contenido h1 {
-    font-size: 18px;
-    flex: 0 0 auto;
-    text-align: left;
-  }
-  .nav-menu ul {
-    flex-direction: row;
-    gap: 15px;
-  }
-  .nav-menu ul li a {
-    font-size: 12px;
-  }
-  .social-icons-header {
-    gap: 10px;
-  }
-}
-
-/* === FOOTER FIJO SIN TAPAR === */
+/* === FOOTER === */
 .main-footer {
   background-color: #f9f9f9;
   color: #000;
   text-align: center;
   padding: 20px;
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 999;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
-.footer-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
 .footer-info h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-family: "Playwrite DE SAS", cursive;
   margin-bottom: 10px;
-  letter-spacing: 1px;
 }
 
 .footer-info p {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-.footer-social {
-  margin-top: 20px;
-}
-
-.footer-social a {
-  color: #000;
-  font-size: 1.3rem;
-  margin: 0 10px;
-  transition: color 0.3s;
-}
-
-.footer-social a:hover {
-  color: #e98f81;
-}
-
-main, section.catalogo {
-  padding-bottom: 130px;
+  margin: 5px 0;
+  font-size: 0.95rem;
 }
