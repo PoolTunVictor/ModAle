@@ -1,31 +1,39 @@
 <header class="header-catalogo">
-  <div class="header-contenido">
-    <div class="logo">
-      <a [routerLink]="['/product-catalog']" class="logo-link"> 
-          <h1>MODALE & Co</h1>
+  <!-- Logo -->
+  <div class="logo">
+    <a [routerLink]="['/product-catalog']" class="logo-link">
+      <h1>MODALE & Co</h1>
+    </a>
+  </div>
+
+  <!-- Navegación y redes -->
+  <div class="menu-social-wrapper">
+    <nav class="nav-menu">
+      <ul>
+        <li><a [routerLink]="['/product-catalog']">INICIO</a></li>
+        <li><a [routerLink]="['/carrito']">CARRITO</a></li>
+      </ul>
+    </nav>
+
+    <div class="social-icons-header">
+      <a href="https://www.facebook.com/profile.php?id=61568465109559" target="_blank">
+        <i class="fab fa-facebook-f"></i>
       </a>
-    </div>
-
-    <div class="menu-social-wrapper">
-      <nav class="nav-menu">
-        <ul>
-          <li><a [routerLink]="['/product-catalog']">INICIO</a></li>
-          <li><a [routerLink]="['/carrito']">CARRITO</a></li>
-        </ul>
-      </nav>      
-
-      <div class="social-icons-header">
-        <a href="https://www.facebook.com/profile.php?id=61568465109559" target="_blank">
-          <i class="fab fa-facebook-f"></i>
-        </a>  
-      </div>
     </div>
   </div>
 </header>
 
 <main>
+  <!-- === SECCIÓN DE FONDO CATALOGO === -->
+  <section class="catalogo-banner">
+    <div class="overlay"></div>
+    <div class="banner-content">
+      <h2 class="catalog-subtitle">C A T Á L O G O</h2>
+    </div>
+  </section>
+
+  <!-- === CATEGORÍAS === -->
   <section class="catalogo">
-    <h2 class="catalog-subtitle">C A T Á L O G O</h2>
     <div class="categorias">
       <div class="tool-card" *ngFor="let categoria of categorias">
         <div class="imagen-categoria">
@@ -38,6 +46,7 @@
     </div>
   </section>
 
+  <!-- === ANUNCIOS === -->
   <section class="anuncios-dobles-completos">
     <div class="anuncio-banner anuncio-perfumes">
       <div class="anuncio-contenido">
