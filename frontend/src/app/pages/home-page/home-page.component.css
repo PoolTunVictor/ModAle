@@ -63,7 +63,7 @@
   text-decoration: none;
   color: #000;
   font-weight: 500;
-  font-size: 0.8rem; /* tamaño de letra */
+  font-size: 1.2rem; /* tamaño de letra */
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
 }
@@ -258,7 +258,6 @@
 }
 
 .footer-info h2 {
-  font-family: "Playwrite DE SAS", cursive;
   margin-bottom: 10px;
 }
 

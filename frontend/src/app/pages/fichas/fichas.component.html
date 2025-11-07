@@ -1,8 +1,6 @@
 <div class="fichas-container">
   <header class="fichas-header">
-    <div class="header-left">
-      <h1 class="titulo">F  I  C  H  A  S</h1>
-    </div>
+    
 
     <div class="header-right">
       <nav class="nav">
@@ -10,7 +8,7 @@
           class="nav-btn" 
           [class.active]="selectedLocation === 'all'"
           (click)="filtrarPorUbicacion('all')"
-        >All Locations</button>
+        >Localidades</button>
 
         <button 
           class="nav-btn" 
@@ -37,11 +35,11 @@
     <table class="tabla-fichas">
       <thead>
         <tr>
-          <th>Customer Name</th>
-          <th>Order Date</th>
-          <th>Status</th>
-          <th>Location</th>
-          <th>View</th>
+          <th>Usuario</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Localidad</th>
+          <th>Vista</th>
         </tr>
       </thead>
       <tbody>

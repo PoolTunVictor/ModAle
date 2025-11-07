@@ -2,16 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: #f9f9f9;
   padding: 12px 40px;
   border-bottom: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .logo .brand {
-  font-family: 'Georgia', serif;
+  font-family: "Playwrite DE SAS", cursive;
   font-style: italic;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   color: black;
   text-decoration: none;
   letter-spacing: 1px;
@@ -26,13 +26,13 @@
 .nav-item {
   text-decoration: none;
   color: black;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.5px;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-item:hover {
-  color: #555;
+  color: #e4bcbc;
   transform: scale(1.05);
 }

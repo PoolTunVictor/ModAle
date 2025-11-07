@@ -61,7 +61,7 @@ body {
 .menu-social-wrapper {
   display: flex;
   align-items: center;
-  gap: 20px; /* separa nav y redes */
+  gap: 20px; 
 }
 
 .social-icons-header {
@@ -81,17 +81,15 @@ body {
   transform: scale(1.1);
 }
 
-/* =================== MAIN =================== */
 main.add-product-section {
   margin-top: 100px;
-  padding: 40px 20px;
+  padding:0px 20px;
   min-height: calc(100vh - 160px);
 }
 
 .form-title {
   text-align: center;
-  font-family: "Playwrite DE SAS", cursive;
-  font-size: 36px;
+  font-size: 20px;
   margin-bottom: 30px;
   color: #333;
 }
@@ -115,7 +113,6 @@ main.add-product-section {
   margin-bottom: 25px;
 }
 
-/* Inputs, textarea y select */
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -148,7 +145,7 @@ main.add-product-section {
   padding: 0 6px;
   color: #777;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   pointer-events: none;
   transition: 0.3s ease all;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
@@ -156,7 +153,6 @@ main.add-product-section {
   z-index: 2;
 }
 
-/* Label flotante cuando el input tiene texto o está enfocado */
 .form-group input:focus + label,
 .form-group textarea:focus + label,
 .form-group select:focus + label,
