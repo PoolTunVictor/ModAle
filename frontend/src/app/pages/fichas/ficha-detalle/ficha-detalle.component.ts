@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -10,8 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./ficha-detalle.component.css']
 })
 export class FichaDetalleComponent implements OnInit {
+  @Input() ficha: any;
   fichaId!: string;
-  ficha: any;
+
 
   fichas = [
     { id: 1, nombre: 'Ficha 1', cliente: 'Sophia Rodríguez', email: 'sophia.rodriguez@email.com', location: 'Calkiní', productos: [

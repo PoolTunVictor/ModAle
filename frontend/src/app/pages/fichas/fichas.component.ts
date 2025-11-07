@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FichaDetalleComponent } from './ficha-detalle/ficha-detalle.component';
 
 @Component({
   selector: 'app-fichas',
@@ -36,7 +37,12 @@ export class FichasComponent {
     }
   }
 
-  verDetalle(ficha: any) {
-    this.router.navigate(['/fichas/:id'], { queryParams: { name: ficha.name } });
-  }
+fichaSeleccionada: any = null;
+
+verDetalle(ficha: any) {
+  this.router.navigate(['/admin/ficha/ficha-detalle', ficha.id]);
+}
+
+
+
 }
