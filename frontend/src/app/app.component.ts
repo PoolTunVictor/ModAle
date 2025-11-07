@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoginComponent } from './pages/login/login.component'; // solo si lo usas en el template
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

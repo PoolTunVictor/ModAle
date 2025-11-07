@@ -7,9 +7,10 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductsTableComponent } from './pages/products-table/products-table.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';
+import { FichasComponent } from './pages/fichas/fichas.component';
 import { AdminLayoutComponent } from '../layouts/admin-layout/admin-layout.component';
+import { FichaDetalleComponent } from './pages/fichas/ficha-detalle/ficha-detalle.component';
 import { AuthGuard } from './core/service/auth.guard';
-
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -21,16 +22,19 @@ export const routes: Routes = [
 
   // Rutas admin protegidas
   {
-  path: 'admin',
-  component: AdminLayoutComponent,
-  //canActivate: [AuthGuard],  // 🔹 Protege todas las rutas admin
-  children: [
-    { path: 'agregar-producto', component: ProductAddComponent },
-    { path: 'products-table', component: ProductsTableComponent },
-    { path: 'editar-producto/:id', component: ProductEditComponent },
-    { path: '', redirectTo: 'products-table', pathMatch: 'full' }
-  ]
-},
+    path: 'admin',
+    component: AdminLayoutComponent,
+    // canActivate: [AuthGuard],  // 🔹 Protege todas las rutas admin
+    children: [
+      {path: 'inicio', component:FichasComponent},
+      { path: 'fichas', component: FichasComponent },
+      { path: 'ficha-detalle/:id', component: FichaDetalleComponent },
+      { path: 'agregar-producto', component: ProductAddComponent },
+      { path: 'products-table', component: ProductsTableComponent },
+      { path: 'editar-producto/:id', component: ProductEditComponent },
+      { path: '', redirectTo: 'products-table', pathMatch: 'full' }
+    ]
+  },
 
   { path: '**', redirectTo: 'login' }
 ];

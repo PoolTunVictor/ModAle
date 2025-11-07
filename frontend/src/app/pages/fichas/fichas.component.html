@@ -1,0 +1,76 @@
+<div class="fichas-container">
+  <header class="fichas-header">
+    <div class="header-left">
+      <h1 class="titulo">F  I  C  H  A  S</h1>
+    </div>
+
+    <div class="header-right">
+      <nav class="nav">
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'all'"
+          (click)="filtrarPorUbicacion('all')"
+        >All Locations</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Dzibalché'"
+          (click)="filtrarPorUbicacion('Dzibalché')"
+        >Dzibalché</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Calkiní'"
+          (click)="filtrarPorUbicacion('Calkiní')"
+        >Calkiní</button>
+
+        <button 
+          class="nav-btn" 
+          [class.active]="selectedLocation === 'Becal'"
+          (click)="filtrarPorUbicacion('Becal')"
+        >Becal</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="tabla-container">
+    <table class="tabla-fichas">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Order Date</th>
+          <th>Status</th>
+          <th>Location</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ficha of fichasFiltradas">
+          <td>{{ ficha.name }}</td>
+          <td>{{ ficha.date }}</td>
+          <td>
+            <span 
+              class="status" 
+              [ngClass]="{
+                'nuevo': ficha.status === 'Nuevo',
+                'proceso': ficha.status === 'En proceso',
+                'completado': ficha.status === 'Completado'
+              }"
+            >
+              {{ ficha.status }}
+            </span>
+          </td>
+          <td>{{ ficha.location }}</td>
+          <td>
+            <button class="view-btn" (click)="verDetalle(ficha)">Ver</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Componente hijo para mostrar detalle -->
+  <div *ngIf="fichaSeleccionada">
+    <!-- <app-ficha-detalle [ficha]="fichaSeleccionada"></app-ficha-detalle> -->
+  </div>
+</div>
