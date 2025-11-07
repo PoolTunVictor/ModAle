@@ -19,7 +19,7 @@ import { Producto } from '../../core/models/producto';
   styleUrls: ['./product-add.component.css']
 })
 export class ProductAddComponent {
-  
+
   categorias: string[] = ['Maquillaje', 'Cuidado Facial', 'Perfumes', 'Accesorios', 'Prendas', 'Cuidado Corporal'];
 
   producto: Producto = {
@@ -40,37 +40,43 @@ export class ProductAddComponent {
 
   constructor(private productService: ProductService) { }
 
+  // ✅ Convierte el archivo a base64 y lo guarda en `producto.imagen`
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0];
-    if (this.selectedFile) {
-      const reader = new FileReader();
-      reader.onload = () => this.previewUrl = reader.result;
-      reader.readAsDataURL(this.selectedFile);
-    }
-  }
-
-  agregarProducto(): void {
- 
-    const productoParaEnviar = {
-      ...this.producto,
-      precio: Number(this.producto.precio),
-      stock: Number(this.producto.stock),
-      activo: Boolean(this.producto.activo),
-      nuevo: Boolean(this.producto.nuevo),
-      oferta: Boolean(this.producto.oferta)
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewUrl = reader.result;
+      this.producto.imagen = reader.result as string; // Se guarda en base64
     };
-
-    this.productService.post(productoParaEnviar).subscribe({
-      next: () => {
-        alert('Producto agregado con éxito');
-        this.resetForm();
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Error al agregar el producto');
-      }
-    });
+    reader.readAsDataURL(file);
   }
+}
+
+  // ✅ Envía el producto con la imagen en base64
+  agregarProducto(): void {
+  // Si no se subió archivo, el usuario puede haber escrito una URL en el input de texto
+  const productoParaEnviar = {
+    ...this.producto,
+    imagen: this.producto.imagen?.trim() || '', // asegura que no vaya "undefined"
+    precio: Number(this.producto.precio),
+    stock: Number(this.producto.stock),
+    activo: Boolean(this.producto.activo),
+    nuevo: Boolean(this.producto.nuevo),
+    oferta: Boolean(this.producto.oferta)
+  };
+
+  this.productService.post(productoParaEnviar).subscribe({
+    next: () => {
+      alert('✅ Producto agregado con éxito');
+      this.resetForm();
+    },
+    error: (err) => {
+      console.error(err);
+      alert('❌ Error al agregar el producto');
+    }
+  });
+}
 
   resetForm(): void {
     this.producto = {
