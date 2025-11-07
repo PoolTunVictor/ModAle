@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../core/service/product/product.service';
 import { Producto } from '../../core/models/producto';
 
+
 @Component({
   selector: 'app-product-add',
   standalone: true,
@@ -13,7 +14,7 @@ import { Producto } from '../../core/models/producto';
     CommonModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   templateUrl: './product-add.component.html',
   styleUrls: ['./product-add.component.css']

@@ -1,0 +1,26 @@
+.main-footer {
+  background-color: #fff;       /* Fondo oscuro */
+  color: #222;                  /* Texto blanco */
+  padding: 20px 0;
+  text-align: center;           /* Centra el texto */
+  
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra hacia arriba */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;      /* Centra horizontalmente */
+  align-items: center;          /* Centra verticalmente */
+  flex-direction: column;       /* Apila h2 y p verticalmente */
+  gap: 5px;                     /* Espacio entre h2 y p */
+}
+
+.footer-info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.footer-info p {
+  margin: 0;
+  font-size: 1rem;
+}

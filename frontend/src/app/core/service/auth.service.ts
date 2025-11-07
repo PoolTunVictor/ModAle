@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,21 +10,22 @@ export class AuthService {
     { username: 'basic', password: '123456' }
   ];
 
-  private loggedIn = true;
-
   constructor() {}
 
   login(username: string, password: string): boolean {
     const user = this.users.find(u => u.username === username && u.password === password);
-    this.loggedIn = !!user;
-    return this.loggedIn;
+    if (user) {
+      localStorage.setItem('loggedIn', 'true'); // persiste la sesión
+      return true;
+    }
+    return false;
   }
 
   logout() {
-    this.loggedIn = false;
+    localStorage.removeItem('loggedIn');
   }
 
   isLoggedIn(): boolean {
-    return this.loggedIn;
+    return localStorage.getItem('loggedIn') === 'true';
   }
 }

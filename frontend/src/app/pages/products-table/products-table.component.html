@@ -1,0 +1,50 @@
+<main class="products-section">
+  <h2 class="table-title">INVENTARIO 📦</h2>
+
+  <div *ngIf="cargando" class="loading">Cargando productos...</div>
+
+  <div class="table-container" *ngIf="!cargando && productos.length > 0; else sinProductos">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Descripción</th>
+          <th>Características</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Activo</th>
+          <th>Nuevo</th>
+          <th>Oferta</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>
+            <img *ngIf="producto.imagen" [src]="producto.imagen" alt="imagen" class="product-img">
+          </td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.caracteristicas }}</td>
+          <td>{{ producto.precio | currency:'MXN' }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>{{ producto.activo ? '✔️' : '❌' }}</td>
+          <td>{{ producto.nuevo ? '🆕' : '' }}</td>
+          <td>{{ producto.oferta ? '💸' : '' }}</td>
+          <td class="actions">
+            <button class="edit-btn" (click)="editarProducto(producto)">✏️</button>
+            <button class="delete-btn" (click)="eliminarProducto(producto.id_producto)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #sinProductos>
+    <p class="no-products">No hay productos registrados todavía.</p>
+  </ng-template>
+</main>

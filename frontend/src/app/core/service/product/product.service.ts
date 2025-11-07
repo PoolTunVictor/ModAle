@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class ProductService extends BaseService<Producto> {
   constructor(http: HttpClient) {
-    super(http, 'productos/');   }
+    super(http, 'productos');   }
 
   
     getCategoria(categoria: string): Observable<Producto> {
       return this.http.get<Producto>(`${this.baseUrl}/productos/categoria/${categoria}`);
     }
-  
+
 }

@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Hace que el layout ocupe toda la altura de la ventana */
+}
+
+.admin-main {
+  flex: 1; /* El main ocupa todo el espacio disponible entre header y footer */
+}
