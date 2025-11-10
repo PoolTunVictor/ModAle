@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, RouterModule } from '@angular/router'; // ✅ Se agrega RouterModule para usar routerLink
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { Producto } from '../../core/models/producto';
 import { ProductService } from '../../core/service/product/product.service';
-
 
 @Component({
   selector: 'app-categori-page',
   templateUrl: './categori-page.component.html',
   styleUrls: ['./categori-page.component.css'],
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule] // ✅ Agregado RouterModule
+  imports: [CommonModule, HttpClientModule, RouterModule]
 })
 export class CategoriPageComponent {
   productos: Producto[] = [];
@@ -23,11 +22,14 @@ export class CategoriPageComponent {
   mensajeAgregado = '';
   mostrarMensaje = false;
 
+  // 🔹 Nuevo: para el modal de características
+  productoSeleccionado: Producto | null = null;
+
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private productService: ProductService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -52,12 +54,6 @@ export class CategoriPageComponent {
         console.error('❌ Error al cargar productos:', err);
       }
     });
-  }
-
-  getProductosPorCategoria(categoria: string): Observable<Producto[]> {
-    return this.http.get<any>('assets/data/productos.json').pipe(
-      map(data => data[categoria] || [])
-    );
   }
 
   agregarACesta(producto: Producto): void {
@@ -88,5 +84,18 @@ export class CategoriPageComponent {
     this.productos = this.productosOriginales.filter(
       p => p.precio <= this.precioMax
     );
+  }
+
+  // 🔹 Métodos para el modal de detalles
+  abrirDetalles(producto: Producto): void {
+    this.productoSeleccionado = producto;
+  }
+
+  cerrarDetalles(): void {
+    this.productoSeleccionado = null;
+  }
+
+  dividirCaracteristicas(texto: string | undefined): string[] {
+    return texto ? texto.split(',').map(c => c.trim()) : [];
   }
 }

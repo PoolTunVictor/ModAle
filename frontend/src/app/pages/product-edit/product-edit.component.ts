@@ -46,23 +46,33 @@ export class ProductEditComponent implements OnInit {
   }
 
   // ✅ Guardar los cambios
-  guardarCambios(): void {
-    if (!this.producto.id_producto) return;
+  guardarCambios(event?: Event): void {
+  event?.preventDefault();
 
-    this.guardando = true;
-    this.productService.put(this.producto.id_producto.toString(), this.producto).subscribe({
-      next: () => {
-        alert('✅ Producto actualizado correctamente');
-        this.guardando = false;
-        this.router.navigate(['/admin/products-table']);
-      },
-      error: (err) => {
-        console.error('❌ Error al actualizar producto:', err);
-        this.guardando = false;
-        alert('Error al actualizar el producto');
-      }
-    });
+  console.log('Producto antes de guardar:', this.producto);
+
+  // Permitir ID 0
+  if (this.producto.id_producto === null || this.producto.id_producto === undefined) {
+    alert('Error: el ID del producto no está definido.');
+    return;
   }
+
+  this.guardando = true;
+  this.productService.put(this.producto.id_producto.toString(), this.producto).subscribe({
+    next: () => {
+      alert('✅ Producto actualizado correctamente');
+      this.guardando = false;
+      this.router.navigate(['/admin/products-table']);
+    },
+    error: (err) => {
+      console.error('❌ Error al actualizar producto:', err);
+      this.guardando = false;
+      alert('Error al actualizar el producto');
+    }
+  });
+}
+
+
   
   previewUrl: string | ArrayBuffer | null = null;
   onFileSelected(event: Event): void {

@@ -1,5 +1,5 @@
 <main class="products-section">
-  <h2 class="table-title">I N V E N T A R I O 📦</h2>
+  <h2 class="table-title">INVENTARIO 📦</h2>
 
   <div *ngIf="cargando" class="loading">Cargando productos...</div>
 
@@ -34,10 +34,14 @@
           <td>{{ producto.stock }}</td>
           <td>{{ producto.activo ? '✔️' : '❌' }}</td>
           <td>{{ producto.nuevo ? '🆕' : '' }}</td>
-          <td>{{ producto.oferta ? '💸' : '' }}</td>
+          <td>{{ producto.oferta ? '' : '' }}</td>
           <td class="actions">
-            <button class="edit-btn" (click)="editarProducto(producto)">✏️</button>
-            <button class="delete-btn" (click)="eliminarProducto(producto.id_producto)">🗑️</button>
+            <button class="icon-btn edit-btn" (click)="editarProducto(producto)">
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="icon-btn delete-btn" (click)="eliminarProducto(producto.id_producto)">
+              <span class="material-icons">delete</span>
+            </button>
           </td>
         </tr>
       </tbody>
