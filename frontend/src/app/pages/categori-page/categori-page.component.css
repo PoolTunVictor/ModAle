@@ -222,4 +222,6 @@ button:hover {
   }
 
   .productos-grid {
-    g
+    gap: 10px; /* Ejemplo de corrección */
+  } 
+}
