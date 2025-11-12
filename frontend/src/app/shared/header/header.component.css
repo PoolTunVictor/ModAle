@@ -1,115 +1,71 @@
-/* ==== HEADER GLOBAL ==== */
 .main-header {
+ 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  z-index: 1000;
-  padding: 10px 28px;
-  font-family: 'Times New Roman', Times, serif;
+  
+  
+  height: 70px; 
+
+  background-color: #ffffff; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  z-index: 1000; 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-header {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center; 
+
+  width: 100%;
+  max-width: 1200px; 
+  padding: 0 20px; 
 }
 
-/* LOGO */
-.logo {
-  margin-left: -100px; /* 🔹 Mueve el logo más hacia la izquierda */
-}
-
-.logo .logo-link {
-  text-decoration: none;
-  color: #000;
-}
 
 .logo h1 {
-  font-family: "Playwrite DE SAS", cursive;
-  font-size: 1.5rem;
-  margin: 0;
-  color: #000;
-  font-weight: 500;
+  margin: 0; 
+  font-family: 'Times New Roman', Times, serif; 
+  font-size: 1.8rem; 
 }
 
-/* NAVEGACIÓN */
-.nav-menu {
-  margin-left: auto; /* 🔹 Empuja el menú hacia la derecha */
-  margin-right: 40px; /* 🔹 Espacio entre el menú y el icono de Facebook */
+.logo-link {
+  text-decoration: none; 
+  color: #000;
 }
+
 
 .nav-menu ul {
-  display: flex;
-  list-style: none;
-  gap: 35px;
+  display: flex; 
+  flex-direction: row;
+  list-style: none; 
   margin: 0;
   padding: 0;
+  gap: 30px; 
 }
 
 .nav-menu a {
   text-decoration: none;
-  color: #000;
-  font-family: 'Times New Roman', Times, serif; /* 🔹 Letras Helvetica */
-  font-weight: 500;
+  color: #333;
   font-size: 1rem;
-  transition: color 0.2s ease, transform 0.1s ease;
+  font-weight: bold;
 }
 
-.nav-menu a:hover {
-  color: #e3b1c8;
-  transform: translateY(-1px);
-}
 
 .nav-menu a.active {
-  color: #e3b1c8;
-  border-bottom: 2px solid #e3b1c8;
+  color: #d9534f; 
+  border-bottom: 2px solid #d9534f;
 }
 
-/* FACEBOOK ICON */
-.social-icons-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
 .social-icons-header a {
-  color: #000;
-  font-size: 1.1rem;
   text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.social-icons-header a:hover {
-  color: #e3b1c8;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .container-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .logo {
-    margin-left: 0; /* 🔹 Centra el logo en móvil */
-  }
-
-  .nav-menu {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .nav-menu ul {
-    gap: 15px;
-  }
-
-  .logo h1 {
-    font-size: 1.3rem;
-  }
+  color: #000;
+  font-size: 1.2rem; 
 }

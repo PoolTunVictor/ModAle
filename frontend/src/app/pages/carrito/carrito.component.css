@@ -1,3 +1,39 @@
+.support-section {
+  width: 100%;
+  background: url('/assets/banner/HomePage.png') no-repeat center; 
+  background-size: cover;
+  background-attachment: fixed;
+  text-align: center;
+  padding: 50px 30px; 
+  color: #ffffff;
+  position: relative;
+  margin-top: 70px; 
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4); 
+  }
+
+  .support-content {
+    position: relative;
+    z-index: 1; 
+  }
+
+  .support-title {
+    font-family: "Playwrite DE SAS", cursive;
+    font-size: 60px; 
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -8,7 +44,7 @@
   min-height: 100vh;
   background-color: #ffffff;
   font-family: "Poppins", sans-serif;
-  padding: 120px 0 130px; /* 🔹 margen superior por el header global */
+  padding: 0 0 30px; 
 }
 
 /* 🔹 Título principal */
