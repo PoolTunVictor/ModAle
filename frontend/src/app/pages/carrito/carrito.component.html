@@ -1,7 +1,7 @@
 <div class="carrito-container">
   <div class="support-section">
   <div class="support-content">
-    <h2 class="support-title">CESTA🛒</h2> <p>Aquí tienes los productos que te encantaron</p> </div>
+    <h2 class="support-title">CARRITO🛒</h2> <p>Aquí tienes los productos que te encantaron</p> </div>
 </div>
   <div class="main-content">
     <div class="productos-section"> 
@@ -51,7 +51,7 @@
           <span>${{ getTotal().toFixed(2) }}</span>
         </div>
 
-        <button class="checkout-btn" (click)="generarFicha()" [disabled]="!camposCompletos()">Generar Ficha</button>
+        <button class="checkout-btn" (click)="generarFicha()" [disabled]="!camposCompletos()">Generar Pedido</button>
 
         <p *ngIf="mensajeFicha" class="mensaje-exito">{{ mensajeFicha }}</p>
 
