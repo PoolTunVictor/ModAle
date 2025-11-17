@@ -1,26 +1,29 @@
 <h2 class="titulo-categoria">{{ nombreCategoria | uppercase }}</h2>
 
+<!-- 🔹 FILTROS DE CATEGORÍAS -->
+<div class="filtros-categorias">
+  <span
+    *ngFor="let cat of categoriasFiltradas"
+    (click)="irACategoria(cat.ruta)"
+    class="categoria-item"
+    [ngClass]="{ 'activa': cat.nombre === nombreCategoria }">
+    {{ cat.nombre }}
+  </span>
+</div>
+
 <main class="contenido">
-  <div class="filtro-precio">
-    <label for="rango">Filtrar por precio (máx: {{ precioMax | currency:'USD' }}):</label>
-    <input
-      type="range"
-      id="rango"
-      min="0"
-      max="200"
-      [value]="precioMax"
-      (input)="filtrarPorPrecio($event)"
-    />
-  </div>
+ 
 
   <div class="productos-grid">
     <div *ngFor="let producto of productos" class="producto-card">
       <div class="imagen-container" (click)="abrirDetalles(producto)">
         <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
       </div>
+
       <h3>{{ producto.nombre }}</h3>
       <p class="descripcion">{{ producto.descripcion }}</p>
       <p class="precio">{{ producto.precio | currency:'USD' }}</p>
+
       <button (click)="agregarACesta(producto)">Agregar al carrito</button>
     </div>
   </div>
@@ -33,10 +36,10 @@
 <footer class="footer">
   <h2>VISÍTANOS</h2>
   <p class="direccion">📍 Calle 18, Bacabchén, México, 24925</p>
-  <p class="horarios">🕒 Lunes a Sábado: 9:00 AM - 8:00 PM | Domingo</p>
+  <p class="horarios">🕒 Lunes a Sábado: 9:00 AM - 8:00 PM</p>
 </footer>
 
-<!-- 🔹 Modal de características -->
+<!-- 🔹 MODAL -->
 <div class="modal" *ngIf="productoSeleccionado" (click)="cerrarDetalles()">
   <div class="modal-contenido" (click)="$event.stopPropagation()">
     <h2>{{ productoSeleccionado.nombre }}</h2>

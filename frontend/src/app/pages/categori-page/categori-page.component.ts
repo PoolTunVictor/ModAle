@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router'; // ⬅️ IMPORTANTE
 import { Observable, map } from 'rxjs';
 import { Producto } from '../../core/models/producto';
 import { ProductService } from '../../core/service/product/product.service';
@@ -14,6 +14,7 @@ import { ProductService } from '../../core/service/product/product.service';
   imports: [CommonModule, HttpClientModule, RouterModule]
 })
 export class CategoriPageComponent {
+
   productos: Producto[] = [];
   productosOriginales: Producto[] = [];
   nombreCategoria = '';
@@ -22,26 +23,51 @@ export class CategoriPageComponent {
   mensajeAgregado = '';
   mostrarMensaje = false;
 
-  // 🔹 Nuevo: para el modal de características
   productoSeleccionado: Producto | null = null;
+
+  // ✅ Agregar lista de categorías
+  categorias = [
+    { nombre: 'Nuevo', ruta: 'nuevo' },
+    { nombre: 'Cuidado Facial', ruta: 'cuidado-facial' },
+    { nombre: 'Accesorios', ruta: 'accesorios' },
+    { nombre: 'Perfumes', ruta: 'perfumes' },
+    { nombre: 'Maquillaje', ruta: 'maquillaje' },
+    { nombre: 'Prendas', ruta: 'prendas' },
+    { nombre: 'Cuidado Corporal', ruta: 'cuidado-corporal' },
+    { nombre: 'Ofertas', ruta: 'ofertas' }
+  ];
+
+  // ✅ Para evitar que aparezca la categoría actual como filtro
+  categoriasFiltradas: any[] = [];
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
+    private router: Router, // ⬅️ IMPORTANTE
     private productService: ProductService
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const categoria = params.get('categoria');
+
       if (categoria) {
-        this.nombreCategoria = categoria;
-        const categoriaFormateada = categoria
+        this.nombreCategoria = categoria
           .replace(/-/g, ' ')
           .replace(/\b\w/g, l => l.toUpperCase());
-        this.cargarProductosPorCategoria(categoriaFormateada);
+
+        // 🔥 Filtrar para que NO aparezca la categoría actual
+        this.categoriasFiltradas = this.categorias.filter(
+          c => c.ruta !== categoria
+        );
+
+        this.cargarProductosPorCategoria(this.nombreCategoria);
       }
     });
+  }
+
+  irACategoria(categoriaRuta: string) {
+    this.router.navigate(['/categoria', categoriaRuta]);
   }
 
   cargarProductosPorCategoria(categoria: string): void {
@@ -78,15 +104,7 @@ export class CategoriPageComponent {
     return cesta.reduce((acc, item) => acc + (item.stock || 0), 0);
   }
 
-  filtrarPorPrecio(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.precioMax = Number(input.value);
-    this.productos = this.productosOriginales.filter(
-      p => p.precio <= this.precioMax
-    );
-  }
-
-  // 🔹 Métodos para el modal de detalles
+ 
   abrirDetalles(producto: Producto): void {
     this.productoSeleccionado = producto;
   }
