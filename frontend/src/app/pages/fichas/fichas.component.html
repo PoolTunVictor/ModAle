@@ -1,36 +1,39 @@
+<div class="header-admin">
+</div>
+
+<div class="content-admin">
+
 <div class="fichas-container">
-  <header class="fichas-header">
-    
 
-    <div class="header-right">
-      <nav class="nav">
-        <button 
-          class="nav-btn" 
-          [class.active]="selectedLocation === 'all'"
-          (click)="filtrarPorUbicacion('all')"
-        >Localidades</button>
+  <div class="filtros-container">
 
-        <button 
-          class="nav-btn" 
-          [class.active]="selectedLocation === 'Dzibalché'"
-          (click)="filtrarPorUbicacion('Dzibalché')"
-        >Dzibalché</button>
+    <!-- FILTRO LOCALIDAD -->
+    <select class="filtro" [(ngModel)]="filtroLocalidad" (change)="aplicarFiltros()">
+      <option value="all">Todas las localidades</option>
+      <option value="Dzibalché">Dzibalché</option>
+      <option value="Calkiní">Calkiní</option>
+      <option value="Becal">Becal</option>
+    </select>
 
-        <button 
-          class="nav-btn" 
-          [class.active]="selectedLocation === 'Calkiní'"
-          (click)="filtrarPorUbicacion('Calkiní')"
-        >Calkiní</button>
+    <!-- FILTRO ESTADO -->
+    <select class="filtro" [(ngModel)]="filtroEstado" (change)="aplicarFiltros()">
+      <option value="all">Todos los estados</option>
+      <option value="Nuevo">Nuevo</option>
+      <option value="En proceso">Pendiente / En Proceso</option>
+      <option value="Completado">Completado</option>
+    </select>
 
-        <button 
-          class="nav-btn" 
-          [class.active]="selectedLocation === 'Becal'"
-          (click)="filtrarPorUbicacion('Becal')"
-        >Becal</button>
-      </nav>
-    </div>
-  </header>
+    <!-- FILTRO FECHA -->
+    <input 
+      type="date" 
+      class="filtro" 
+      [(ngModel)]="filtroFecha"
+      (change)="aplicarFiltros()"
+    />
 
+  </div>
+
+  <!-- TABLA -->
   <div class="tabla-container">
     <table class="tabla-fichas">
       <thead>
@@ -67,8 +70,6 @@
     </table>
   </div>
 
-  <!-- Componente hijo para mostrar detalle -->
-  <div *ngIf="fichaSeleccionada">
-    <!-- <app-ficha-detalle [ficha]="fichaSeleccionada"></app-ficha-detalle> -->
-  </div>
+  <div *ngIf="fichaSeleccionada"></div>
+</div>
 </div>

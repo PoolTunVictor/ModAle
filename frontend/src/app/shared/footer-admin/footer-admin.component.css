@@ -1,3 +1,10 @@
+
+
+.content-admin {
+  margin-left: 220px; /* deja espacio al sidebar */
+  padding: 20px 40px;
+}
+
 .main-footer {
   background-color: #fff;       /* Fondo oscuro */
   color: #222;                  /* Texto blanco */

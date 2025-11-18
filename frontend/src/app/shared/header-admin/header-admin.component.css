@@ -1,38 +1,155 @@
-.header-admin {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f9f9f9;
-  padding: 12px 40px;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
+/* ========================= */
+/* DASHBOARD LATERAL          */
+/* ========================= */
+/* Logo general */
 .logo .brand {
+  display: block;
   font-family: "Playwrite DE SAS", cursive;
   font-style: italic;
-  font-size: 1.9rem;
-  color: black;
+  font-size: 1.8rem; /* tamaño base */
+  color: #fff;
   text-decoration: none;
   letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Ajustes de sidebar */
+.header-admin {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #080717;
+  border-right: 1px solid #ddd;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+/* Responsive tablets */
+@media (max-width: 768px) {
+  .header-admin {
+    width: 180px;
+    padding: 15px 10px;
+  }
+
+  .logo .brand {
+    font-size: 1.5rem;
+  }
+}
+
+/* Responsive móviles */
+@media (max-width: 480px) {
+  .header-admin {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .logo .brand {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .nav-item {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
+
+
+/* ENLACES DEL DASHBOARD */
 .nav-links {
   display: flex;
-  align-items: center;
-  gap: 35px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* separación entre icono y texto */
   text-decoration: none;
-  color: black;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  font-size: 1.1rem;
-  transition: color 0.3s ease, transform 0.2s ease;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 20px 25px;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .nav-item:hover {
-  color: #e4bcbc;
-  transform: scale(1.05);
+  background-color: #7048ff;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.material-icons {
+  font-size: 1.5rem; /* tamaño de los iconos */
+}
+/* CONTENIDO PRINCIPAL */
+.content-admin {
+  margin-left: 220px;
+  padding: 20px 40px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .header-admin {
+    width: 180px;
+    padding: 15px 10px;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  .content-admin {
+    margin-left: 180px;
+    padding: 15px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-admin {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .nav-item {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .content-admin {
+    margin-left: 0;
+    margin-top: 60px;
+  }
 }
