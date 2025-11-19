@@ -7,21 +7,27 @@
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   z-index: 1000;
-  padding: 10px 28px;
+  padding: 10px 16px;
   font-family: 'Times New Roman', Times, serif;
 }
 
+/* CONTENEDOR */
 .container-header {
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  flex-wrap: nowrap;        /* ‼️ MENÚ NUNCA BAJA DE LÍNEA */
+  overflow: hidden;         /* Evita que el zoom saque contenido */
 }
 
 /* LOGO */
 .logo {
-  margin-left: -100px; /* 🔹 Mueve el logo más hacia la izquierda */
+  flex-shrink: 0;
 }
 
 .logo .logo-link {
@@ -31,33 +37,32 @@
 
 .logo h1 {
   font-family: "Playwrite DE SAS", cursive;
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   margin: 0;
-  color: #000;
   font-weight: 500;
 }
 
-/* NAVEGACIÓN */
+/* NAV MENU (SIEMPRE A LA DERECHA) */
 .nav-menu {
-  margin-left: auto; /* 🔹 Empuja el menú hacia la derecha */
-  margin-right: 40px; /* 🔹 Espacio entre el menú y el icono de Facebook */
+  margin-left: auto;        /* ‼️ Mantiene menú pegado a la derecha */
+  flex-shrink: 1;
 }
 
 .nav-menu ul {
   display: flex;
   list-style: none;
-  gap: 35px;
+  gap: clamp(20px, 2vw, 35px);
   margin: 0;
   padding: 0;
+  white-space: nowrap;      /* ‼️ Impide que los links bajen */
 }
 
 .nav-menu a {
   text-decoration: none;
   color: #000;
-  font-family: 'Times New Roman', Times, serif; /* 🔹 Letras Helvetica */
   font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.2s ease, transform 0.1s ease;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  transition: .2s;
 }
 
 .nav-menu a:hover {
@@ -70,46 +75,30 @@
   border-bottom: 2px solid #e3b1c8;
 }
 
-/* FACEBOOK ICON */
+/* ICONOS SOCIALES */
 .social-icons-header {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-left: 20px;       /* separación del menú */
+  flex-shrink: 0;
 }
 
 .social-icons-header a {
   color: #000;
-  font-size: 1.1rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  transition: color .2s;
 }
 
 .social-icons-header a:hover {
   color: #e3b1c8;
 }
 
-/* RESPONSIVE */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
   .container-header {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 10px;
   }
 
-  .logo {
-    margin-left: 0; /* 🔹 Centra el logo en móvil */
-  }
-
-  .nav-menu {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .nav-menu ul {
-    gap: 15px;
-  }
-
-  .logo h1 {
-    font-size: 1.3rem;
-  }
+  
 }
