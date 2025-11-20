@@ -9,7 +9,6 @@
   text-align: center;
   margin: 120px 0 10px;
   font-weight: 700;
-  
 }
 
 /* === FILTROS === */
@@ -71,7 +70,6 @@
   gap: 20px;
 }
 
-
 .productos-grid {
   flex: 1;
   display: grid;
@@ -86,6 +84,7 @@
   background: #f9f9f9;
   text-align: center;
   transition: 0.2s;
+  position: relative; /* 🔹 necesario para modal inline */
 }
 
 .producto-card:hover {
@@ -105,27 +104,66 @@
   margin: 8px 0;
 }
 
-/* === MODAL === */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.btn-carrito {
+  background-color: #df7c9d;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10px;
 }
 
-.modal-contenido {
-  background: white;
-  padding: 25px;
+.btn-carrito:hover {
+  background-color: #d44b7d;
+  transform: scale(1.03);
+}
+
+/* === MODAL INLINE === */
+.modal-inline {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #ddd;
   border-radius: 12px;
-  width: 90%;
-  max-width: 450px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10;
+  padding: 15px;
+  animation: slideDown 0.3s ease;
 }
 
+.modal-contenido-inline {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.cerrar-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: none;
+  background-color: #df7c9d;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cerrar-btn:hover {
+  background-color: #d44b7d;
+}
+
+/* Animación modal */
+@keyframes slideDown {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Mensaje agregado */
 .mensaje-agregado {
   position: fixed;
   bottom: 90px;
