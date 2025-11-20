@@ -1,5 +1,10 @@
+<div class="header-admin">
+</div>
+
+<div class="content-admin">
+  
 <div class="container" *ngIf="!cargando; else loading">
-  <h2>✏️ Editar producto</h2>
+  <h2>EDITAR PRODUCTO ✏️</h2>
 
   <form (ngSubmit)="guardarCambios()" #form="ngForm" class="edit-form">
     <label>ID:</label>
@@ -22,7 +27,8 @@
 
     <label>Descripción:</label>
     <textarea [(ngModel)]="producto.descripcion" name="descripcion" rows="3"></textarea>
-
+    <label>Caracteristicas:</label>
+    <textarea [(ngModel)]="producto.caracteristicas" name="caracteristicas" rows="3"></textarea>
     <label>Imagen (URL):</label>
     <input type="text" [(ngModel)]="producto.imagen" name="imagen" placeholder="Pega URL de imagen">
     <input type="file" (change)="onFileSelected($event)">
@@ -31,15 +37,23 @@
       <img [src]="producto.imagen" alt="Vista previa">
     </div>
 
+     <div class="form-checkboxes">
+      <label><input type="checkbox" [(ngModel)]="producto.activo" name="activo"> Activo</label>
+      <label><input type="checkbox" [(ngModel)]="producto.nuevo" name="nuevo"> Nuevo</label>
+      <label><input type="checkbox" [(ngModel)]="producto.oferta" name="oferta"> En oferta</label>
+    </div>
+
     <div class="botones">
       <button type="submit" [disabled]="guardando || form.invalid">
         💾 {{ guardando ? 'Guardando...' : 'Guardar cambios' }}
       </button>
       <button type="button" (click)="cancelar()">Cancelar</button>
     </div>
+    
   </form>
 </div>
 
 <ng-template #loading>
   <p>Cargando producto...</p>
 </ng-template>
+</div>

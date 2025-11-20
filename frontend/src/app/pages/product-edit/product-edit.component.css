@@ -1,3 +1,8 @@
+.content-admin {
+  margin-left: 220px; /* deja espacio al sidebar */
+  padding: 20px 40px;
+}
+
 .container {
   max-width: 600px;
   margin: 2rem auto;
@@ -57,4 +62,10 @@ button[type="submit"] {
 
 button[type="button"] {
   background: #ccc;
+}
+.form-checkboxes {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+  font-weight: 500;
 }

@@ -95,14 +95,6 @@ export class ProductEditComponent implements OnInit {
     this.router.navigate(['/admin/products-table']);
   }
 
-  categorias: string[] = [
-  'nuevo',
-  'cuidado facial',
-  'accesorios',
-  'perfumes',
-  'maquillaje',
-  'prendas',
-  'cuidado corporal',
-  'ofertas'
-];
+    categorias: string[] = ['Maquillaje', 'Cuidado Facial', 'Perfumes', 'Accesorios', 'Prendas', 'Cuidado Corporal'];
+
 }
