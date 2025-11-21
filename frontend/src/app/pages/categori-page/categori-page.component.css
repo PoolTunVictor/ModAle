@@ -1,3 +1,6 @@
+/* =========================================
+   RESET Y GLOBALES
+   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -9,9 +12,12 @@
   text-align: center;
   margin: 120px 0 10px;
   font-weight: 700;
+  font-family: "Playwrite DE SAS", cursive; /* Sugerencia para mantener estilo */
 }
 
-/* === FILTROS === */
+/* =========================================
+   FILTROS
+   ========================================= */
 .filtros-categorias {
   display: flex;
   justify-content: center;
@@ -61,7 +67,9 @@
   width: 100%;
 }
 
-/* === CONTENIDO === */
+/* =========================================
+   CONTENIDO Y GRID
+   ========================================= */
 .contenido {
   max-width: 1200px;
   margin: 0 auto;
@@ -77,6 +85,9 @@
   gap: 25px;
 }
 
+/* =========================================
+   TARJETAS DE PRODUCTO
+   ========================================= */
 .producto-card {
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -84,11 +95,12 @@
   background: #f9f9f9;
   text-align: center;
   transition: 0.2s;
-  position: relative; /* 🔹 necesario para modal inline */
+  position: relative; /* Necesario para modal inline */
 }
 
 .producto-card:hover {
   transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .imagen-producto {
@@ -96,14 +108,17 @@
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .precio {
   color: #b30000;
   font-weight: bold;
   margin: 8px 0;
+  font-size: 1.2rem;
 }
 
+/* Botón "Agregar al carrito" */
 .btn-carrito {
   background-color: #df7c9d;
   color: white;
@@ -122,7 +137,9 @@
   transform: scale(1.03);
 }
 
-/* === MODAL INLINE === */
+/* =========================================
+   MODAL INLINE
+   ========================================= */
 .modal-inline {
   position: absolute;
   top: 10px;
@@ -163,29 +180,53 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Mensaje agregado */
+/* =========================================
+   MENSAJE AGREGADO AL CARRITO (MODIFICADO)
+   ========================================= */
 .mensaje-agregado {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background: black;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 8px;
+  position: fixed; /* Fijo en la pantalla */
+  bottom: 30px;    /* 30px desde abajo */
+  left: 50%;       /* Al 50% del ancho */
+  transform: translateX(-50%); /* Truco matemático para centrarlo exacto */
+  
+  background-color: #e3b1c8; /* Rosita Pastel */
+  color: #000;     /* Texto negro para leerse bien */
+  
+  padding: 15px 30px;
+  border-radius: 50px; /* Bordes redonditos tipo píldora */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombrita para resaltar */
+  z-index: 2000;   /* Por encima de todo */
+  font-weight: 600;
+  text-align: center;
+  
+  /* Animación de entrada y salida */
+  animation: fadeInOut 2.5s ease-in-out forwards;
 }
 
-/* FOOTER */
+/* Animación suave */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, 20px); }
+  15% { opacity: 1; transform: translate(-50%, 0); }
+  85% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
 .footer {
-  position: fixed;
-  bottom: 0;
+  position: relative; /* Cambiado a relative para que no tape contenido en pantallas chicas */
+  margin-top: 50px;
   background: #f2f2f2;
   width: 100%;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
   border-top: 1px solid #ddd;
 }
 
-/* === RESPONSIVE === */
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 @media (max-width: 900px) {
   .contenido {
     flex-direction: column;
@@ -218,5 +259,11 @@
 
   .productos-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  
+  /* Ajuste mensaje en móvil */
+  .mensaje-agregado {
+    width: 90%; /* Que no se salga de la pantalla en celulares */
+    bottom: 20px;
   }
 }
