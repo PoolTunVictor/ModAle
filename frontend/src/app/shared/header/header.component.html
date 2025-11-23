@@ -8,19 +8,28 @@
     </div>
 
     <!-- MENÚ DE NAVEGACIÓN -->
-    <nav class="nav-menu">
-      <ul>
-        <li><a routerLink="/product-catalog" routerLinkActive="active">Inicio</a></li>
-        <li><a routerLink="/catalogo" routerLinkActive="active">Catálogo</a></li>
-        <li><a routerLink="/carrito" routerLinkActive="active">Carrito</a></li>
-      </ul>
-    </nav>
+   <nav class="nav-menu">
+  <ul>
+    <li><a routerLink="/product-catalog" routerLinkActive="active"><i class="fas fa-home"></i> Inicio</a></li>
+    <li><a routerLink="/catalogo" routerLinkActive="active"><i class="fas fa-box"></i> Catálogo</a></li>
+    <li>
+      <a routerLink="/carrito" routerLinkActive="active">
+        <i class="fas fa-shopping-cart"></i> Carrito
+        <span *ngIf="cantidadCesta > 0">({{ cantidadCesta }})</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
     <!-- RED SOCIAL -->
     <div class="social-icons-header">
       <a href="https://www.facebook.com/profile.php?id=61568465109559" target="_blank" rel="noreferrer">
         <i class="fab fa-facebook-f"></i>
       </a>
+      <button class="logout-icon-btn" (click)="logout()">
+  <i class="fas fa-sign-out-alt"></i>
+</button>
     </div>
+    
   </div>
 </header>

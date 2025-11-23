@@ -9,20 +9,20 @@
   z-index: 1000;
   padding: 10px 16px;
   font-family: 'Times New Roman', Times, serif;
+      box-sizing: border-box;
 }
 
 /* CONTENEDOR */
 .container-header {
   width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
+  margin: 10px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  flex-wrap: nowrap;        /* ‼️ MENÚ NUNCA BAJA DE LÍNEA */
-  overflow: hidden;         /* Evita que el zoom saque contenido */
+  flex-wrap: nowrap;        
+  overflow: hidden;         
 }
 
 /* LOGO */
@@ -42,19 +42,19 @@
   font-weight: 500;
 }
 
-/* NAV MENU (SIEMPRE A LA DERECHA) */
+/* NAV MENU */
 .nav-menu {
-  margin-left: auto;        /* ‼️ Mantiene menú pegado a la derecha */
+  margin-left: auto;        
   flex-shrink: 1;
 }
 
 .nav-menu ul {
   display: flex;
   list-style: none;
-  gap: clamp(20px, 2vw, 35px);
+  gap: clamp(18px, 2vw, 35px);
   margin: 0;
   padding: 0;
-  white-space: nowrap;      /* ‼️ Impide que los links bajen */
+  white-space: nowrap;
 }
 
 .nav-menu a {
@@ -75,12 +75,12 @@
   border-bottom: 2px solid #e3b1c8;
 }
 
-/* ICONOS SOCIALES */
+/* ICONOS SOCIALES + LOGOUT */
 .social-icons-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-left: 20px;       /* separación del menú */
+  margin-left: 20px;
   flex-shrink: 0;
 }
 
@@ -94,11 +94,58 @@
   color: #e3b1c8;
 }
 
+/* Ícono de logout */
+.logout-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  transition: .2s;
+}
+
+.logout-icon-btn:hover {
+  color: #e3b1c8;
+  transform: translateY(-2px);
+}
+
+
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
+  
+  /* Reduce espacios para que todo quepa */
   .container-header {
+    gap: 6px;
+  }
+
+  /* Menú más compacto */
+  .nav-menu ul {
+    gap: 14px;
+  }
+
+  /* Íconos más pequeños */
+  .social-icons-header {
+    gap: 8px;
+    margin-left: 10px;
+  }
+
+  /* Logo un poco más pequeño para que no empuje todo */
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Comprimir más el menú */
+  .nav-menu ul {
     gap: 10px;
   }
 
-  
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  .logout-icon-btn {
+    font-size: 1.1rem;
+  }
 }

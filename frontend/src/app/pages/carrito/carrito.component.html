@@ -7,20 +7,16 @@
     </div>
   </div>
 
+  <!-- Carrito con productos -->
   <div class="main-content" *ngIf="carrito.length > 0; else emptyCartTemplate">
-    
     <div class="productos-section">
       <div class="productos-frame">
-        
-        <div class="producto-item" *ngFor="let producto of carrito; let i = index">
-          
+        <div class="producto-item" *ngFor="let producto of carrito">
           <div class="producto-imagen">
             <img [src]="producto.imagen" [alt]="producto.nombre" />
           </div>
-
           <div class="producto-info">
             <h4>{{ producto.nombre }}</h4>
-            
             <div class="cantidad-section">
               <div class="cantidad-control">
                 <button class="cantidad-btn" (click)="disminuirCantidad(producto)">-</button>
@@ -29,13 +25,12 @@
               </div>
             </div>
           </div>
-
           <div class="producto-precio">
             <span class="precio">${{ (producto.precio * producto.cantidad).toFixed(2) }}</span>
             <button class="remove-btn" (click)="eliminarProducto(producto)">Quitar</button>
           </div>
-
-        </div> </div>
+        </div>
+      </div>
     </div>
 
     <div class="resumen-section">
@@ -44,16 +39,16 @@
 
         <form class="resumen-form">
           <label for="telefono">Número de teléfono</label>
-          <input type="text" id="telefono" [(ngModel)]="telefono" name="telefono" placeholder="Ej: 999 123 4567">
+          <input type="text" id="telefono" [(ngModel)]="telefono" name="telefono">
 
           <label for="direccion">Dirección</label>
-          <input type="text" id="direccion" [(ngModel)]="direccion" name="direccion" placeholder="Calle, número...">
+          <input type="text" id="direccion" [(ngModel)]="direccion" name="direccion">
 
           <label for="referencia">Referencia</label>
-          <input type="text" id="referencia" [(ngModel)]="referencia" name="referencia" placeholder="Entre calles, color de casa...">
+          <input type="text" id="referencia" [(ngModel)]="referencia" name="referencia">
 
           <label for="localidad">Localidad</label>
-          <input type="text" id="localidad" [(ngModel)]="localidad" name="localidad" placeholder="Tu ciudad">
+          <input type="text" id="localidad" [(ngModel)]="localidad" name="localidad">
         </form>
 
         <div class="resumen-total">
@@ -62,16 +57,17 @@
         </div>
 
         <button class="checkout-btn" (click)="generarFicha()" [disabled]="!camposCompletos()">
-          Generar Ficha
+          Generar Pedido
         </button>
 
         <p *ngIf="mensajeFicha" class="mensaje-exito">{{ mensajeFicha }}</p>
 
-        <p class="continue-shopping" (click)="irCatalogo()">Continuar comprando →</p>
       </div>
     </div>
+  </div>
 
-  </div> <ng-template #emptyCartTemplate>
+  <!-- Carrito vacío -->
+  <ng-template #emptyCartTemplate>
     <div style="text-align: center; padding: 50px;">
       <h3>Tu carrito está vacío 😢</h3>
       <p>¡Corre a ver nuestros productos!</p>
@@ -79,4 +75,3 @@
     </div>
   </ng-template>
 
-</div>
