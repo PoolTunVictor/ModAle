@@ -10,10 +10,11 @@ class PedidoController(BaseController):
     def __init__(self):
         super().__init__(Pedido, "pedidos")
 
-        @self.router.get("/cliente/{id_cliente}")
-        def get_pedidos_cliente(id_cliente: int, db: Session = Depends(get_db)):
+        # Obtener pedidos por usuario (antes cliente)
+        @self.router.get("/usuario/{id_usuario}")
+        def get_pedidos_usuario(id_usuario: int, db: Session = Depends(get_db)):
             service = PedidoService(db)
-            pedidos = service.get_pedidos_por_cliente(id_cliente)
+            pedidos = service.get_pedidos_por_usuario(id_usuario)
             return [
                 {
                     "id_pedido": p.id_pedido,
@@ -38,8 +39,9 @@ class PedidoController(BaseController):
                 for p in pedidos
             ]
         
-        @self.router.get("/cliente/detalle/")
-        def get_pedidos_cliente(db: Session = Depends(get_db)):
+        # Obtener todos los pedidos con detalle
+        @self.router.get("/usuario/detalle/")
+        def get_pedidos_usuario(db: Session = Depends(get_db)):
             service = PedidoService(db)
             pedidos = service.get_pedidos_detalle()
             return [
@@ -66,7 +68,6 @@ class PedidoController(BaseController):
                 for p in pedidos
             ]
             
-            
         @self.router.get("/detalle/{id_pedido}")
         def get_pedido_detalle(id_pedido: int, db: Session = Depends(get_db)):
             service = PedidoService(db)
@@ -91,4 +92,3 @@ class PedidoController(BaseController):
                         for d in pedido.detalles
                     ],
                 }
-                

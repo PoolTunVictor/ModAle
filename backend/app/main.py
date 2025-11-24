@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from .database.database import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
+from .controllers import auth_controller
+from .controllers.usuarios_controller import UsuarioController
 
 from .controllers import (
     ClienteController,
@@ -9,6 +11,7 @@ from .controllers import (
     DireccionController,
     MovimientoStockController,
     PedidoController
+    
 )
 from .models import *
 
@@ -38,3 +41,5 @@ app.include_router(PedidoController().router)
 
 app.include_router(DetallePedidoController().router)
 app.include_router(MovimientoStockController().router)
+app.include_router(auth_controller.router)  # Incluir el router de auth_controller.py7
+app.include_router(UsuarioController().router)

@@ -15,27 +15,44 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
-  users = [
-    { username: 'AzielH', password: '2004' },
-    { username: 'editor', password: '123456' },
-    { username: 'basic', password: '123456' }
-  ];
-
   constructor(private router: Router) {}
 
   togglePassword() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  login() {
-    const user = this.users.find(
-      u => u.username === this.email && u.password === this.password
-    );
+  async login() {
+    if (!this.email || !this.password) {
+      alert("Debes ingresar correo y contraseña");
+      return;
+    }
 
-    if (user) {
+    try {
+      const response = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.detail || "Credenciales incorrectas");
+        return;
+      }
+
+      // ✔️ Guardar datos del usuario (si quieres)
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // ✔️ Redirigir al catalogo
       this.router.navigate(['/product-catalog']);
-    } else {
-      alert('Usuario o contraseña incorrectos');
+
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      alert("No se pudo conectar con el servidor");
     }
   }
 
