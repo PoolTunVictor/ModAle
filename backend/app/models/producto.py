@@ -15,6 +15,7 @@ class Producto(Base):
     nuevo = Column(Boolean, default=True)
     oferta = Column(Boolean, default=False)
     imagen = Column(Text, nullable=True)  
+    descuento = Column(Integer,default=0) 
     detalles = relationship("DetallePedido", back_populates="producto")
     movimientos = relationship("MovimientoStock", back_populates="producto")
     

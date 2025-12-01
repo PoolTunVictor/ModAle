@@ -1,59 +1,88 @@
-<div class="header-admin">
-</div>
+<div class="header-admin"></div>
 
 <div class="content-admin">
-<main class="products-section">
-  <h2 class="table-title">INVENTARIO 📦</h2>
+  <main class="products-section">
 
-  <div *ngIf="cargando" class="loading">Cargando productos...</div>
+    <h2 class="table-title">INVENTARIO 📦</h2>
 
-  <div class="table-container" *ngIf="!cargando && productos.length > 0; else sinProductos">
-    <table class="products-table">
-      <thead>
-        <tr>
-          <th>Imagen</th>
-          <th>Nombre</th>
-          <th>Categoría</th>
-          <th>Descripción</th>
-          <th>Características</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Activo</th>
-          <th>Nuevo</th>
-          <th>Oferta</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
+    <!-- === FILTROS EN LA MISMA LÍNEA === -->
+    <div class="filters-inline">
+      <!-- Filtro por categoría -->
+      <div class="filter-inline-item">
+        <label for="filtroCategoria">Categoría:</label>
+        <select id="filtroCategoria"
+                [(ngModel)]="categoriaSeleccionada"
+                (change)="filtrarProductos()">
+          <option value="">Todas</option>
+          <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
 
-      <tbody>
-        <tr *ngFor="let producto of productos">
-          <td>
-            <img *ngIf="producto.imagen" [src]="producto.imagen" alt="imagen" class="product-img">
-          </td>
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.categoria }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td>{{ producto.caracteristicas }}</td>
-          <td>{{ producto.precio | currency:'MXN' }}</td>
-          <td>{{ producto.stock }}</td>
-          <td>{{ producto.activo ? '✔️' : '❌' }}</td>
-          <td>{{ producto.nuevo ? '🆕' : '' }}</td>
-          <td>{{ producto.oferta ? '' : '' }}</td>
-          <td class="actions">
-            <button class="icon-btn edit-btn" (click)="editarProducto(producto)">
-              <span class="material-icons">edit</span>
-            </button>
-            <button class="icon-btn delete-btn" (click)="eliminarProducto(producto.id_producto)">
-              <span class="material-icons">delete</span>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <!-- Filtro por nombre -->
+      <div class="filter-inline-item">
+        <label for="busquedaNombre">Buscar nombre:</label>
+        <input type="text" id="busquedaNombre"
+               [(ngModel)]="nombreBusqueda"
+               (input)="filtrarProductos()"
+               placeholder="Escribe el nombre">
+      </div>
+    </div>
 
-  <ng-template #sinProductos>
-    <p class="no-products">No hay productos registrados todavía.</p>
-  </ng-template>
-</main>
- </div>
+    <div *ngIf="cargando" class="loading">Cargando productos...</div>
+
+    <div class="table-container" *ngIf="!cargando && productosFiltrados.length > 0; else sinProductos">
+
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Descripción</th>
+            <th>Características</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Activo</th>
+            <th>Nuevo</th>
+            <th>Oferta</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let producto of productosFiltrados">
+            <td>
+              <img *ngIf="producto.imagen" [src]="producto.imagen" alt="imagen" class="product-img">
+            </td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.categoria }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>
+              <ul class="caracteristicas-list">
+                <li *ngFor="let c of producto.caracteristicas.split('.')">{{ c }}</li>
+              </ul>
+            </td>
+            <td>{{ producto.precio | currency:'MXN' }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.activo ? '✔️' : '❌' }}</td>
+            <td>{{ producto.nuevo ? '🆕' : '' }}</td>
+            <td>{{ producto.oferta ? '🔥' : '' }}</td>
+            <td class="actions">
+              <button class="icon-btn edit-btn" (click)="editarProducto(producto)">
+                <span class="material-icons">edit</span>
+              </button>
+              <button class="icon-btn delete-btn" (click)="eliminarProducto(producto.id_producto)">
+                <span class="material-icons">delete</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #sinProductos>
+      <p class="no-products">No hay productos registrados todavía.</p>
+    </ng-template>
+
+  </main>
+</div>

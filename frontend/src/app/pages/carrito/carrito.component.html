@@ -35,20 +35,14 @@
 
     <div class="resumen-section">
       <div class="resumen-frame">
-        <h3 class="resumen-title">DETALLES DEL PEDIDO</h3>
+        <h3 class="resumen-title">DIRECCIÓN DE ENVÍO</h3>
 
         <form class="resumen-form">
-          <label for="telefono">Número de teléfono</label>
-          <input type="text" id="telefono" [(ngModel)]="telefono" name="telefono">
-
-          <label for="direccion">Dirección</label>
-          <input type="text" id="direccion" [(ngModel)]="direccion" name="direccion">
+          <label for="coloniaLugar">Colonia / Lugar</label>
+          <input type="text" id="coloniaLugar" [(ngModel)]="coloniaLugar" name="coloniaLugar" required>
 
           <label for="referencia">Referencia</label>
           <input type="text" id="referencia" [(ngModel)]="referencia" name="referencia">
-
-          <label for="localidad">Localidad</label>
-          <input type="text" id="localidad" [(ngModel)]="localidad" name="localidad">
         </form>
 
         <div class="resumen-total">
@@ -56,11 +50,11 @@
           <span>${{ getTotal().toFixed(2) }}</span>
         </div>
 
-        <button class="checkout-btn" (click)="generarFicha()" [disabled]="!camposCompletos()">
+        <button class="checkout-btn" (click)="generarPedido()" [disabled]="!direccionValida()">
           Generar Pedido
         </button>
 
-        <p *ngIf="mensajeFicha" class="mensaje-exito">{{ mensajeFicha }}</p>
+        <p *ngIf="mensajePedido" class="mensaje-exito">{{ mensajePedido }}</p>
 
       </div>
     </div>
@@ -74,4 +68,4 @@
       <button class="checkout-btn" style="max-width: 200px;" (click)="irCatalogo()">Ir al Catálogo</button>
     </div>
   </ng-template>
-
+</div>

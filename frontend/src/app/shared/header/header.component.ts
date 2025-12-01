@@ -43,7 +43,8 @@ export class HeaderComponent implements OnInit {
   }
 
   actualizarCantidadCesta(): void {
-    const cesta: any[] = JSON.parse(localStorage.getItem('cesta') || '[]');
-    this.cantidadCesta = cesta.reduce((acc, item) => acc + (item.stock || 0), 0);
-  }
+  const cesta: any[] = JSON.parse(localStorage.getItem('cesta') || '[]');
+  this.cantidadCesta = cesta.reduce((acc, item) => acc + (item.cantidad || 0), 0);
+}
+
 }

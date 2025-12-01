@@ -1,0 +1,90 @@
+<div class="header-admin"></div>
+
+<div class="content-admin">
+  <main class="products-section">
+
+<div class="registro-container">
+  
+  <header class="header-reporte">
+    <div>
+      <h1>Registro Semanal de Ventas 📊</h1>
+      <p>Periodo: Semana Actual | Generado el: {{ fechaReporte | date:'dd/MM/yyyy' }}</p>
+    </div>
+    <button class="btn-imprimir" (click)="imprimirReporte()">🖨️ Imprimir Corte</button>
+  </header>
+
+  <section class="resumen-cards">
+    <div class="card kpi-ventas">
+      <h3>Ingresos Totales</h3>
+      <p class="numero">${{ resumenSemanal.totalVentas | number:'1.2-2' }}</p>
+      <span class="subtexto">💵 +15% vs semana pasada</span>
+    </div>
+    <div class="card kpi-pedidos">
+      <h3>Pedidos Realizados</h3>
+      <p class="numero">{{ resumenSemanal.pedidosTotales }}</p>
+      <span class="subtexto">📦 Envíos pendientes: 4</span>
+    </div>
+    <div class="card kpi-top">
+      <h3>Estrella de la Semana</h3>
+      <p class="texto-destacado">{{ resumenSemanal.productoMasVendido }}</p>
+      <span class="subtexto">⭐ El favorito</span>
+    </div>
+    <div class="card kpi-dia">
+      <h3>Día Más Activo</h3>
+      <p class="texto-destacado">{{ resumenSemanal.diaMasActivo }}</p>
+      <span class="subtexto">📅 Preparar stock para el viernes</span>
+    </div>
+  </section>
+
+  <div class="tablas-grid">
+    
+    <div class="panel tabla-top">
+      <h2>🔥 Los Más Populares (Top 5)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Unidades</th>
+            <th>Ingresos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of productosTop">
+            <td><strong>{{ prod.nombre }}</strong></td>
+            <td>{{ prod.categoria }}</td>
+            <td class="text-center">{{ prod.vendidos }}</td>
+            <td class="text-right text-green">${{ prod.ingresos | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel tabla-low">
+      <h2>⚠️ Productos con Baja Rotación</h2>
+      <p class="alerta">Considerar poner en oferta estos productos.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoría</th>
+            <th>Vendidos</th>
+            <th>Stock Estancado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of productosLow">
+            <td>{{ prod.nombre }}</td>
+            <td>{{ prod.categoria }}</td>
+            <td class="text-center text-red">{{ prod.vendidos }}</td>
+            <td class="text-center">{{ prod.stock }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  
+</div>
+  </main>
+</div>

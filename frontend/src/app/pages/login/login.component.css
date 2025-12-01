@@ -1,88 +1,116 @@
+/* ===== Fondo ===== */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background:  url('/assets/FondoL.png');
-  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f7c2da, #e3b1c8);
+  font-family: 'Poppins', sans-serif;
 }
 
 .login-card {
-  background: linear-gradient(145deg, rgba(255,255,255,0.3), rgba(200,200,200,0.1));
-  backdrop-filter: blur(5px);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  width: 350px;
+  width: 480px;
+  padding: 3.3rem 2.7rem;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
   text-align: center;
-} 
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
 .login-icon {
-  background: #e0e0e0;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.35);
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 1rem auto;
-  font-size: 36px;
-  color: #555;
+  margin: 0 auto 1rem;
+  font-size: 42px;
+  color: #7a4b63;
+  box-shadow: inset 0 4px 10px rgba(255,255,255,0.4),
+              inset 0 -4px 10px rgba(0,0,0,0.08);
 }
 
+
 h2 {
-  margin-bottom: 0.5rem;
-  color: #333;
+  color: #4a2c38;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
 }
 
 p {
-  margin-bottom: 1.5rem;
-  color: #666;
+  color: #5e4d53;
   font-size: 0.9rem;
 }
 
+
 .input-group {
   position: relative;
-  margin: 1rem 0;
-  width: 100%; 
+  width: 100%;
+  margin: 1.2rem 0;
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px 45px 12px 45px; 
+  padding: 14px 43px 14px 40px; 
   border-radius: 12px;
-  border: none;
-  background: transparent;
-  box-shadow: inset 6px 6px 12px #bebebe,
-              inset -6px -6px 12px #ffffff;
-  outline: none;
+  border: 1.8px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(6px);
   font-size: 0.95rem;
-  color: #141212;
-  transition: all 0.2s ease;
-  box-sizing: border-box; 
+  outline: none;
+  color: #3a2c33;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  border: 1.8px solid #d46a8c;
+  box-shadow: 0 0 12px rgba(212, 106, 140, 0.45);
 }
 
 .input-icon {
   position: absolute;
-  left: 15px; 
+  left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #0a0a0a;
-  pointer-events: none;
-  z-index: 1;
+  font-size: 20px;
+  color: #6d5660;
 }
 
 .eye-icon {
   position: absolute;
-  right: 15px; 
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+  background: transparent !important;
   border: none;
   cursor: pointer;
-  color: #070707;
-  font-size: 18px;
-  z-index: 1;
+  padding: 0;
 }
+
+.eye-icon span {
+  font-size: 22px;
+  color: #6d5660;
+}
+
+
+input:invalid {
+  box-shadow: none !important;
+  border: 1px solid rgba(255,255,255,0.5) !important;
+}
+
 
 
 .options {
@@ -93,15 +121,9 @@ p {
 .checkbox-container {
   display: flex;
   align-items: center;
-  cursor: pointer;
-  color: #211c1c;
   font-size: 0.9rem;
-  padding: 8px 12px;
-  border-radius: 12px;
-  background: transparent;
-  box-shadow: 4px 4px 8px #bebebe,
-              -4px -4px 8px #ffffff;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #4a2c38;
 }
 
 .checkbox-container input {
@@ -112,56 +134,51 @@ p {
   width: 20px;
   height: 20px;
   border-radius: 6px;
-  background: #e0e0;
-  box-shadow: inset 2px 2px 4px #bebebe,
-              inset -2px -2px 4px #ffffff;
-  margin-right: 10px;
-  position: relative;
-  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.5);
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.1);
 }
 
-.checkbox-container input:checked + .checkmark::after {
-  content: "✓";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #090909;
-  font-weight: bold;
-  font-size: 14px;
+.checkbox-container input:checked + .checkmark {
+  background: #d988b9;
+  color: white;
 }
+
 
 .sign-in-btn {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin-top: 1rem;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
-  background: transparent;
-  box-shadow: 6px 6px 12px #bebebe,
-              -6px -6px 12px #ffffff;
   font-weight: bold;
-  color: #0a0a0a;
+  background: linear-gradient(135deg, #d988b9, #b56ea5);
+  color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-sizing: border-box; 
+  box-shadow: 0 8px 20px rgba(192, 107, 138, 0.45);
+  transition: 0.25s ease;
 }
 
 .sign-in-btn:hover {
-  box-shadow: inset 4px 4px 8px #bebebe,
-              inset -4px -4px 8px #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(192, 107, 138, 0.55);
 }
 
+
 .or-text {
-  margin: 1.5rem 0 1rem 0;
-  color: #0a0a0a;
+  margin: 1.4rem 0 1rem;
   font-size: 0.8rem;
+  color: #5e4d53;
 }
+
 
 .social-buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 16px;
 }
 
 .social-buttons button {
@@ -169,16 +186,16 @@ p {
   height: 50px;
   border-radius: 50%;
   border: none;
-  background: #e0e0e0;
-  box-shadow: 6px 6px 12px #bebebe,
-              -6px -6px 12px #ffffff;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 18px;
-  color: #050505;
+  font-size: 20px;
+  color: #4a2c38;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 0.25s ease;
 }
 
 .social-buttons button:hover {
-  box-shadow: inset 4px 4px 8px #bebebe,
-              inset -4px -4px 8px #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }

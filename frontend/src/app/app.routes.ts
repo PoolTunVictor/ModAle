@@ -11,6 +11,7 @@ import { FichasComponent } from './pages/fichas/fichas.component';
 import { AdminLayoutComponent } from '../layouts/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from '../layouts/layout-users/layout-users.component';
 import { FichaDetalleComponent } from './pages/fichas/ficha-detalle/ficha-detalle.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -39,6 +40,7 @@ export const routes: Routes = [
       { path: 'agregar-producto', component: ProductAddComponent },
       { path: 'products-table', component: ProductsTableComponent },
       { path: 'editar-producto/:id', component: ProductEditComponent },
+       { path: 'reportes', component: ReportesComponent },
       { path: '', redirectTo: 'products-table', pathMatch: 'full' }
     ]
   },

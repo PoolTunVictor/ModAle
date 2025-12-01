@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from '../../core/service/product/product.service';
 import { Producto } from '../../core/models/producto';
 
-
 @Component({
   selector: 'app-product-add',
   standalone: true,
@@ -33,7 +32,8 @@ export class ProductAddComponent {
     activo: true,
     nuevo: false,
     oferta: false,
-    imagen: ''
+    imagen: '',
+    descuento: 0
   };
 
   selectedFile: File | null = null;
@@ -41,30 +41,30 @@ export class ProductAddComponent {
 
   constructor(private productService: ProductService) { }
 
-  // ✅ Convierte el archivo a base64 y lo guarda en `producto.imagen`
+  // Convertir archivo a base64
   onFileSelected(event: any): void {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.previewUrl = reader.result;
-      this.producto.imagen = reader.result as string; // Se guarda en base64
-    };
-    reader.readAsDataURL(file);
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewUrl = reader.result;
+        this.producto.imagen = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
   }
-}
 
-  // ✅ Envía el producto con la imagen en base64
-  agregarProducto(): void {
-  // Si no se subió archivo, el usuario puede haber escrito una URL en el input de texto
+  // Enviar producto al backend
+ agregarProducto(): void {
   const productoParaEnviar = {
     ...this.producto,
-    imagen: this.producto.imagen?.trim() || '', // asegura que no vaya "undefined"
+    imagen: this.producto.imagen?.trim() || '',
     precio: Number(this.producto.precio),
     stock: Number(this.producto.stock),
     activo: Boolean(this.producto.activo),
     nuevo: Boolean(this.producto.nuevo),
-    oferta: Boolean(this.producto.oferta)
+    oferta: Boolean(this.producto.oferta),
+    descuento: Number(this.producto.descuento) || 0   // 🔥 PERMITE EDITAR EL DESCUENTO
   };
 
   this.productService.post(productoParaEnviar).subscribe({
@@ -79,9 +79,9 @@ export class ProductAddComponent {
   });
 }
 
+
   resetForm(): void {
     this.producto = {
-      id_producto: 0,
       nombre: '',
       categoria: '',
       descripcion: '',
@@ -91,7 +91,8 @@ export class ProductAddComponent {
       activo: true,
       nuevo: false,
       oferta: false,
-      imagen: ''
+      imagen: '',
+      descuento: 0
     };
     this.selectedFile = null;
     this.previewUrl = null;

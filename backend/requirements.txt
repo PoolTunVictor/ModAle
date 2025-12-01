@@ -1,7 +1,10 @@
-fastapi
-uvicorn
-sqlalchemy
-psycopg2-binary
-pydantic
-python-dotenv
+fastapi==0.115.0
+uvicorn==0.30.5
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+pydantic==1.10.17
+passlib==1.7.4
+bcrypt==4.0.1
+python-dotenv==1.0.1
 flask-cors==4.0.0
+pydantic[email]

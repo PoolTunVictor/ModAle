@@ -1,20 +1,16 @@
 from fastapi import FastAPI
 from .database.database import Base, engine
 from fastapi.middleware.cors import CORSMiddleware
-from .controllers import auth_controller
-from .controllers.usuarios_controller import UsuarioController
-
 from .controllers import (
-    ClienteController,
     DetallePedidoController,
     ProductoController,
     DireccionController,
     MovimientoStockController,
-    PedidoController
-    
+    PedidoController,
 )
+from .controllers.auth_controller import router as AuthRouter
+from .controllers.usuarios_controller import router as UsuariosRouter
 from .models import *
-
 
 Base.metadata.create_all(bind=engine)
 
@@ -27,19 +23,21 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],          
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(ClienteController().router)
-app.include_router(DireccionController().router)
-app.include_router(ProductoController().router)
+# Routers globales
+app.include_router(AuthRouter, prefix="/auth")
+app.include_router(UsuariosRouter, prefix="/usuarios")
 
-app.include_router(PedidoController().router)
+def register_controllers():
+    app.include_router(DireccionController().router)
+    app.include_router(ProductoController().router)
+    app.include_router(PedidoController().router)
+    app.include_router(DetallePedidoController().router)
+    app.include_router(MovimientoStockController().router)
 
-app.include_router(DetallePedidoController().router)
-app.include_router(MovimientoStockController().router)
-app.include_router(auth_controller.router)  # Incluir el router de auth_controller.py7
-app.include_router(UsuarioController().router)
+register_controllers()

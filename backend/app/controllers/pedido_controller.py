@@ -1,58 +1,31 @@
 from fastapi import Depends
-from sqlalchemy.orm import Session
-from .base_controller import get_db
+from sqlalchemy.orm import Session, joinedload
+from .base_controller import get_db, BaseController
 from ..models.pedido import Pedido
 from ..services.pedidos_service import PedidoService
-from .base_controller import BaseController
-
 
 class PedidoController(BaseController):
     def __init__(self):
         super().__init__(Pedido, "pedidos")
 
-        # Obtener pedidos por usuario (antes cliente)
-        @self.router.get("/usuario/{id_usuario}")
-        def get_pedidos_usuario(id_usuario: int, db: Session = Depends(get_db)):
-            service = PedidoService(db)
-            pedidos = service.get_pedidos_por_usuario(id_usuario)
-            return [
-                {
-                    "id_pedido": p.id_pedido,
-                    "fecha": p.fecha,
-                    "total": float(p.total),
-                    "estado": p.estado.value if p.estado else None,
-                    "direccion": {
-                        "colonia": p.direccion.colonia if p.direccion else None,
-                        "lugar": p.direccion.lugar if p.direccion else None,
-                    },
-                    "detalles": [
-                        {
-                            "id_detalle": d.id_detalle,
-                            "producto": d.producto.nombre if d.producto else None,
-                            "cantidad": d.cantidad,
-                            "precio_unitario": float(d.precio_unitario),
-                            "subtotal": float(d.subtotal),
-                        }
-                        for d in p.detalles
-                    ],
-                }
-                for p in pedidos
-            ]
-        
-        # Obtener todos los pedidos con detalle
-        @self.router.get("/usuario/detalle/")
-        def get_pedidos_usuario(db: Session = Depends(get_db)):
+        # Obtener todos los pedidos con detalles, usuario y dirección
+        @self.router.get("/")
+        def get_pedidos(db: Session = Depends(get_db)):
             service = PedidoService(db)
             pedidos = service.get_pedidos_detalle()
             return [
                 {
                     "id_pedido": p.id_pedido,
-                    "fecha": p.fecha,
+                    "fecha": p.fecha,  # fecha desde modelo
                     "total": float(p.total),
                     "estado": p.estado.value if p.estado else None,
+                    "usuario": {
+                        "id_usuario": p.usuario.id_usuario if p.usuario else None,
+                        "nombre": p.usuario.nombre if p.usuario else 'Sin usuario'
+                    },
                     "direccion": {
                         "colonia": p.direccion.colonia if p.direccion else None,
-                        "lugar": p.direccion.lugar if p.direccion else None,
+                        "localidad": p.direccion.lugar if p.direccion else None,
                     },
                     "detalles": [
                         {
@@ -60,35 +33,10 @@ class PedidoController(BaseController):
                             "producto": d.producto.nombre if d.producto else None,
                             "cantidad": d.cantidad,
                             "precio_unitario": float(d.precio_unitario),
-                            "subtotal": float(d.subtotal),
+                            "subtotal": float(d.subtotal)
                         }
                         for d in p.detalles
-                    ],
+                    ]
                 }
                 for p in pedidos
             ]
-            
-        @self.router.get("/detalle/{id_pedido}")
-        def get_pedido_detalle(id_pedido: int, db: Session = Depends(get_db)):
-            service = PedidoService(db)
-            pedido = service.get_pedido_detalle_id(id_pedido)
-            return {
-                    "id_pedido": pedido.id_pedido,
-                    "fecha": pedido.fecha,
-                    "total": float(pedido.total),
-                    "estado": pedido.estado.value if pedido.estado else None,
-                    "direccion": {
-                        "colonia": pedido.direccion.colonia if pedido.direccion else None,
-                        "lugar": pedido.direccion.lugar if pedido.direccion else None,
-                    },
-                    "detalles": [
-                        {
-                            "id_detalle": d.id_detalle,
-                            "producto": d.producto.nombre if d.producto else None,
-                            "cantidad": d.cantidad,
-                            "precio_unitario": float(d.precio_unitario),
-                            "subtotal": float(d.subtotal),
-                        }
-                        for d in pedido.detalles
-                    ],
-                }

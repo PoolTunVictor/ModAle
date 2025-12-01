@@ -5,6 +5,11 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Producto } from '../../core/models/producto';
 import { ProductService } from '../../core/service/product/product.service';
 
+// Extender Producto para agregar propiedad de mensaje
+interface ProductoConMensaje extends Producto {
+  mostrarMensaje?: boolean;
+}
+
 @Component({
   selector: 'app-categori-page',
   templateUrl: './categori-page.component.html',
@@ -14,25 +19,22 @@ import { ProductService } from '../../core/service/product/product.service';
 })
 export class CategoriPageComponent {
 
-  productos: Producto[] = [];
-  productosOriginales: Producto[] = [];
+  productos: ProductoConMensaje[] = [];
+  productosOriginales: ProductoConMensaje[] = [];
   nombreCategoria = '';
   precioMax = 200;
 
-  mensajeAgregado = '';
-  mostrarMensaje = false;
-
-  productoSeleccionado: Producto | null = null;
+  productoSeleccionado: ProductoConMensaje | null = null;
 
   categorias = [
-    { nombre: 'Nuevo', ruta: 'nuevo' },
+    
     { nombre: 'Cuidado Facial', ruta: 'cuidado-facial' },
     { nombre: 'Accesorios', ruta: 'accesorios' },
     { nombre: 'Perfumes', ruta: 'perfumes' },
     { nombre: 'Maquillaje', ruta: 'maquillaje' },
     { nombre: 'Prendas', ruta: 'prendas' },
     { nombre: 'Cuidado Corporal', ruta: 'cuidado-corporal' },
-    { nombre: 'Ofertas', ruta: 'ofertas' }
+   
   ];
 
   categoriasFiltradas: any[] = [];
@@ -65,42 +67,57 @@ export class CategoriPageComponent {
     this.router.navigate(['/categoria', categoriaRuta]);
   }
 
-  cargarProductosPorCategoria(categoria: string): void {
-    this.productService.getCategoria(categoria).subscribe({
-      next: productos => {
-        // Aseguramos que siempre sea un array
-        this.productosOriginales = Array.isArray(productos) ? productos : [productos];
-        this.productos = [...this.productosOriginales];
-      },
-      error: err => {
-        console.error('❌ Error al cargar productos:', err);
-      }
+cargarProductosPorCategoria(categoria: string): void {
+  this.productService.getCategoria(categoria).subscribe({
+    next: productos => {
+      // Si tu endpoint devuelve un array de productos
+      this.productosOriginales = Array.isArray(productos) ? productos : [productos];
+      this.productos = this.productosOriginales.map(p => ({
+        ...p,
+        mostrarMensaje: false,
+        stock: p.stock // aseguramos que stock esté disponible
+      }));
+    },
+    error: err => console.error('❌ Error al cargar productos:', err)
+  });
+}
+
+agregarACesta(producto: ProductoConMensaje): void {
+  const cesta: any[] = JSON.parse(localStorage.getItem('cesta') || '[]');
+  const index = cesta.findIndex(p => p.id_producto === producto.id_producto);
+
+  // Cantidad actual en el carrito
+  const cantidadActual = index > -1 ? cesta[index].cantidad : 0;
+
+  // Validación de stock
+  if (producto.stock !== undefined && cantidadActual >= producto.stock) {
+    alert(`No puedes agregar más unidades. Stock disponible: ${producto.stock}`);
+    return;
+  }
+
+  if (index > -1) {
+    // Incrementa cantidad solo si no supera stock
+    cesta[index].cantidad = cantidadActual + 1;
+  } else {
+    // Agrega el producto con cantidad inicial 1
+    cesta.push({
+      id_producto: producto.id_producto,
+      nombre: producto.nombre,
+      precio: producto.precio,
+      imagen: producto.imagen,
+      cantidad: 1
     });
   }
 
-  agregarACesta(producto: Producto): void {
-    const cesta: any[] = JSON.parse(localStorage.getItem('cesta') || '[]');
-    const index = cesta.findIndex(p => p.id_producto === producto.id_producto);
+  localStorage.setItem('cesta', JSON.stringify(cesta));
 
-    if (index > -1) {
-      cesta[index].stock! += 1;
-    } else {
-      cesta.push({ ...producto, stock: 1 });
-    }
+  // Mensaje visual en la tarjeta
+  producto.mostrarMensaje = true;
+  setTimeout(() => producto.mostrarMensaje = false, 2500);
+}
 
-    localStorage.setItem('cesta', JSON.stringify(cesta));
 
-    this.mensajeAgregado = `${producto.nombre} se ha agregado a la cesta`;
-    this.mostrarMensaje = true;
-    setTimeout(() => (this.mostrarMensaje = false), 2500);
-  }
-
-  obtenerCantidadCesta(): number {
-    const cesta: any[] = JSON.parse(localStorage.getItem('cesta') || '[]');
-    return cesta.reduce((acc, item) => acc + (item.stock || 0), 0);
-  }
-
-  abrirDetalles(producto: Producto): void {
+  abrirDetalles(producto: ProductoConMensaje): void {
     this.productoSeleccionado = producto;
   }
 

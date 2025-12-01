@@ -55,9 +55,9 @@
 }
 
 .tool-card {
-  background: #fff; 
-  border-radius: 10px;
-  padding: 10px;
+  background: #ffffff; 
+  border-radius: 15px;
+  padding: 20px;
   text-align: center;
   transition: 0.3s;
   display: flex;
@@ -65,6 +65,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  min-height: 420px;
+   border: 1px solid #dcdcdc;
 }
 
 .tool-card:hover {
@@ -87,11 +89,13 @@
 
 .tool-card .product-image {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  height: 250px;           /* ✔ más alto */
+  object-fit: contain;       /* ✔ asegura que siempre llene el espacio */
+  object-position: center; /* ✔ centra la imagen */
+  border-radius: 12px;
+  background-color: #ffffff; /* ✔ por si la imagen es muy pequeña */
 }
+
 
 .popular-products-section {
   width: 100%;

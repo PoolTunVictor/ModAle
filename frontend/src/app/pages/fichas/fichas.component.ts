@@ -1,62 +1,64 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';   // ✅ IMPORTANTE
+import { FormsModule } from '@angular/forms';
+import { PedidoService } from '../../core/service/pedido/pedido.service';
 
 @Component({
   selector: 'app-fichas',
   templateUrl: './fichas.component.html',
-  imports: [CommonModule, FormsModule],  // ✅ AGREGA ESTO
+  imports: [CommonModule, FormsModule],
   styleUrls: ['./fichas.component.css']
 })
-export class FichasComponent {
-  selectedLocation = 'all';
+export class FichasComponent implements OnInit {
+
+  fichas: any[] = [];
+  fichasFiltradas: any[] = [];
 
   filtroLocalidad: string = 'all';
   filtroEstado: string = 'all';
   filtroFecha: string = '';
 
-  fichas = [
-    { name: 'Sophia Clark', date: '2024-01-15', status: 'Nuevo', location: 'Calkiní' },
-    { name: 'Liam Walker', date: '2024-01-16', status: 'En proceso', location: 'Dzibalché' },
-    { name: 'Liam Walker', date: '2024-01-16', status: 'En proceso', location: 'Becal' },
-    { name: 'Olivia Carter', date: '2024-01-17', status: 'Nuevo', location: 'Calkiní' },
-    { name: 'Noah Evans', date: '2024-01-18', status: 'Completado', location: 'Calkiní' },
-    { name: 'Ava Bennett', date: '2024-01-19', status: 'Nuevo', location: 'Calkiní' },
-    { name: 'Ethan Reed', date: '2024-01-20', status: 'En proceso', location: 'Dzibalché' },
-    { name: 'Isabella Hayes', date: '2024-01-21', status: 'Nuevo', location: 'Becal' },
-    { name: 'Jackson Powell', date: '2024-01-22', status: 'Completado', location: 'Calkiní' }
-  ];
+  fichaSeleccionada: any = null;
 
-  fichasFiltradas = [...this.fichas];
+  constructor(private router: Router, private pedidoService: PedidoService) {}
 
-  constructor(private router: Router) {}
-
-  filtrarPorUbicacion(location: string) {
-    this.selectedLocation = location;
-    this.filtroLocalidad = location;
-    this.aplicarFiltros();
+  ngOnInit(): void {
+    this.cargarPedidos();
   }
 
-  aplicarFiltros() {
-    this.fichasFiltradas = this.fichas.filter(f => {
+  cargarPedidos(): void {
+    this.pedidoService.getPedidos().subscribe({
+      next: (data: any[]) => {
+        this.fichas = data.map(pedido => ({
+          id: pedido.id_pedido,
+          name: pedido.usuario?.nombre || 'Sin usuario',
+          date: pedido.fecha ? new Date(pedido.fecha).toLocaleDateString() : 'Sin fecha',
+          status: pedido.estado || 'Sin estado',
+          location: pedido.direccion?.lugar || 'Sin localidad'
+        }));
+        this.fichasFiltradas = [...this.fichas];
+      },
+      error: (err: any) => {
+        console.error('Error al cargar pedidos', err);
+      }
+    });
+  }
 
+  aplicarFiltros(): void {
+    this.fichasFiltradas = this.fichas.filter(f => {
       const coincideLocalidad =
         this.filtroLocalidad === 'all' || f.location === this.filtroLocalidad;
-
       const coincideEstado =
         this.filtroEstado === 'all' || f.status === this.filtroEstado;
-
       const coincideFecha =
         this.filtroFecha === '' || f.date.startsWith(this.filtroFecha);
-
       return coincideLocalidad && coincideEstado && coincideFecha;
     });
   }
 
-  fichaSeleccionada: any = null;
-
-  verDetalle(ficha: any) {
+  verDetalle(ficha: any): void {
     this.router.navigate(['/admin/ficha/ficha-detalle', ficha.id]);
   }
+
 }

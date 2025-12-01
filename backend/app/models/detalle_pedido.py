@@ -9,7 +9,7 @@ class DetallePedido(Base):
     id_producto = Column(Integer, ForeignKey("productos.id_producto"))
     cantidad = Column(Integer)
     precio_unitario = Column(DECIMAL(10, 2))
-    subtotal = Column(DECIMAL(10, 2))
+
 
     pedido = relationship("Pedido", back_populates="detalles")
     producto = relationship("Producto", back_populates="detalles")

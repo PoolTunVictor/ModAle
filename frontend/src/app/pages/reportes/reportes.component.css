@@ -1,0 +1,160 @@
+.content-admin {
+  margin-left: 220px;
+  padding: 0;
+}
+
+
+.registro-container {
+  padding: 40px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.header-reporte {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e3b1c8;
+  padding-bottom: 20px;
+}
+
+.header-reporte h1 {
+  font-family: "Playwrite DE SAS", cursive;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.btn-imprimir {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-imprimir:hover {
+  background-color: #e3b1c8;
+  color: #000;
+}
+
+.resumen-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border-left: 5px solid #e3b1c8; /* Borde rosita */
+}
+
+.card h3 {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.numero {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.texto-destacado {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtexto {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 5px;
+  display: block;
+}
+
+
+.kpi-ventas { border-left-color: #28a745; } 
+.kpi-pedidos { border-left-color: #007bff; } 
+.kpi-top { border-left-color: #ffc107; } 
+.kpi-dia { border-left-color: #e3b1c8; } 
+
+
+.tablas-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  gap: 20px;
+}
+
+.panel {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid #eee;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-green { color: #28a745; font-weight: bold; }
+.text-red { color: #dc3545; font-weight: bold; }
+
+
+.alerta {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 900px) {
+  .tablas-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
+
+@media print {
+  .btn-imprimir, .main-header, .sidebar { 
+    display: none;
+  }
+}

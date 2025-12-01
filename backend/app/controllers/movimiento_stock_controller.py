@@ -5,4 +5,4 @@ from .base_controller import BaseController
 
 class MovimientoStockController(BaseController):
     def __init__(self):
-        super().__init__(MovimientoStock, "movimientos_stock")
+      super().__init__(MovimientoStock, "movimientos_stock")

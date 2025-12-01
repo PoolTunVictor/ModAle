@@ -5,7 +5,6 @@ from ..database.database import Base
 class Direccion(Base):
     __tablename__ = "direcciones"
     id_direccion = Column(Integer, primary_key=True, index=True, autoincrement=True)  
-    # Cambiado id_cliente por id_usuario
     id_usuario = Column(Integer, ForeignKey("usuarios.id_usuario"))
     colonia = Column(String(100))
     lugar = Column(String(100))

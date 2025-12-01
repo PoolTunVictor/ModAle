@@ -1,29 +1,76 @@
 /* =========================================
-   RESET Y GLOBALES
+   RESET GENERAL
    ========================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+.main-footer {
+  flex-shrink: 0;
+  background-color: #f9f9f9;
+  color: #000;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-info h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.footer-info p {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+/* =========================================
+   TÍTULO CATEGORÍA
+   ========================================= */
 .titulo-categoria {
   font-size: 3rem;
   text-align: center;
   margin: 120px 0 10px;
   font-weight: 700;
-  font-family: "Playwrite DE SAS", cursive; /* Sugerencia para mantener estilo */
+  font-family: "Playwrite DE SAS", cursive;
 }
 
 /* =========================================
-   FILTROS
+   FILTROS DE CATEGORÍAS
    ========================================= */
 .filtros-categorias {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 25px;
-  flex-wrap: wrap;
   padding: 0 10px;
 }
 
@@ -38,7 +85,6 @@
   transition: color 0.3s ease;
 }
 
-/* Subrayado animado */
 .categoria-item::after {
   content: "";
   position: absolute;
@@ -54,7 +100,8 @@
   color: #df7c9d;
 }
 
-.categoria-item:hover::after {
+.categoria-item:hover::after,
+.activa::after {
   width: 100%;
 }
 
@@ -63,40 +110,58 @@
   font-weight: bold;
 }
 
-.activa::after {
-  width: 100%;
-}
-
 /* =========================================
-   CONTENIDO Y GRID
+   CONTENIDO Y GRID DE PRODUCTOS
    ========================================= */
 .contenido {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   padding: 10px 20px 40px;
-
-  display: flex;
-  gap: 20px;
+  margin: 0 auto;
 }
 
 .productos-grid {
-  flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(5, 1fr); /* 4 productos por fila */
+  justify-content: center; /* centra las columnas si hay menos productos */
+  gap: 10px; /* separación entre tarjetas */
+  max-width: 1800px; /* limita ancho máximo */
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* Responsive: reducir columnas según pantalla */
+@media (max-width: 1200px) {
+  .productos-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================================
    TARJETAS DE PRODUCTO
    ========================================= */
 .producto-card {
+    width: 100%;
+  max-width: 320px; /* tamaño controlado */
+  margin: 0 auto; /* centra dentro de su columna */
   border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px;
   background: #f9f9f9;
   text-align: center;
   transition: 0.2s;
-  position: relative; /* Necesario para modal inline */
+  position: relative;
 }
 
 .producto-card:hover {
@@ -106,7 +171,8 @@
 
 .imagen-producto {
   width: 100%;
-  height: 200px;
+  height: auto;
+  aspect-ratio: 0.8/1.1;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
@@ -119,7 +185,6 @@
   font-size: 1.2rem;
 }
 
-/* Botón "Agregar al carrito" */
 .btn-carrito {
   background-color: #df7c9d;
   color: white;
@@ -175,56 +240,43 @@
   background-color: #d44b7d;
 }
 
-/* Animación modal */
-@keyframes slideDown {
-  from { transform: translateY(-10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
 /* =========================================
-   MENSAJE AGREGADO AL CARRITO (MODIFICADO)
+   MENSAJE AGREGADO DENTRO DE TARJETA
    ========================================= */
 .mensaje-agregado {
-  position: fixed; /* Fijo en la pantalla */
-  bottom: 30px;    /* 30px desde abajo */
-  left: 50%;       /* Al 50% del ancho */
-  transform: translateX(-50%); /* Truco matemático para centrarlo exacto */
-  
-  background-color: #e3b1c8; /* Rosita Pastel */
-  color: #000;     /* Texto negro para leerse bien */
-  
-  padding: 15px 30px;
-  border-radius: 50px; /* Bordes redonditos tipo píldora */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombrita para resaltar */
-  z-index: 2000;   /* Por encima de todo */
-  font-weight: 600;
+  position: absolute;
+  bottom: 200px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #efd1df;
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 25px;
+  font-weight: 400;
   text-align: center;
-  
-  /* Animación de entrada y salida */
-  animation: fadeInOut 2.5s ease-in-out forwards;
+  z-index: 900;
+  animation: fadeInOutProducto 2.5s ease-in-out forwards;
 }
 
-/* Animación suave */
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, 20px); }
+@keyframes fadeInOutProducto {
+  0% { opacity: 0; transform: translate(-50%, 10px); }
   15% { opacity: 1; transform: translate(-50%, 0); }
   85% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -20px); }
+  100% { opacity: 0; transform: translate(-50%, -10px); }
 }
-
 
 /* =========================================
    RESPONSIVE
    ========================================= */
+@media (max-width: 1200px) {
+  .contenido {
+    padding: 10px;
+  }
+}
+
 @media (max-width: 900px) {
   .contenido {
-    flex-direction: column;
-  }
-
-  .filtro-precio {
-    width: 100%;
-    position: relative;
-    top: 0;
+    padding: 10px;
   }
 }
 
@@ -247,12 +299,35 @@
   }
 
   .productos-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
-  
-  /* Ajuste mensaje en móvil */
-  .mensaje-agregado {
-    width: 90%; /* Que no se salga de la pantalla en celulares */
-    bottom: 20px;
-  }
+}
+
+.badge-descuento {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #df7c9d;
+  color: white;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 8px;
+  z-index: 15;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.precio-original {
+  text-decoration: line-through;
+  color: #777;
+  margin: 5px 0 0;
+  font-size: 1rem;
+}
+
+.precio-descuento {
+  color: #b30000;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
 }

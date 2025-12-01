@@ -10,4 +10,5 @@ export interface Producto {
   nuevo: boolean;
   oferta: boolean;
   imagen: string | null; 
+  descuento: number;
 }

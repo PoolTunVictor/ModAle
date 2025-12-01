@@ -25,7 +25,12 @@ def generate_schemas(model: Type):
         else:
             default = ...
         fields[column.name] = (python_type, default)
-    Schema = create_model(f"{model.__name__}Schema", **fields)
+
+    Schema = create_model(
+        model.__name__ + "Schema",
+        **fields,
+         __config__=type("Config", (), {"orm_mode": True}),
+    )
     return Schema
 
 class BaseController:
@@ -37,20 +42,25 @@ class BaseController:
 
         @self.router.get("/", response_model=List[self.Schema])
         def read_all(db: Session = Depends(get_db)):
-            return BaseService(model, db).read_all()
+            items = BaseService(model, db).read_all()
+            return [self.Schema.from_orm(item) for item in items]
 
         @self.router.get("/{item_id}", response_model=self.Schema)
         def read(item_id: int, db: Session = Depends(get_db)):
-            return BaseService(model, db).read(item_id)
+            item = BaseService(model, db).read(item_id)
+            return self.Schema.from_orm(item)
 
         @self.router.post("/", response_model=self.Schema)
         def create(data: Dict[str, Any], db: Session = Depends(get_db)):
-            return BaseService(model, db).create(data)
+            item = BaseService(model, db).create(data)
+            return self.Schema.from_orm(item)
 
         @self.router.put("/{item_id}", response_model=self.Schema)
         def update(item_id: int, data: Dict[str, Any], db: Session = Depends(get_db)):
-            return BaseService(model, db).update(item_id, data)
+            item = BaseService(model, db).update(item_id, data)
+            return self.Schema.from_orm(item)
 
         @self.router.delete("/{item_id}", response_model=self.Schema)
         def delete(item_id: int, db: Session = Depends(get_db)):
-            return BaseService(model, db).delete(item_id)
+            item = BaseService(model, db).delete(item_id)
+            return self.Schema.from_orm(item)

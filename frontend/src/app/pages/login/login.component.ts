@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,60 +12,66 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  passwordVisible: boolean = false;
+
   email: string = '';
   password: string = '';
+  passwordVisible: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  togglePassword() {
+  // Alterna visibilidad de contraseña
+  togglePassword(): void {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  async login() {
+  // Login normal
+  login(): void {
     if (!this.email || !this.password) {
-      alert("Debes ingresar correo y contraseña");
+      alert("Debes ingresar usuario/email y contraseña");
       return;
     }
 
-    try {
-      const response = await fetch("http://localhost:8000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: this.email,
-          password: this.password
-        })
-      });
+    const loginData = {
+      email: this.email,
+      password: this.password
+    };
 
-      const data = await response.json();
+    this.authService.login(loginData).subscribe({
+      next: (response: any) => {
+        // Guarda usuario en localStorage
+        localStorage.setItem('user', JSON.stringify(response.user));
 
-      if (!response.ok) {
-        alert(data.detail || "Credenciales incorrectas");
-        return;
+        // Redirección según rol
+        if (response.user.rol === 'admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/product-catalog']);
+        }
+      },
+      error: (error) => {
+        alert(error.error?.detail || "Credenciales incorrectas");
       }
-
-      // ✔️ Guardar datos del usuario (si quieres)
-      localStorage.setItem("user", JSON.stringify(data.user));
-
-      // ✔️ Redirigir al catalogo
-      this.router.navigate(['/product-catalog']);
-
-    } catch (error) {
-      console.error("Error al iniciar sesión:", error);
-      alert("No se pudo conectar con el servidor");
-    }
+    });
   }
 
-  loginWithGoogle() {
-    console.log('Login with Google clicked');
+  // Navegar a la pantalla de registro
+  goToRegister(): void {
+    this.router.navigate(['/register']);
   }
 
-  loginWithGitHub() {
-    console.log('Login with GitHub clicked');
+  // Login social (placeholder)
+  loginWithGoogle(): void {
+    console.log("Login con Google");
   }
 
-  loginWithFacebook() {
-    console.log('Login with Facebook clicked');
+  loginWithFacebook(): void {
+    console.log("Login con Facebook");
+  }
+
+  loginWithGitHub(): void {
+    console.log("Login con GitHub");
   }
 }

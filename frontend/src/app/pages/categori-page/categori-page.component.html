@@ -15,13 +15,44 @@
   <div class="productos-grid">
     <div *ngFor="let producto of productos" class="producto-card">
 
+      <!-- 🔥 BADGE DE DESCUENTO -->
+      <span class="badge-descuento" *ngIf="producto.oferta && producto.descuento > 0">
+        -{{ producto.descuento }}%
+      </span>
+
       <div class="imagen-container" (click)="abrirDetalles(producto)">
         <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
       </div>
 
       <h3>{{ producto.nombre }}</h3>
       <p class="descripcion">{{ producto.descripcion }}</p>
-      <p class="precio">{{ producto.precio | currency:'USD' }}</p>
+
+      <!-- 🔥 PRECIO CON DESCUENTO -->
+      <ng-container *ngIf="producto.oferta && producto.descuento > 0; else precioNormal">
+        <p class="precio-original">
+          {{ producto.precio | currency:'USD' }}
+        </p>
+
+        <p class="precio-descuento">
+          {{
+            producto.precio -
+            (producto.precio * (producto.descuento / 100))
+            | currency:'USD'
+          }}
+        </p>
+      </ng-container>
+
+      <!-- PRECIO NORMAL -->
+      <ng-template #precioNormal>
+        <p class="precio">{{ producto.precio | currency:'USD' }}</p>
+      </ng-template>
+
+      <p *ngIf="producto.stock !== undefined">Stock disponible: {{ producto.stock }}</p>
+
+      <!-- Mensaje agregado dentro de la tarjeta -->
+      <div *ngIf="producto.mostrarMensaje" class="mensaje-agregado">
+        {{ producto.nombre }} se ha agregado a la cesta
+      </div>
 
       <button class="btn-carrito" (click)="agregarACesta(producto)">Agregar al carrito</button>
 
@@ -40,9 +71,5 @@
       </div>
 
     </div>
-  </div>
-
-  <div *ngIf="mostrarMensaje" class="mensaje-agregado">
-    {{ mensajeAgregado }}
   </div>
 </main>

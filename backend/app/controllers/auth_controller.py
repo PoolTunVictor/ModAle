@@ -1,27 +1,37 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import Depends, APIRouter
 from sqlalchemy.orm import Session
-from ..database.database import get_db
-from ..models.Usuario import Usuario  # Asegúrate de que existe tu modelo
+from ..services.usuario_service import UsuarioService
+from ..models.usuarios import Usuario
+from ..controllers.base_controller import get_db
+from pydantic import BaseModel
 
-router = APIRouter(prefix="/auth", tags=["Auth"])
+class RegisterRequest(BaseModel):
+    nombre: str
+    username: str
+    email: str
+    telefono: str | None = None
+    password: str
+
+class LoginRequest(BaseModel):
+    email_or_username: str
+    password: str
+
+router = APIRouter()
+
+@router.post("/register")
+def register(request: RegisterRequest, db: Session = Depends(get_db)):
+    service = UsuarioService(db)
+    usuario = service.registrar(
+        nombre=request.nombre,
+        email=request.email,
+        username=request.username,
+        telefono=request.telefono,
+        password=request.password
+    )
+    return {"message": "Usuario registrado correctamente", "user": usuario.id_usuario}
 
 @router.post("/login")
-def login(email: str, password: str, db: Session = get_db()):
-    user = db.query(Usuario).filter(Usuario.email == email).first()
-
-    if not user:
-        raise HTTPException(status_code=400, detail="Correo no encontrado")
-
-    # Como dijiste: NO usar bcrypt (usuarios demo)
-    if user.password != password:
-        raise HTTPException(status_code=400, detail="Contraseña incorrecta")
-
-    return {
-        "message": "Login exitoso",
-        "user": {
-            "id": user.id,
-            "nombre": user.nombre,
-            "email": user.email,
-            "rol": user.rol
-        }
-    }
+def login(request: LoginRequest, db: Session = Depends(get_db)):
+    service = UsuarioService(db)
+    usuario = service.login(request.email_or_username, request.password)
+    return {"message": "Login exitoso", "user": usuario.id_usuario}

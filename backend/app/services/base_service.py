@@ -1,43 +1,40 @@
 from sqlalchemy.orm import Session
-from fastapi import HTTPException
+from sqlalchemy import inspect
 
 class BaseService:
     def __init__(self, model, db: Session):
         self.model = model
         self.db = db
-        
-    def create(self, data: dict):
-        obj = self.model(**data)
-        self.db.add(obj)
-        self.db.commit()
-        self.db.refresh(obj)
-        return obj
-    
-    
-    def read(self, item_id: int):
-        pk = self._get_pk()
-        obj = self.db.query(self.model).filter(pk == item_id).first()
-        if not obj:
-            raise HTTPException(status_code=404, detail="Registro no encontrado")
-        return obj
-    
-    
+
+    def _get_pk(self):
+        return inspect(self.model).primary_key[0].name
+
     def read_all(self):
         return self.db.query(self.model).all()
 
-    def update(self, item_id: int, data: dict):
-        obj = self.read(item_id)
+    def read(self, item_id):
+        pk = self._get_pk()
+        return self.db.query(self.model).filter(getattr(self.model, pk) == item_id).first()
+
+    def create(self, data: dict):
+        item = self.model(**data)
+        self.db.add(item)
+        self.db.commit()
+        self.db.refresh(item)
+        return item
+
+    def update(self, item_id, data: dict):
+        pk = self._get_pk()
+        item = self.db.query(self.model).filter(getattr(self.model, pk) == item_id).first()
         for key, value in data.items():
-            setattr(obj, key, value)
+            setattr(item, key, value)
         self.db.commit()
-        self.db.refresh(obj)
-        return obj
+        self.db.refresh(item)
+        return item
 
-    def delete(self, item_id: int):
-        obj = self.read(item_id)
-        self.db.delete(obj)
+    def delete(self, item_id):
+        pk = self._get_pk()
+        item = self.db.query(self.model).filter(getattr(self.model, pk) == item_id).first()
+        self.db.delete(item)
         self.db.commit()
-        return obj
-
-    def _get_pk(self):
-        return next(iter(self.model.__table__.primary_key.columns))
+        return item
