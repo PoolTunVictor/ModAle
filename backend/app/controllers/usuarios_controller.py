@@ -6,9 +6,10 @@ from .base_controller import get_db
 
 # Crear el router que luego se importa en main.py
 router = APIRouter(
-    prefix="/usuarios",
-    tags=["Usuarios"]
+    prefix="/api/auth",
+    tags=["auth"]
 )
+
 
 # Endpoint para registrar usuarios
 @router.post("/register", response_model=UsuarioResponse)

@@ -8,9 +8,11 @@ from .controllers import (
     MovimientoStockController,
     PedidoController,
 )
-from .controllers.auth_controller import router as AuthRouter
+from app.controllers.auth_controller import router as auth_router
 from .controllers.usuarios_controller import router as UsuariosRouter
 from .models import *
+from app.controllers.utils_controller import router as utils_router
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -30,8 +32,9 @@ app.add_middleware(
 )
 
 # Routers globales
-app.include_router(AuthRouter, prefix="/auth")
+app.include_router(auth_router, prefix="/api/auth")
 app.include_router(UsuariosRouter, prefix="/usuarios")
+app.include_router(utils_router)
 
 def register_controllers():
     app.include_router(DireccionController().router)
@@ -39,5 +42,5 @@ def register_controllers():
     app.include_router(PedidoController().router)
     app.include_router(DetallePedidoController().router)
     app.include_router(MovimientoStockController().router)
-
+    
 register_controllers()
