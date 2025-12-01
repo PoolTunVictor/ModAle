@@ -34,4 +34,16 @@ def register(request: RegisterRequest, db: Session = Depends(get_db)):
 def login(request: LoginRequest, db: Session = Depends(get_db)):
     service = UsuarioService(db)
     usuario = service.login(request.email_or_username, request.password)
-    return {"message": "Login exitoso", "user": usuario.id_usuario}
+    
+    if not usuario:
+        return {"message": "Credenciales incorrectas"}, 400
+
+    return {
+        "message": "Login exitoso",
+        "user": {
+            "id": usuario.id_usuario,
+            "nombre": usuario.nombre,
+            "email": usuario.email,
+            "rol": usuario.rol
+        }
+    }
