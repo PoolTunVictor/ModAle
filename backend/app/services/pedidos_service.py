@@ -52,7 +52,7 @@ class PedidoService(BaseService):
         return pedido
 
 
-    def crear_pedido(self, data: dict):
+    def crear_pedido(self, data: dict, id_usuario: int):
         try:
             id_usuario = data.get("id_usuario")
             id_direccion = data.get("id_direccion")
@@ -68,7 +68,7 @@ class PedidoService(BaseService):
                 id_direccion=id_direccion,
                 total=total,
                 fecha=datetime.now(),
-                estado="Pendiente"
+                estado="pendiente"
             )
 
             self.db.add(pedido)

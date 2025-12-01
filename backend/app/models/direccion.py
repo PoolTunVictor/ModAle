@@ -3,14 +3,12 @@ from sqlalchemy.orm import relationship
 from ..database.database import Base
 
 class Direccion(Base):
-    __tablename__ = "direcciones"
-    id_direccion = Column(Integer, primary_key=True, index=True, autoincrement=True)  
-    id_usuario = Column(Integer, ForeignKey("usuarios.id_usuario"))
-    colonia = Column(String(100))
-    lugar = Column(String(100))
+    __tablename__ = "direcciones"  # <- necesario
+    id_direccion = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    colonia = Column(String(100), nullable=False)
     referencia = Column(Text)
-    link_maps = Column(String(500))
+    id_localidad = Column(Integer, ForeignKey("localidades.id_localidades"), nullable=False)
 
-    # Relación apuntando a Usuario en lugar de Cliente
-    usuario = relationship("Usuario", back_populates="direcciones")
+    # Relaciones
+    localidad = relationship("Localidad", back_populates="direcciones")  # Relación bidireccional
     pedidos = relationship("Pedido", back_populates="direccion")

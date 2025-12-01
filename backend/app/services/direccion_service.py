@@ -8,19 +8,25 @@ class DireccionService(BaseService):
         super().__init__(Direccion, db)
     
     def crear_direccion(self, data: dict):
+        """
+        Crear una nueva dirección.
+        data debe contener: colonia, referencia (opcional), id_localidad
+        """
         nueva_direccion = Direccion(
             colonia=data['colonia'],
-            lugar=data['lugar'],
             referencia=data.get('referencia', ''),
-            id_usuario=data['id_usuario']
+            id_localidad=data['id_localidad']
         )
         self.db.add(nueva_direccion)
         self.db.commit()
         self.db.refresh(nueva_direccion)
         return nueva_direccion
     
-    def get_direcciones_por_usuario(self, id_usuario: int):
-        direcciones = self.db.query(Direccion).filter(Direccion.id_usuario == id_usuario).all()
+    def get_direcciones_por_localidad(self, id_localidad: int):
+        """
+        Obtener todas las direcciones asociadas a una localidad.
+        """
+        direcciones = self.db.query(Direccion).filter(Direccion.id_localidad == id_localidad).all()
         if not direcciones:
-            raise HTTPException(status_code=404, detail="No se encontraron direcciones")
+            raise HTTPException(status_code=404, detail="No se encontraron direcciones para esta localidad")
         return direcciones

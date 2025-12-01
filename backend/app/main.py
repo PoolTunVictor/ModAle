@@ -12,6 +12,8 @@ from app.controllers.auth_controller import router as auth_router
 from .controllers.usuarios_controller import router as UsuariosRouter
 from .models import *
 from app.controllers.utils_controller import router as utils_router
+from app.controllers.localidad_controller import router as localidad_router
+from app.controllers.direcciones_router import router as direcciones_router
 
 
 Base.metadata.create_all(bind=engine)
@@ -44,3 +46,5 @@ def register_controllers():
     app.include_router(MovimientoStockController().router)
     
 register_controllers()
+app.include_router(localidad_router)
+app.include_router(direcciones_router)

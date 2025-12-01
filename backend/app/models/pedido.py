@@ -11,12 +11,12 @@ class EstadoPedido(enum.Enum):
 
 class Pedido(Base):
     __tablename__ = "pedidos"
-    id_pedido = Column(Integer, primary_key=True, index=True, autoincrement=True)  
-    id_usuario = Column(Integer, ForeignKey("usuarios.id_usuario"))
-    id_direccion = Column(Integer, ForeignKey("direcciones.id_direccion"))
+    id_pedido = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    id_usuario = Column(Integer, ForeignKey("usuarios.id_usuario"), nullable=False)
+    id_direccion = Column(Integer, ForeignKey("direcciones.id_direccion"), nullable=False)
     fecha = Column(DateTime, default=datetime.utcnow)
     total = Column(DECIMAL(10, 2))
-    estado = Column(Enum(EstadoPedido))
+    estado=EstadoPedido.pendiente 
 
     # Relación con Usuario en lugar de Cliente
     usuario = relationship("Usuario", back_populates="pedidos")

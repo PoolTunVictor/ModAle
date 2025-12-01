@@ -38,11 +38,19 @@
         <h3 class="resumen-title">DIRECCIÓN DE ENVÍO</h3>
 
         <form class="resumen-form">
-          <label for="coloniaLugar">Colonia / Lugar</label>
-          <input type="text" id="coloniaLugar" [(ngModel)]="coloniaLugar" name="coloniaLugar" required>
+          <label for="colonia">Colonia</label>
+          <input type="text" id="colonia" [(ngModel)]="colonia" name="colonia" placeholder="Ingresa la colonia" required>
 
-          <label for="referencia">Referencia</label>
-          <input type="text" id="referencia" [(ngModel)]="referencia" name="referencia">
+         <label for="localidad">Localidad</label>
+<select id="localidad" [(ngModel)]="coloniaLugar" name="coloniaLugar" required>
+  <option value="" disabled selected>Selecciona una localidad</option>
+  <option *ngFor="let loc of localidades" [value]="loc.id_localidad">
+    {{ loc.nombre }}
+  </option>
+</select>
+
+          <label for="referencia">Referencia (opcional)</label>
+          <input type="text" id="referencia" [(ngModel)]="referencia" name="referencia" placeholder="Indica referencia adicional">
         </form>
 
         <div class="resumen-total">
@@ -50,11 +58,11 @@
           <span>${{ getTotal().toFixed(2) }}</span>
         </div>
 
-        <button class="checkout-btn" (click)="generarPedido()" [disabled]="!direccionValida()">
+        <button class="checkout-btn" (click)="generarPedido()" [disabled]="!camposCompletos()">
           Generar Pedido
         </button>
 
-        <p *ngIf="mensajePedido" class="mensaje-exito">{{ mensajePedido }}</p>
+        <p *ngIf="mensajeFicha" class="mensaje-exito">{{ mensajeFicha }}</p>
 
       </div>
     </div>

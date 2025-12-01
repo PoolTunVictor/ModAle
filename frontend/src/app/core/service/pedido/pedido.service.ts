@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class PedidoService {
   // URL del endpoint en tu backend
-  private apiUrl = 'http://localhost:8000/api/pedidos';
+  private apiUrl = 'http://localhost:8000/api/pedidos/';
 
   constructor(private http: HttpClient) {}
 

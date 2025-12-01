@@ -6,15 +6,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DireccionService {
-  private apiUrl = 'http://localhost:8000/direcciones'; // Endpoint de tu backend
+  private apiUrl = 'http://localhost:8000/api/direcciones/'; // Endpoint de tu backend
 
   constructor(private http: HttpClient) {}
 
-  crearDireccion(direccion: any): Observable<any> {
+  // Crear dirección usando colonia, referencia y id_localidad
+  crearDireccion(direccion: { colonia: string; referencia?: string; id_localidad: number }): Observable<any> {
     return this.http.post<any>(this.apiUrl, direccion);
   }
 
-  getDireccionesPorUsuario(id_usuario: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/usuario/${id_usuario}`);
+  // Obtener todas las direcciones
+  getDirecciones(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
+
+  // Si quieres obtener direcciones por localidad (opcional)
+  getDireccionesPorLocalidad(id_localidad: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/localidad/${id_localidad}`);
   }
 }

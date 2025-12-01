@@ -6,7 +6,7 @@ from ..services.pedidos_service import PedidoService
 
 class PedidoController(BaseController):
     def __init__(self):
-        super().__init__(Pedido, "pedidos")
+        super().__init__(Pedido, 'pedidos')
 
         # Obtener todos los pedidos con detalles, usuario y dirección
         @self.router.get("/")
@@ -25,7 +25,8 @@ class PedidoController(BaseController):
                     },
                     "direccion": {
                         "colonia": p.direccion.colonia if p.direccion else None,
-                        "localidad": p.direccion.lugar if p.direccion else None,
+                        "localidad": p.direccion.localidad.nombre if p.direccion and p.direccion.localidad else None,
+                        "referencias": p.direccion.referencia if p.direccion else None
                     },
                     "detalles": [
                         {

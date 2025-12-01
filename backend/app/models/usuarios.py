@@ -16,5 +16,4 @@ class Usuario(Base):
     fecha_registro = Column(DateTime(timezone=True), server_default=func.now())
 
     # Relaciones
-    direcciones = relationship("Direccion", back_populates="usuario")
     pedidos = relationship("Pedido", back_populates="usuario")

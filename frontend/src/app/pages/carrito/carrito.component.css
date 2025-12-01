@@ -7,12 +7,9 @@
   padding: 50px 30px; 
   color: #ffffff;
   position: relative; 
-  
-  /* Margen para que baje y no lo tape el header fijo (70px header + 10px aire) */
   margin-top: 80px; 
 }
 
-/* Capa oscura para leer el texto */
 .support-section::before {
   content: "";
   position: absolute;
@@ -25,7 +22,6 @@
   z-index: 1; 
 }
 
-/* Fuente del título */
 .support-title {
   font-family: "Playwrite DE SAS", cursive;
   font-size: 80px;
@@ -38,7 +34,7 @@
   margin-bottom: 30px;
 }
 
-/* === 2. CONFIGURACIÓN GENERAL === */
+/* === CONFIGURACIÓN GENERAL === */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -47,11 +43,10 @@
   min-height: 100vh;
   background-color: #ffffff;
   font-family: "Poppins", sans-serif;
-  /* IMPORTANTE: Padding 0 arriba porque el banner ya tiene margin-top */
   padding: 0 0 130px; 
 }
 
-/* === 3. CONTENIDO PRINCIPAL (PRODUCTOS Y RESUMEN) === */
+/* === CONTENIDO PRINCIPAL (PRODUCTOS Y RESUMEN) === */
 .main-content {
   display: flex;
   gap: 60px;
@@ -184,7 +179,7 @@
   color: #c999af;
 }
 
-/* === 4. LADO DERECHO: RESUMEN === */
+/* === LADO DERECHO: RESUMEN === */
 .resumen-section {
   flex: 1;
 }
@@ -194,7 +189,7 @@
   border-radius: 12px;
   padding: 25px;
   position: sticky;
-  top: 120px; /* Se queda fijo al hacer scroll */
+  top: 120px;
 }
 
 .resumen-title {
@@ -218,13 +213,32 @@
   font-weight: 500;
 }
 
-.resumen-form input {
+.resumen-form input,
+.resumen-form select {
   padding: 10px;
   border-radius: 10px;
   border: none;
   background: #f3dcee;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+}
+
+.resumen-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.resumen-form input:focus,
+.resumen-form select:focus {
+  outline: none;
+  box-shadow: inset 5px 5px 10px #d4b0c3, inset -5px -5px 10px #ffffff;
+}
+
+.resumen-form select option {
+  color: #333;
+  background: #f3dcee;
 }
 
 .resumen-total {
@@ -266,7 +280,7 @@
   cursor: pointer;
 }
 
-/* === 5. RESPONSIVE === */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
