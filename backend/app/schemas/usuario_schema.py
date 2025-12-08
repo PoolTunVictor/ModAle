@@ -25,4 +25,4 @@ class UsuarioResponse(BaseModel):
     fecha_registro: datetime
 
     class Config:
-        orm_mode = True  # Esto permite usar objetos SQLAlchemy directamente
+        orm_mode = True

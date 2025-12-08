@@ -9,7 +9,8 @@ export interface Localidad {
 
 @Injectable({ providedIn: 'root' })
 export class LocalidadService {
-  private url = 'http://localhost:8000/localidades'; // Cambia a tu endpoint real
+
+  private url = 'https://modale-production.up.railway.app/localidades';
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class LocalidadService {
     return this.http.get<Localidad[]>(this.url).pipe(
       catchError((error) => {
         console.error('Error cargando localidades:', error);
-        return of([]); // Devuelve array vacío si hay error
+        return of([]);
       })
     );
   }

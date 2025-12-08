@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class DetallePedidoService {
 
-  private apiUrl = 'http://localhost:8000/api/detalles_pedido/'; 
-  // 👆 AGREGADA LA “/” FINAL
+  private apiUrl = 'https://modale-production.up.railway.app/api/detalles_pedido/';
+  // 👆 Asegúrate de poner "/" al final
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +18,6 @@ export class DetallePedidoService {
 
   getDetallesPorPedido(id_pedido: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}pedido/${id_pedido}`);
-    // 👆 ahora construye bien la ruta
   }
 }
+

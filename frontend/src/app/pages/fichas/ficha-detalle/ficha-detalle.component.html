@@ -1,51 +1,52 @@
-<div class="header-admin"></div>
-
+<div class="header-admin">
+</div>
 <div class="content-admin">
   <main class="products-section">
 
     <section class="order-detail">
       <h2>Detalle del Pedido #{{ ficha?.id_pedido || idPedido }}</h2>
 
-      <table class="detalle-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Producto</th>
-            <th style="text-align:center;">Cantidad</th>
-            <th style="text-align:right;">Precio Unitario</th>
-          </tr>
-        </thead>
+      <div class="tabla-responsive">
+        <table class="detalle-table">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Producto</th>
+              <th style="text-align:center;">Cantidad</th>
+              <th style="text-align:right;">Precio Unitario</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr *ngFor="let d of detalles">
+          <tbody>
+            <tr *ngFor="let d of detalles">
 
-            <td data-label="Imagen">
-              <img *ngIf="d.imagen"
-                   [src]="d.imagen"
-                   alt="{{ d.producto }}"
-                   style="width:60px; height:60px; object-fit:cover; border-radius:6px;">
-            </td>
+              <td data-label="Imagen">
+                <img *ngIf="d.imagen"
+                     [src]="d.imagen"
+                     alt="{{ d.producto }}">
+              </td>
 
-            <td data-label="Producto">
-              {{ d.producto }}
-            </td>
+              <td data-label="Producto">{{ d.producto }}</td>
 
-            <td data-label="Cantidad" style="text-align:center;">
-              {{ d.cantidad }}
-            </td>
+              <td data-label="Cantidad" style="text-align:center;">
+                {{ d.cantidad }}
+              </td>
 
-            <td data-label="Precio" style="text-align:right;">
-              {{ d.precio_unitario | currency }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td data-label="Precio" style="text-align:right;">
+                {{ d.precio_unitario | currency }}
+              </td>
 
-      <div class="order-total">
-        Total del pedido: {{ ficha?.total || calcularTotalFromDetalles() | currency }}
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div style="margin-top:18px;">
+      <div class="order-total">
+        Total del pedido:
+        {{ ficha?.total || calcularTotalFromDetalles() | currency }}
+      </div>
+
+      <div class="botones-acciones">
         <button (click)="volver()">Volver</button>
         <button (click)="imprimir()">Imprimir</button>
       </div>

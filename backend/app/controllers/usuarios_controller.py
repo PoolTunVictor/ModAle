@@ -1,20 +1,19 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
 from ..services.usuario_service import UsuarioService
 from ..schemas.usuario_schema import RegisterRequest, LoginRequest, UsuarioResponse
 from .base_controller import get_db
-from ..models.usuarios import Usuario   # importa el modelo correcto
+from ..models.usuarios import Usuario   # Modelo SQLAlchemy
 
 
-
-# Crear el router que luego se importa en main.py
 router = APIRouter(
     prefix="/api/usuarios",
     tags=["usuarios"]
 )
 
 
-# Endpoint para registrar usuarios
+# Registrar usuario
 @router.post("/register", response_model=UsuarioResponse)
 def register_user(data: RegisterRequest, db: Session = Depends(get_db)):
     service = UsuarioService(db)
@@ -30,7 +29,8 @@ def register_user(data: RegisterRequest, db: Session = Depends(get_db)):
     except HTTPException as e:
         raise e
 
-# Endpoint para login
+
+# Login
 @router.post("/login", response_model=UsuarioResponse)
 def login_user(data: LoginRequest, db: Session = Depends(get_db)):
     service = UsuarioService(db)
@@ -40,6 +40,8 @@ def login_user(data: LoginRequest, db: Session = Depends(get_db)):
     except HTTPException as e:
         raise e
 
-@router.get("/", response_model=list[UsuarioBase])
+
+# Obtener todos los usuarios
+@router.get("/", response_model=list[UsuarioResponse])
 def obtener_usuarios(db: Session = Depends(get_db)):
     return db.query(Usuario).all()

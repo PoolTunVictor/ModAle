@@ -30,14 +30,14 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:4200",
         "http://127.0.0.1:4200",
-        "*"
+        "https://modale-production.up.railway.app"  # dominio de Railway
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Routers
+# Routers simples
 app.include_router(auth_router)
 app.include_router(usuarios_router, prefix="/usuarios", tags=["Usuarios"])
 app.include_router(utils_router)

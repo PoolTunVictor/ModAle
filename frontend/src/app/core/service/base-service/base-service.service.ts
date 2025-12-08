@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export abstract class BaseService<T> {
-  protected baseUrl = 'http://localhost:8000/api'; 
+  protected baseUrl = 'https://modale-production.up.railway.app/api';
+  // 👆 Cambia esto por tu dominio real
 
   constructor(protected http: HttpClient, private endpoint: string) {}
 

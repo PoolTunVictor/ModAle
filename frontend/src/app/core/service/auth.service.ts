@@ -7,24 +7,20 @@ import { Observable, tap } from 'rxjs';
 })
 export class AuthService {
 
- private apiUrl = 'http://localhost:8000/auth';
+  private apiUrl = 'https://modale-production.up.railway.app/auth';
 
   constructor(private http: HttpClient) {}
 
-  // ============================
-  // LOGIN
-  // ============================
-login(loginData: { email_or_username: string; password: string }): Observable<any> {
+  login(loginData: { email_or_username: string; password: string }): Observable<any> {
     const payload = {
-  email_or_username: loginData.email_or_username,
-  password: loginData.password
-};
-
+      email_or_username: loginData.email_or_username,
+      password: loginData.password
+    };
 
     return this.http.post(`${this.apiUrl}/login`, payload).pipe(
       tap((response: any) => {
         if (response.token) {
-          localStorage.setItem('token', response.token);  // 👈 GUARDAR TOKEN
+          localStorage.setItem('token', response.token);
         }
         if (response.user) {
           localStorage.setItem('user', JSON.stringify(response.user));
@@ -33,9 +29,6 @@ login(loginData: { email_or_username: string; password: string }): Observable<an
     );
   }
 
-  // ============================
-  // REGISTER
-  // ============================
   register(registerData: {
     nombre: string;
     telefono: string;
@@ -46,17 +39,11 @@ login(loginData: { email_or_username: string; password: string }): Observable<an
     return this.http.post(`${this.apiUrl}/register`, registerData);
   }
 
-  // ============================
-  // LOGOUT
-  // ============================
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   }
 
-  // ============================
-  // TOKEN STORAGE
-  // ============================
   getToken(): string | null {
     return localStorage.getItem('token');
   }

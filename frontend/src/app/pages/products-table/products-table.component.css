@@ -1,123 +1,167 @@
+/* ===== CONTENEDOR GENERAL ===== */
 .content-admin {
   margin-left: 220px;
-  padding: 0;
-}
-
-.products-section {
-  padding: 4rem 6%;
-  background: #ffffff;
+  padding: 40px 60px;
+  background: #f5f6fa;
   min-height: 100vh;
- font-family: "Arial", sans-serif;
-   color: #333;
+  font-family: "Arial", sans-serif;
+  color: #333;
 }
 
+/* ===== SECCIÓN PRINCIPAL ===== */
+.products-section {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===== FILTROS INLINE (estilo igualado) ===== */
 .filters-inline {
   display: flex;
   gap: 20px;
+  flex-wrap: nowrap;
   align-items: flex-end;
-  margin-bottom: 20px;
-  flex-wrap:  nowrap;
-
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  border-left: 4px solid #315aff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .filter-inline-item {
   display: flex;
   flex-direction: column;
-}
-
-.filter-inline-item label {
-  margin-bottom: 4px;
-  font-weight: 500;
-  color: #444;
-}
-
-.filter-inline-item select,
-.filter-inline-item input {
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: 1px solid #a98181;
-  font-size: 14px;
-  color: #444;
-  background: transparent;
+  flex: 1;
   min-width: 180px;
 }
 
-
-.table-title {
-  text-align: center;
-  font-size: 2.5rem;
+.filter-inline-item label {
+  margin-bottom: 6px;
   font-weight: 600;
-  color: #2c2c2c;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
+  color: #444;
+  font-size: 14px;
 }
 
+/* Inputs estilo neumórfico igual que tus otros filtros */
+.filter-inline-item select,
+.filter-inline-item input {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #101219;
+  background: #fafafa;
+  font-size: 14px;
+  outline: none;
+  box-shadow: inset 1px 1px 3px #e3e3e3,
+              inset -1px -1px 3px #ffffff;
+  transition: all 0.3s ease;
+}
 
+.filter-inline-item input:focus,
+.filter-inline-item select:focus {
+  border-color: #315aff;
+  box-shadow: 0 0 8px rgba(49, 90, 255, 0.3);
+}
+
+/* ===== TÍTULO TABLA ===== */
+.table-title {
+  text-align: center;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ===== CONTENEDOR DE TABLA ===== */
 .table-container {
   overflow-x: auto;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-  padding: 2rem;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  border-left: 4px solid #315aff;
 }
 
+/* ===== TABLA ===== */
 .products-table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.products-table th,
-.products-table td {
-  padding: 1rem;
-  border-bottom: 1px solid #f0e6eb;
-  text-align: center;
+  font-size: 15px;
 }
 
 .products-table th {
-  background-color: #fff8fb;
-  font-weight: 600;
-  color: #b67b9a;
-  border-bottom: 2px solid #e3b1c8;
+  text-transform: uppercase;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #f7f7f7;
+  color: #555;
+  border-bottom: 2px solid #000000;
+}
+
+.products-table td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+  color: #333;
+  font-weight: 500;
 }
 
 .products-table tbody tr:hover {
-  background-color: #fff3f9;
-  transform: scale(1.01);
+  background: #f4f4f4;
+  transition: 0.2s ease-in-out;
 }
 
-/* Imagen */
+/* ===== IMAGEN DEL PRODUCTO ===== */
 .product-img {
   width: 65px;
   height: 65px;
   object-fit: cover;
   border-radius: 10px;
-  border: 2px solid #f2d7e3;
+  border: 2px solid #dfe4ff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
 }
 
-/* Botones */
+/* ===== BOTONES DE ACCIONES ===== */
 .actions button {
-  margin: 0 6px;
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
+  margin: 0 5px;
   transition: 0.2s;
 }
 
-.edit-btn .material-icons {
-  color: #b67b9a;
+.actions .material-icons {
+  font-size: 22px;
+  color: #315aff;
 }
 
-.edit-btn:hover .material-icons {
-  color: #e3b1c8;
+.actions button:hover .material-icons {
+  color: #1e3fd8;
 }
 
 .delete-btn:hover .material-icons {
   color: #e63946;
 }
 
+/* ===== SIN PRODUCTOS ===== */
 .no-products {
   text-align: center;
   font-style: italic;
   color: #777;
   margin-top: 2rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .content-admin {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .filters-inline {
+    flex-wrap: wrap;
+  }
 }

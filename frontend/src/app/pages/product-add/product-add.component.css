@@ -1,73 +1,83 @@
+/* ===== Fondo general ===== */
 body {
   font-family: "Arial", sans-serif;
-  background: #f0f2f5;
+  background: #f5f6fa;
   color: #222;
 }
 
-/* Contenedor principal */
+/* ===== CONTENEDOR GENERAL (igual que en fichas) ===== */
 .content-admin {
   margin-left: 220px;
-  padding: 0;
+  padding: 40px 60px;
   display: flex;
   justify-content: center;
+  background: #f5f6fa;
+  min-height: 100vh;
 }
 
-/* Tarjeta principal */
+/* ===== TARJETA PRINCIPAL ===== */
 .add-product-section {
   width: 100%;
-  max-width: 800px;
+  max-width: 850px;
   background: #ffffff;
   border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  padding: 35px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  border-left: 4px solid #315aff; /* mismo acento azul suave */
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 28px;
 }
 
-/* Título de la tarjeta */
+/* ===== TÍTULO DE LA TARJETA ===== */
 .form-title {
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   text-align: center;
   color: #2f3640;
+  margin-bottom: 10px;
 }
 
-/* Bloques de input */
+/* ===== BLOQUES DE INPUT ===== */
 .block {
-  background: #f9f9fb;
+  background: #fafafa;
   border-radius: 14px;
-  padding: 20px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: inset 1px 1px 3px #e8e8e8, inset -1px -1px 3px #ffffff;
 }
 
 .block label {
-  font-weight: bold;
-  color: #555;
+  font-weight: 700;
+  color: #444;
   margin-bottom: 5px;
 }
 
 .block input,
 .block textarea,
 .block select {
-  padding: 12px 15px;
+  padding: 13px 15px;
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #101219;
   background: #fff;
   outline: none;
-  font-size: 16px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: inset 1px 1px 3px #e3e3e3, inset -1px -1px 3px #ffffff;
 }
 
+/* ===== ENFOQUE ===== */
 .block input:focus,
 .block textarea:focus,
 .block select:focus {
-  border-color: #f4b6da;
-  box-shadow: 0 0 8px rgba(244,182,218,0.3);
+  border-color: #315aff;
+  box-shadow: 0 0 8px rgba(49, 90, 255, 0.3);
 }
 
-/* Botones tipo toggle para checkboxes */
+/* ===== TOGGLE CHECKBOXES estilizados ===== */
 .toggle-group {
   display: flex;
   gap: 15px;
@@ -79,7 +89,9 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   user-select: none;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid #d9d9d9;
+  font-weight: 600;
 }
 
 .toggle-group input[type="checkbox"] {
@@ -87,12 +99,13 @@ body {
 }
 
 .toggle-group input[type="checkbox"]:checked + span {
-  background: #f4b6da;
+  background: #315aff;
   color: #fff;
   border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(49,90,255,0.4);
 }
 
-/* Vista previa de imagen */
+/* ===== PREVIEW DE IMAGEN ===== */
 .preview-img {
   width: 250px;
   border-radius: 16px;
@@ -102,20 +115,45 @@ body {
   margin-top: 10px;
 }
 
-/* Botón guardar */
+/* ===== BOTÓN GUARDAR ===== */
 .submit-btn {
   padding: 16px 40px;
   font-weight: bold;
   color: #fff;
-  background-color: #f4b6da;
+  background-color: #315aff;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   align-self: center;
   transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(49, 90, 255, 0.3);
 }
 
 .submit-btn:hover {
-  background-color: #e98f81;
+  background-color: #1e3fd8;
   transform: translateY(-2px) scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .content-admin {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .add-product-section {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .block input,
+  .block textarea,
+  .block select {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
 }

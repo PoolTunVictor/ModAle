@@ -6,13 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DireccionService {
-  private apiUrl = 'http://localhost:8000/api/direcciones/';
+  
+  private apiUrl = 'https://modale-production.up.railway.app/api/direcciones/';
 
   constructor(private http: HttpClient) {}
 
-  // ==========================
-  // Obtener headers con token
-  // ==========================
   private getHeaders() {
     const token = localStorage.getItem('token');
     return {
@@ -22,9 +20,6 @@ export class DireccionService {
     };
   }
 
-  // ==========================
-  // Crear dirección
-  // ==========================
   crearDireccion(direccion: {
     colonia: string;
     referencia?: string;
@@ -37,16 +32,10 @@ export class DireccionService {
     );
   }
 
-  // ==========================
-  // Obtener todas las direcciones
-  // ==========================
   getDirecciones(): Observable<any> {
     return this.http.get<any>(this.apiUrl, this.getHeaders());
   }
 
-  // ==========================
-  // Direcciones por localidad (opcional)
-  // ==========================
   getDireccionesPorLocalidad(id_localidad: number): Observable<any> {
     return this.http.get<any>(
       `${this.apiUrl}localidad/${id_localidad}`,

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class PedidoService {
 
-  private apiUrl = 'http://localhost:8000/api/pedidos';
+  private apiUrl = 'https://modale-production.up.railway.app/api/pedidos';
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +22,6 @@ export class PedidoService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  // ✅ CORREGIDO
   getPedidoPorId(id: number) {
     return this.http.get(`${this.apiUrl}/detalle/${id}`);
   }
@@ -39,7 +38,6 @@ export class PedidoService {
     return this.http.get<any[]>(`${this.apiUrl}/user`, this.getHeaders());
   }
 
-  // ✅ CORREGIDO
   getDetallesPedido(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${id}/detalles`);
   }

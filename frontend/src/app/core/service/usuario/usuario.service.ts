@@ -8,7 +8,7 @@ import { Usuario } from '../../models/user.models';
 })
 export class UsuarioService {
 
- private apiUrl = 'http://localhost:8000/api/auth/usuarios';
+private apiUrl = 'https://modale-production.up.railway.app/api/auth/usuarios';
 
   constructor(private http: HttpClient) {}
 
