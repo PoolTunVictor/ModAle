@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DetallePedidoService {
-  private apiUrl = 'http://localhost:8000/detalles_pedido'; // Endpoint de tu backend
+
+  private apiUrl = 'http://localhost:8000/api/detalles_pedido/'; 
+  // 👆 AGREGADA LA “/” FINAL
 
   constructor(private http: HttpClient) {}
 
@@ -15,6 +17,7 @@ export class DetallePedidoService {
   }
 
   getDetallesPorPedido(id_pedido: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/pedido/${id_pedido}`);
+    return this.http.get<any>(`${this.apiUrl}pedido/${id_pedido}`);
+    // 👆 ahora construye bien la ruta
   }
 }

@@ -8,25 +8,20 @@
   <div class="filtros-container">
 
     <!-- FILTRO LOCALIDAD -->
-    <select class="filtro" [(ngModel)]="filtroLocalidad" (change)="aplicarFiltros()">
-      <option value="all">Todas las localidades</option>
-      <option value="Dzibalché">Dzibalché</option>
-      <option value="Calkiní">Calkiní</option>
-      <option value="Becal">Becal</option>
-    </select>
+<select class="filtro" [(ngModel)]="filtroLocalidad" (change)="aplicarFiltros()">
+  <option value="all">Todas las localidades</option>
+  <option *ngFor="let loc of localidades" [value]="loc.nombre">
+    {{ loc.nombre }}
+  </option>
+</select>
 
-    <!-- FILTRO ESTADO -->
-    <select class="filtro" [(ngModel)]="filtroEstado" (change)="aplicarFiltros()">
-      <option value="all">Todos los estados</option>
-      <option value="Nuevo">Nuevo</option>
-      <option value="En proceso">Pendiente / En Proceso</option>
-      <option value="Completado">Completado</option>
-    </select>
+
+    
 
     <!-- FILTRO FECHA -->
-    <input 
-      type="date" 
-      class="filtro" 
+    <input
+      type="date"
+      class="filtro"
       [(ngModel)]="filtroFecha"
       (change)="aplicarFiltros()"
     />
@@ -50,8 +45,8 @@
           <td>{{ ficha.name }}</td>
           <td>{{ ficha.date }}</td>
           <td>
-            <span 
-              class="status" 
+            <span
+              class="status"
               [ngClass]="{
                 'nuevo': ficha.status === 'Nuevo',
                 'proceso': ficha.status === 'En proceso',
@@ -70,6 +65,5 @@
     </table>
   </div>
 
-  <div *ngIf="fichaSeleccionada"></div>
 </div>
 </div>

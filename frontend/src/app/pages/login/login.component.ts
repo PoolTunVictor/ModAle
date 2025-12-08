@@ -29,33 +29,42 @@ export class LoginComponent {
 
   // Login normal
   login(): void {
-    if (!this.email || !this.password) {
-      alert("Debes ingresar usuario/email y contraseña");
-      return;
-    }
-
-    const loginData = {
-      email: this.email,
-      password: this.password
-    };
-
-    this.authService.login(loginData).subscribe({
-      next: (response: any) => {
-        // Guarda usuario en localStorage
-        localStorage.setItem('user', JSON.stringify(response.user));
-
-        // Redirección según rol
-        if (response.user.rol === 'admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/product-catalog']);
-        }
-      },
-      error: (error) => {
-        alert(error.error?.detail || "Credenciales incorrectas");
-      }
-    });
+  if (!this.email || !this.password) {
+    alert("Debes ingresar usuario/email y contraseña");
+    return;
   }
+
+  const loginData = {
+    email_or_username: this.email,  // ← debe coincidir con tu backend
+    password: this.password
+  };
+
+  this.authService.login(loginData).subscribe({
+    next: (response: any) => {
+
+      // ============================
+      // GUARDAR TOKEN
+      // ============================
+      localStorage.setItem('token', response.token);
+
+      // Guardar usuario
+      localStorage.setItem('user', JSON.stringify(response.user));
+
+      console.log("TOKEN GUARDADO:", response.token);
+
+      // Redirección según rol
+      if (response.user.rol === 'admin') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/product-catalog']);
+      }
+    },
+    error: (error) => {
+      alert(error.error?.detail || "Credenciales incorrectas");
+    }
+  });
+}
+
 
   // Navegar a la pantalla de registro
   goToRegister(): void {

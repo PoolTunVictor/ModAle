@@ -14,18 +14,23 @@ export class ReportesComponent implements OnInit {
   fechaReporte: Date = new Date();
 
   resumenSemanal = {
-    totalVentas: 15750.80,
-    pedidosTotales: 51,
+    totalVentas: 6795,
+    pedidosTotales: 30,
     productoMasVendido: 'Crema Hidratante Rosé',
-    diaMasActivo: 'Viernes'
+    diaMasActivo: 'Lunes'
   };
 
   productosTop = [
-    { nombre: 'Crema Hidratante Rosé', categoria: 'Cuidado Facial', vendidos: 150, ingresos: 10800 },
-    { nombre: 'Labial Matte Nude', categoria: 'Maquillaje', vendidos: 95, ingresos: 3500 },
-    { nombre: 'Sombras Glow', categoria: 'Ojos', vendidos: 75, ingresos: 4200 },
-    { nombre: 'Serum Vitamina C', categoria: 'Cuidado Facial', vendidos: 60, ingresos: 5400 },
-    { nombre: 'Delineador Negro', categoria: 'Ojos', vendidos: 55, ingresos: 1800 }
+    { nombre: 'Gloss Mágico de Sandía', categoria: 'Maquillaje', vendidos: 35, ingresos: 875 },
+    { nombre: 'Pinzas para depilar', categoria: 'Accesorios', vendidos: 30, ingresos: 450 },
+    { nombre: 'HOMME Eau de Parfum', categoria: 'Perfumes', vendidos: 7, ingresos: 525 },
+    { nombre: 'Salvace For Men', categoria: 'Perfumes', vendidos: 10, ingsresos: 750 },
+    { nombre: 'Boss Orange For Men', categoria: 'Perfumes', vendidos: 7, ingresos: 525},
+    { nombre: 'Mangas protectoras para el sol', categoria: 'Prendas', vendidos: 20, ingresos: 400},
+    { nombre: 'Serum 24k', categoria: 'Cuidado Facial', vendidos: 20, ingresos: 1000 },
+    { nombre: 'Perfume Noir Forét', categoria: 'Perfumes', vendidos: 10, ingresos: 750 },
+    { nombre: 'Pinzas de flor', categoria: 'Accesorios', vendidos: 25, ingresos: 500},
+    { nombre: 'CHANEL', categoria: 'Perfumes', vendidos: 12, ingresos: 1020 }
   ];
 
   productosLow = [

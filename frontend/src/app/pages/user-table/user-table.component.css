@@ -1,0 +1,90 @@
+.content-admin {
+  margin-left: 220px;
+  padding: 0;
+}
+body {
+  background: #f5f6fa;
+  margin: 0;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.filter-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.filter {
+  background: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+}
+
+.purple {
+  border-color: #d7b3ff;
+}
+
+.blue {
+  border-color: #7dc9ff;
+}
+
+.green {
+  border-color: #7ff1d3;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.role {
+  color: #777;
+}
+
+.role-date {
+  text-align: right;
+  color: #555;
+  font-size: 14px;
+  min-width: 140px;
+}
+
+.edit-icon {
+  margin-left: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+  font-size: 18px;
+}
+
+.edit-icon:hover {
+  opacity: 1;
+}

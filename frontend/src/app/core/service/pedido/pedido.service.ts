@@ -1,21 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PedidoService {
-  // URL del endpoint en tu backend
-  private apiUrl = 'http://localhost:8000/api/pedidos/';
+
+  private apiUrl = 'http://localhost:8000/api/pedidos';
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todos los pedidos
+  private getHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      })
+    };
+  }
+
   getPedidos(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Crear un pedido (si lo necesitas)
+  // ✅ CORREGIDO
+  getPedidoPorId(id: number) {
+    return this.http.get(`${this.apiUrl}/detalle/${id}`);
+  }
+
   crearPedido(pedido: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, pedido);
+    return this.http.post<any>(this.apiUrl, pedido, this.getHeaders());
+  }
+
+  getPedido(id: number) {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  getPedidosDeUsuario(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/user`, this.getHeaders());
+  }
+
+  // ✅ CORREGIDO
+  getDetallesPedido(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${id}/detalles`);
   }
 }

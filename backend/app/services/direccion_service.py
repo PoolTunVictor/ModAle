@@ -13,10 +13,11 @@ class DireccionService(BaseService):
         data debe contener: colonia, referencia (opcional), id_localidad
         """
         nueva_direccion = Direccion(
-            colonia=data['colonia'],
-            referencia=data.get('referencia', ''),
-            id_localidad=data['id_localidad']
+            colonia=data.colonia,
+            referencia=data.referencia,
+            id_localidad=data.id_localidad
         )
+
         self.db.add(nueva_direccion)
         self.db.commit()
         self.db.refresh(nueva_direccion)

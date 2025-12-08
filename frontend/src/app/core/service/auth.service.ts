@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 @Injectable({
@@ -7,43 +7,70 @@ import { Observable, tap } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8000/api/auth'; // Ruta base del backend
+ private apiUrl = 'http://localhost:8000/auth';
 
   constructor(private http: HttpClient) {}
 
-  // Login de usuario
-  login(loginData: { email: string; password: string }): Observable<any> {
-    const payload = { email_or_username: loginData.email, password: loginData.password };
+  // ============================
+  // LOGIN
+  // ============================
+login(loginData: { email_or_username: string; password: string }): Observable<any> {
+    const payload = {
+  email_or_username: loginData.email_or_username,
+  password: loginData.password
+};
+
 
     return this.http.post(`${this.apiUrl}/login`, payload).pipe(
       tap((response: any) => {
-        if (response.user) localStorage.setItem('user', JSON.stringify(response.user));
+        if (response.token) {
+          localStorage.setItem('token', response.token);  // 👈 GUARDAR TOKEN
+        }
+        if (response.user) {
+          localStorage.setItem('user', JSON.stringify(response.user));
+        }
       })
     );
   }
 
-  // Registrar usuario
-  register(registerData: { nombre: string; telefono: string; email: string; username: string; password: string }): Observable<any> {
+  // ============================
+  // REGISTER
+  // ============================
+  register(registerData: {
+    nombre: string;
+    telefono: string;
+    email: string;
+    username: string;
+    password: string;
+  }): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, registerData);
   }
 
-  // Cerrar sesión
+  // ============================
+  // LOGOUT
+  // ============================
   logout() {
+    localStorage.removeItem('token');
     localStorage.removeItem('user');
   }
 
-  // Verificar si está logueado
-  isLoggedIn(): boolean {
-    return localStorage.getItem('user') !== null;
+  // ============================
+  // TOKEN STORAGE
+  // ============================
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
-  // Obtener usuario actual
+  isLoggedIn(): boolean {
+    return this.getToken() !== null;
+  }
+
   getUser() {
     return JSON.parse(localStorage.getItem('user') || 'null');
   }
 
-  // Obtener rol del usuario
   getRole(): string {
     return this.getUser()?.rol || '';
   }
+
 }

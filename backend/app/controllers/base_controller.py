@@ -34,11 +34,14 @@ def generate_schemas(model: Type):
     return Schema
 
 class BaseController:
-    def __init__(self, model: Type, prefix: str):
+    def __init__(self, model: Type, prefix: str, schema: Type = None):
         self.model = model
         self.prefix = prefix
+
         self.router = APIRouter(prefix=f"/api/{prefix}", tags=[prefix.capitalize()])
-        self.Schema = generate_schemas(model)
+
+        # Si mandan schema personalizado úsalo. Si no, genera uno.
+        self.Schema = schema if schema else generate_schemas(model)
 
         @self.router.get("/", response_model=List[self.Schema])
         def read_all(db: Session = Depends(get_db)):

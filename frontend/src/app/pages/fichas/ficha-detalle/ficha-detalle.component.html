@@ -1,45 +1,55 @@
-<div class="detalle-container">
-  <div class="detalle-header">
-    <h2>Order #{{ ficha.id }}</h2>
-    <div class="header-buttons">
-    <button class="btn-regresar" (click)="volver()">
-      ← Volver
-    </button>
-  </div>
-</div>
+<div class="header-admin"></div>
 
-  <p>Placed on October 12, 2025, 10:30 AM</p>
+<div class="content-admin">
+  <main class="products-section">
 
-  <div class="estado">
-    <span class="status">Pending</span>
-  </div>
+    <section class="order-detail">
+      <h2>Detalle del Pedido #{{ ficha?.id_pedido || idPedido }}</h2>
 
-  <div class="info-cliente">
-    <h3>Customer Information</h3>
-    <p><strong>Name:</strong> {{ ficha.cliente }}</p>
-    <p><strong>Contact:</strong> {{ ficha.email }}</p>
-    <p><strong>Location:</strong> {{ ficha.location }}</p>
-  </div>
+      <table class="detalle-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Producto</th>
+            <th style="text-align:center;">Cantidad</th>
+            <th style="text-align:right;">Precio Unitario</th>
+          </tr>
+        </thead>
 
-  <div class="resumen">
-    <h3>Order Summary</h3>
-    <table>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        <th>Total</th>
-      </tr>
-      <tr *ngFor="let p of ficha.productos">
-        <td>{{ p.producto }}</td>
-        <td>{{ p.cantidad }}</td>
-        <td>${{ p.precio.toFixed(2) }}</td>
-        <td>${{ (p.cantidad * p.precio).toFixed(2) }}</td>
-      </tr>
-      <tr class="total">
-        <td colspan="3">Total</td>
-        <td>${{ calcularTotal().toFixed(2) }}</td>
-      </tr>
-    </table>
-  </div>
+        <tbody>
+          <tr *ngFor="let d of detalles">
+
+            <td data-label="Imagen">
+              <img *ngIf="d.imagen"
+                   [src]="d.imagen"
+                   alt="{{ d.producto }}"
+                   style="width:60px; height:60px; object-fit:cover; border-radius:6px;">
+            </td>
+
+            <td data-label="Producto">
+              {{ d.producto }}
+            </td>
+
+            <td data-label="Cantidad" style="text-align:center;">
+              {{ d.cantidad }}
+            </td>
+
+            <td data-label="Precio" style="text-align:right;">
+              {{ d.precio_unitario | currency }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="order-total">
+        Total del pedido: {{ ficha?.total || calcularTotalFromDetalles() | currency }}
+      </div>
+
+      <div style="margin-top:18px;">
+        <button (click)="volver()">Volver</button>
+        <button (click)="imprimir()">Imprimir</button>
+      </div>
+    </section>
+
+  </main>
 </div>

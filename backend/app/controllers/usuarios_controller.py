@@ -3,11 +3,14 @@ from sqlalchemy.orm import Session
 from ..services.usuario_service import UsuarioService
 from ..schemas.usuario_schema import RegisterRequest, LoginRequest, UsuarioResponse
 from .base_controller import get_db
+from ..models.usuarios import Usuario   # importa el modelo correcto
+
+
 
 # Crear el router que luego se importa en main.py
 router = APIRouter(
-    prefix="/api/auth",
-    tags=["auth"]
+    prefix="/api/usuarios",
+    tags=["usuarios"]
 )
 
 
@@ -36,3 +39,7 @@ def login_user(data: LoginRequest, db: Session = Depends(get_db)):
         return user
     except HTTPException as e:
         raise e
+
+@router.get("/", response_model=list[UsuarioBase])
+def obtener_usuarios(db: Session = Depends(get_db)):
+    return db.query(Usuario).all()

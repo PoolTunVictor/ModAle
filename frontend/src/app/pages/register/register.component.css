@@ -1,0 +1,108 @@
+/* Contenedor principal */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5; /* color de fondo */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Tarjeta de registro */
+.register-card {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Título */
+.register-card h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Grupo de inputs */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-group input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #3f51b5; /* color al enfocar */
+}
+
+/* Icono de ojo */
+.eye-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #555;
+}
+
+.eye-icon .material-icons {
+  font-size: 20px;
+}
+
+/* Botón de registro */
+.sign-up-btn {
+  width: 100%;
+  padding: 12px;
+  background: #3f51b5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sign-up-btn:hover {
+  background: #303f9f;
+}
+
+/* Texto de login */
+.login-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-text a {
+  color: #3f51b5;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.login-text a:hover {
+  color: #303f9f;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .register-card {
+    padding: 30px 20px;
+  }
+}

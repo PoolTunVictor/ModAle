@@ -199,3 +199,13 @@ input:invalid {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
+.register-link {
+  color: #3f51b5;
+  cursor: pointer; /* necesario para que se vea clickeable */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

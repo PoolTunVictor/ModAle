@@ -1,52 +1,105 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { PedidoService } from '../../../core/service/pedido/pedido.service';
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-ficha-detalle',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
+  providers: [PedidoService],
   templateUrl: './ficha-detalle.component.html',
   styleUrls: ['./ficha-detalle.component.css']
 })
 export class FichaDetalleComponent implements OnInit {
-  @Input() ficha: any;
-  fichaId!: string;
 
+  ficha: any = null;      // objeto completo del pedido
+  detalles: any[] = [];   // lista de detalles
+  cargando: boolean = true;
+  public idPedido!: number;
 
-  fichas = [
-    { id: 1, nombre: 'Ficha 1', cliente: 'Sophia Rodríguez', email: 'sophia.rodriguez@email.com', location: 'Calkiní', productos: [
-      { producto: 'Organic Apples', cantidad: 2, precio: 2.50 },
-      { producto: 'Fresh Milk', cantidad: 1, precio: 3.00 },
-      { producto: 'Whole Wheat Bread', cantidad: 1, precio: 4.00 },
-    ]},
-    { id: 2, nombre: 'Ficha 2', cliente: 'Luis Herrera', email: 'luis.herrera@email.com', location: 'Bacabchén', productos: [
-      { producto: 'Bananas', cantidad: 3, precio: 1.50 },
-      { producto: 'Yogurt', cantidad: 2, precio: 2.00 },
-    ]},
-    { id: 3, nombre: 'Ficha 3', cliente: 'Ana Torres', email: 'ana.torres@email.com', location: 'Dzibalchén', productos: [
-      { producto: 'Oranges', cantidad: 4, precio: 1.20 },
-      { producto: 'Honey', cantidad: 1, precio: 5.00 },
-    ]},
-  ];
+  constructor(
+    protected route: ActivatedRoute,
+    private pedidoService: PedidoService, 
+  ) {}
 
-  constructor(private route: ActivatedRoute) {}
+  
 
-  ngOnInit(): void {
-    this.fichaId = this.route.snapshot.paramMap.get('id')!;
-    this.ficha = this.fichas.find(f => f.id === parseInt(this.fichaId));
+ngOnInit(): void {
+  this.idPedido = Number(this.route.snapshot.paramMap.get('id'));
+
+  if (!this.idPedido) {
+    console.error("ID inválido en la URL");
+    return;
   }
 
-  calcularTotal() {
-    return this.ficha.productos.reduce((acc: number, p: any) => acc + p.cantidad * p.precio, 0);
+  this.cargarPedido(this.idPedido);
+  this.cargarDetalles(this.idPedido);
+}
+
+
+
+  // ========================
+  //    Cargar Pedido
+  // ========================
+  cargarPedido(id: number) {
+    this.pedidoService.getPedidoPorId(id).subscribe({
+      next: (pedido) => {
+        this.ficha = pedido;
+        this.cargando = false;
+      },
+      error: (err) => {
+        console.error("Error al cargar pedido", err);
+        this.cargando = false;
+      }
+    });
+  }
+
+  // ========================
+  //    Cargar Detalles
+  // ========================
+// dentro de FichaDetalleComponent
+cargarDetalles(id: number) {
+  this.pedidoService.getDetallesPedido(id).subscribe({
+    next: (resp: any[]) => {
+      this.detalles = resp || [];
+
+      // si hay detalles, calcular total
+      this.ficha = this.ficha || {};
+      this.ficha.total = this.calcularTotalFromDetalles();
+
+      this.cargando = false;
+      console.log("DETALLES RECIBIDOS:", resp);
+    },
+    error: (err: any) => {
+      console.error("Error al cargar detalles", err);
+      this.cargando = false;
+    }
+  });
+}
+
+
+// helper si necesitas calcular total desde detalles (fallback)
+calcularTotalFromDetalles(): number {
+  return (this.detalles || []).reduce((acc, d) => acc + (d.cantidad * (d.precio_unitario || 0)), 0);
+}
+
+  calcularTotal(): number {
+    if (!this.detalles) return 0;
+
+    return this.detalles.reduce(
+      (acc, d) => acc + (d.cantidad * d.precio_unitario),
+      0
+    );
   }
 
   volver() {
-  window.history.back();
-}
-imprimir() {
-  window.print();
-}
+    window.history.back();
+  }
 
-
+  imprimir() {
+    window.print();
+  }
 }

@@ -1,0 +1,39 @@
+<div class="register-container">
+  <div class="register-card">
+    <h2>Crear cuenta</h2>
+
+    <form (ngSubmit)="register()">
+      <div class="input-group">
+        <input type="text" placeholder="Nombre completo" [(ngModel)]="nombre" name="nombre" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Teléfono" [(ngModel)]="telefono" name="telefono" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Email" [(ngModel)]="email" name="email" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" placeholder="Username" [(ngModel)]="username" name="username" />
+      </div>
+
+      <div class="input-group">
+        <input [type]="passwordVisible ? 'text' : 'password'" placeholder="Contraseña" [(ngModel)]="password" name="password" />
+        <button type="button" class="eye-icon" (click)="togglePassword()">
+          <span class="material-icons">
+            {{ passwordVisible ? 'visibility_off' : 'visibility' }}
+          </span>
+        </button>
+      </div>
+
+      <button type="submit" class="sign-up-btn">Crear cuenta</button>
+    </form>
+
+    <p class="login-text">
+  ¿Ya tienes cuenta? <a (click)="goToLogin()">Inicia sesión</a>
+</p>
+
+  </div>
+</div>

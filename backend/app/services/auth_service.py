@@ -10,3 +10,7 @@ class AuthService:
     @staticmethod
     def verify_password(password: str, hashed_password: str) -> bool:
         return pwd_context.verify(password, hashed_password)
+    
+    
+    
+    

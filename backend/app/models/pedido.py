@@ -16,7 +16,12 @@ class Pedido(Base):
     id_direccion = Column(Integer, ForeignKey("direcciones.id_direccion"), nullable=False)
     fecha = Column(DateTime, default=datetime.utcnow)
     total = Column(DECIMAL(10, 2))
-    estado=EstadoPedido.pendiente 
+    
+    estado = Column(
+        Enum(EstadoPedido, values_callable=lambda obj: [e.value for e in obj]),
+        default=EstadoPedido.pendiente,
+        nullable=False
+    )
 
     # Relación con Usuario en lugar de Cliente
     usuario = relationship("Usuario", back_populates="pedidos")

@@ -1,0 +1,23 @@
+<h1>Mis pedidos</h1>
+
+<div *ngIf="pedidos.length === 0">
+  <p>No tienes pedidos registrados.</p>
+</div>
+
+<div *ngIf="pedidos.length > 0">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Total</th>
+      <th>Estado</th>
+    </tr>
+
+    <tr *ngFor="let p of pedidos">
+      <td>{{ p.id_pedido }}</td>
+      <td>{{ p.fecha | date:'medium' }}</td>
+      <td>${{ p.total }}</td>
+      <td>{{ p.estado }}</td>
+    </tr>
+  </table>
+</div>
