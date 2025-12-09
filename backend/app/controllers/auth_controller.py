@@ -1,56 +1,66 @@
 from fastapi import APIRouter, Depends, HTTPException
-from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from ..models.usuarios import Usuario
-from .base_controller import get_db
 from passlib.context import CryptContext
 
-router = APIRouter(tags=["Auth"])
+from .base_controller import get_db
+from ..models.usuarios import Usuario
+from ..schemas.usuario_schema import RegisterRequest, UsuarioResponse, LoginRequest
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+router = APIRouter(
+    prefix="/auth",
+    tags=["Auth"]
+)
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# ============================================================
-#   OBTENER USUARIO ACTUAL DESDE EL TOKEN
-# ============================================================
-def get_current_user(
-    token: str = Depends(oauth2_scheme),
-    db: Session = Depends(get_db)
-):
-    if not token:
-        raise HTTPException(status_code=401, detail="Token no proporcionado")
 
-    try:
-        user_id = int(token)
-    except:
-        raise HTTPException(status_code=401, detail="Token inválido")
+# ============================
+#        REGISTER
+# ============================
+@router.post("/register", response_model=UsuarioResponse)
+def register_user(data: RegisterRequest, db: Session = Depends(get_db)):
+    # Verificar si usuario ya existe
+    existe = (
+        db.query(Usuario)
+        .filter(
+            (Usuario.email == data.email) |
+            (Usuario.username == data.username)
+        )
+        .first()
+    )
 
-    user = db.query(Usuario).filter(Usuario.id_usuario == user_id).first()
+    if existe:
+        raise HTTPException(status_code=400, detail="Usuario ya existe")
 
-    if not user:
-        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+    hashed_password = pwd_context.hash(data.password)
 
-    return user
+    nuevo = Usuario(
+        nombre=data.nombre,
+        email=data.email,
+        username=data.username,
+        telefono=data.telefono,
+        contraseña_hash=hashed_password,
+        rol="cliente"
+    )
+
+    db.add(nuevo)
+    db.commit()
+    db.refresh(nuevo)
+
+    return nuevo
 
 
-# ============================================================
-#   LOGIN CON email **o** username
-# ============================================================
-@router.post("/auth/login")
-def login(data: dict, db: Session = Depends(get_db)):
+# ============================
+#        LOGIN
+# ============================
+@router.post("/login")
+def login_user(data: LoginRequest, db: Session = Depends(get_db)):
 
-    email_or_username = data.get("email_or_username")
-    password = data.get("password")
-
-    if not email_or_username or not password:
-        raise HTTPException(status_code=400, detail="Faltan credenciales")
-
-    # Buscar por username o email
     user = (
         db.query(Usuario)
         .filter(
-            (Usuario.username == email_or_username) |
-            (Usuario.email == email_or_username)
+            (Usuario.username == data.email_or_username) |
+            (Usuario.email == data.email_or_username)
         )
         .first()
     )
@@ -58,11 +68,9 @@ def login(data: dict, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=404, detail="Usuario no encontrado")
 
-    # Verificar contraseña HASH
-    if not pwd_context.verify(password, user.contraseña_hash):
+    if not pwd_context.verify(data.password, user.contraseña_hash):
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
 
-    # TOKEN = id_usuario
     return {
         "token": str(user.id_usuario),
         "user": {
@@ -70,6 +78,7 @@ def login(data: dict, db: Session = Depends(get_db)):
             "nombre": user.nombre,
             "username": user.username,
             "email": user.email,
-            "rol": user.rol
+            "rol": user.rol,
+            "telefono": user.telefono
         }
     }

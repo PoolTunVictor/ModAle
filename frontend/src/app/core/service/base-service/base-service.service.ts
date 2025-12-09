@@ -6,13 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export abstract class BaseService<T> {
+
   protected baseUrl = 'https://modale-production.up.railway.app/api';
-  // 👆 Cambia esto por tu dominio real
 
   constructor(protected http: HttpClient, private endpoint: string) {}
 
   get(params?: any): Observable<T[]> {
-    return this.http.get<T[]>(`${this.baseUrl}/${this.endpoint}`, { params });
+    return this.http.get<T[]>(`${this.baseUrl}/${this.endpoint}/`, { params });
   }
 
   getId(id: string): Observable<T> {
@@ -20,7 +20,7 @@ export abstract class BaseService<T> {
   }
 
   post(data: any): Observable<T> {
-    return this.http.post<T>(`${this.baseUrl}/${this.endpoint}`, data);
+    return this.http.post<T>(`${this.baseUrl}/${this.endpoint}/`, data);
   }
 
   put(id: string, data: any): Observable<T> {
@@ -31,3 +31,4 @@ export abstract class BaseService<T> {
     return this.http.delete<T>(`${this.baseUrl}/${this.endpoint}/${id}`);
   }
 }
+

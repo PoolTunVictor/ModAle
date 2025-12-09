@@ -7,27 +7,21 @@ import { Observable, tap } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'https://modale-production.up.railway.app/auth';
-
+private apiUrl = "https://modale-production.up.railway.app/auth";
   constructor(private http: HttpClient) {}
 
-  login(loginData: { email_or_username: string; password: string }): Observable<any> {
-    const payload = {
-      email_or_username: loginData.email_or_username,
-      password: loginData.password
-    };
 
-    return this.http.post(`${this.apiUrl}/login`, payload).pipe(
-      tap((response: any) => {
-        if (response.token) {
-          localStorage.setItem('token', response.token);
-        }
-        if (response.user) {
-          localStorage.setItem('user', JSON.stringify(response.user));
-        }
-      })
-    );
-  }
+login(loginData: { email_or_username: string; password: string }) {
+
+  return this.http.post(`${this.apiUrl}/login`, loginData).pipe(
+    tap((response: any) => {
+      if (response.token) localStorage.setItem('token', response.token);
+      if (response.user) localStorage.setItem('user', JSON.stringify(response.user));
+    })
+  );
+}
+
+
 
   register(registerData: {
     nombre: string;

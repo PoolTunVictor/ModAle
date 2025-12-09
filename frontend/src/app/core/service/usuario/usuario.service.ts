@@ -8,11 +8,16 @@ import { Usuario } from '../../models/user.models';
 })
 export class UsuarioService {
 
-private apiUrl = 'https://modale-production.up.railway.app/api/auth/usuarios';
+private apiUrl = 'https://modale-production.up.railway.app/api/usuarios';
 
   constructor(private http: HttpClient) {}
 
-  getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.apiUrl);
-  }
+getUsuarios(): Observable<Usuario[]> {
+  const token = localStorage.getItem('token');
+  return this.http.get<Usuario[]>(this.apiUrl, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
 }

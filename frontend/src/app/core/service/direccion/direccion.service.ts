@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DireccionService {
-  
-  private apiUrl = 'https://modale-production.up.railway.app/api/direcciones/';
+
+  private apiUrl = 'https://modale-production.up.railway.app/direcciones';
 
   constructor(private http: HttpClient) {}
 
@@ -26,19 +26,19 @@ export class DireccionService {
     id_localidad: number;
   }): Observable<any> {
     return this.http.post<any>(
-      this.apiUrl,
+      `${this.apiUrl}`,
       direccion,
       this.getHeaders()
     );
   }
 
   getDirecciones(): Observable<any> {
-    return this.http.get<any>(this.apiUrl, this.getHeaders());
+    return this.http.get<any>(`${this.apiUrl}`, this.getHeaders());
   }
 
   getDireccionesPorLocalidad(id_localidad: number): Observable<any> {
     return this.http.get<any>(
-      `${this.apiUrl}localidad/${id_localidad}`,
+      `${this.apiUrl}/localidad/${id_localidad}`,
       this.getHeaders()
     );
   }

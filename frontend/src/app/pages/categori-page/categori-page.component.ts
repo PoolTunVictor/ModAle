@@ -45,23 +45,37 @@ export class CategoriPageComponent {
     private productService: ProductService
   ) {}
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const categoria = params.get('categoria');
+ngOnInit(): void {
+  this.route.paramMap.subscribe(params => {
+    const categoria = params.get('categoria'); // viene "maquillaje" o "cuidado-facial"
 
-      if (categoria) {
-        this.nombreCategoria = categoria
-          .replace(/-/g, ' ')
-          .replace(/\b\w/g, l => l.toUpperCase());
+    if (categoria) {
 
-        this.categoriasFiltradas = this.categorias.filter(
-          c => c.ruta !== categoria
-        );
+      // Mostrar bonito en la vista
+      this.nombreCategoria = categoria.replace(/-/g, ' ');
+      this.nombreCategoria =
+        this.nombreCategoria.charAt(0).toUpperCase() +
+        this.nombreCategoria.slice(1);
 
-        this.cargarProductosPorCategoria(this.nombreCategoria);
-      }
-    });
-  }
+      // 👉 Convertir guiones a espacios para enviarlo EXACTO como en la BD
+      const categoriaParaBackend = categoria
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, letra => letra.toUpperCase()); // capitaliza cada palabra
+
+      console.log("Enviando al backend:", categoriaParaBackend);
+
+      this.categoriasFiltradas = this.categorias.filter(
+        c => c.ruta !== categoria
+      );
+
+      // 👉 Llamar con el formato correcto
+      this.cargarProductosPorCategoria(categoriaParaBackend);
+    }
+  });
+}
+
+
+
 
   irACategoria(categoriaRuta: string) {
     this.router.navigate(['/categoria', categoriaRuta]);

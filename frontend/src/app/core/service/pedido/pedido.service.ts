@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class PedidoService {
 
-  private apiUrl = 'https://modale-production.up.railway.app/api/pedidos';
+  // SIN /api
+  private apiUrl = 'https://modale-production.up.railway.app/pedidos';
 
   constructor(private http: HttpClient) {}
 
