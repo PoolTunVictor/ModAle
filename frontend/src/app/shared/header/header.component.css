@@ -55,7 +55,7 @@
 
   /* 🔥 MENÚ MÁS A LA DERECHA 🔥 */
   justify-content: flex-end;
-  padding-right: 40px;
+  padding-right: 10px;
 }
 
 .nav-menu ul {
