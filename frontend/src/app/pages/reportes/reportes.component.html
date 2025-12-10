@@ -5,13 +5,17 @@
 
     <div class="registro-container">
       
-      <header class="header-reporte">
-        <div>
-          <h1>Registro Semanal de Ventas 📊</h1>
-          <p>Periodo: Semana Actual | Generado el: {{ fechaReporte | date:'dd/MM/yyyy' }}</p>
-        </div>
-        <button class="btn-imprimir" (click)="imprimirReporte()">🖨️ Imprimir Corte</button>
-      </header>
+<header class="header-reporte">
+  <div>
+    <h1>Registro Semanal de Ventas 📊</h1>
+    <p>Periodo: Semana Actual | Generado el: {{ fechaReporte | date:'dd/MM/yyyy' }}</p>
+  </div>
+
+  <div class="acciones-botones">
+    <button class="btn-imprimir" (click)="imprimirReporte()">🖨️ Imprimir Corte</button>
+    <button class="btn-reporte" (click)="null">📄 Generar Reporte</button>
+  </div>
+</header>
 
       <!-- ===== RESUMEN CARDS ===== -->
       <section class="resumen-cards">
@@ -67,7 +71,8 @@
           </div>
         </div>
 
-      </div><!-- tablas-grid -->
+
+      </div><!-- C:\Users\lenov\ModAle -->
 
     </div><!-- registro-container -->
 
