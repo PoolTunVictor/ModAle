@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 
@@ -13,13 +14,32 @@ router = APIRouter(
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+security = HTTPBearer()
 
-# ============================
-#        REGISTER
-# ============================
+
+# =====================================
+#           GET CURRENT USER
+# =====================================
+def get_current_user(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: Session = Depends(get_db)
+):
+    token = credentials.credentials  # El token es simplemente el id_usuario
+
+    user = db.query(Usuario).filter(Usuario.id_usuario == token).first()
+
+    if not user:
+        raise HTTPException(status_code=401, detail="Token inválido o usuario no existe")
+
+    return user
+
+
+# =====================================
+#               REGISTER
+# =====================================
 @router.post("/register", response_model=UsuarioResponse)
 def register_user(data: RegisterRequest, db: Session = Depends(get_db)):
-    # Verificar si usuario ya existe
+
     existe = (
         db.query(Usuario)
         .filter(
@@ -50,9 +70,9 @@ def register_user(data: RegisterRequest, db: Session = Depends(get_db)):
     return nuevo
 
 
-# ============================
-#        LOGIN
-# ============================
+# =====================================
+#                LOGIN
+# =====================================
 @router.post("/login")
 def login_user(data: LoginRequest, db: Session = Depends(get_db)):
 
@@ -72,7 +92,7 @@ def login_user(data: LoginRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
 
     return {
-        "token": str(user.id_usuario),
+        "token": str(user.id_usuario),   # 🔥 Esto es el token
         "user": {
             "id_usuario": user.id_usuario,
             "nombre": user.nombre,
