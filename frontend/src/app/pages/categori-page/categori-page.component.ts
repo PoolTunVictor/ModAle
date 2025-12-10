@@ -47,7 +47,7 @@ export class CategoriPageComponent {
 
 ngOnInit(): void {
   this.route.paramMap.subscribe(params => {
-    const categoria = params.get('categoria'); // viene "maquillaje" o "cuidado-facial"
+    const categoria = params.get('categoria');
 
     if (categoria) {
 
@@ -100,7 +100,6 @@ agregarACesta(producto: ProductoConMensaje): void {
   const cesta: any[] = JSON.parse(localStorage.getItem('cesta') || '[]');
   const index = cesta.findIndex(p => p.id_producto === producto.id_producto);
 
-  // Cantidad actual en el carrito
   const cantidadActual = index > -1 ? cesta[index].cantidad : 0;
 
   // Validación de stock
@@ -110,22 +109,20 @@ agregarACesta(producto: ProductoConMensaje): void {
   }
 
   if (index > -1) {
-    // Incrementa cantidad solo si no supera stock
     cesta[index].cantidad = cantidadActual + 1;
   } else {
-    // Agrega el producto con cantidad inicial 1
     cesta.push({
       id_producto: producto.id_producto,
       nombre: producto.nombre,
       precio: producto.precio,
       imagen: producto.imagen,
-      cantidad: 1
+      cantidad: 1,
+      stock: producto.stock  
     });
   }
 
   localStorage.setItem('cesta', JSON.stringify(cesta));
 
-  // Mensaje visual en la tarjeta
   producto.mostrarMensaje = true;
   setTimeout(() => producto.mostrarMensaje = false, 2500);
 }

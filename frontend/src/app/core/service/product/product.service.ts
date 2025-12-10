@@ -21,7 +21,7 @@ export class ProductService extends BaseService<Producto> {
 
   // Obtener producto por ID
   getById(id: number): Observable<Producto> {
-    return this.http.get<Producto>(`${this.baseUrl}/${id}`);
+    return this.http.get<Producto>(`${this.baseUrl}/productos/${id}`);
   }
 
   getByIds(ids: number[]): Observable<Producto[]> {

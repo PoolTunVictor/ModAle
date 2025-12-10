@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class PedidoService {
 
   // SIN /api
-  private apiUrl = 'https://modale-production.up.railway.app/pedidos';
+  private apiUrl = 'https://modale-production.up.railway.app/api/pedidos/';
 
   constructor(private http: HttpClient) {}
 
@@ -40,6 +40,6 @@ export class PedidoService {
   }
 
   getDetallesPedido(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/${id}/detalles`);
+    return this.http.get<any[]>(`${this.apiUrl}${id}/detalles`);
   }
 }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DireccionService {
 
-  private apiUrl = 'https://modale-production.up.railway.app/direcciones';
+  private apiUrl = 'https://modale-production.up.railway.app/api/direcciones/';
 
   constructor(private http: HttpClient) {}
 

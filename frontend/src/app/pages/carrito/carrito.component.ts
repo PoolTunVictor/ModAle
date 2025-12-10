@@ -51,7 +51,7 @@ export class CarritoComponent implements OnInit {
         precio: Number(producto.precio) || 0,
         imagen: producto.imagen,
         cantidad: Number(producto.cantidad) || 1,
-        stock: Number(producto.stock) || 0
+       stock: producto.stock
       }));
     }
   }
