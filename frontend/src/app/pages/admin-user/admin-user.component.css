@@ -1,23 +1,42 @@
-.title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
+/* ===============================
+   RESPONSIVE PARA TABLA DE USUARIOS
+   =============================== */
 
-.user-table {
+/* Contenedor para manejar scroll en móvil */
+.table-responsive {
   width: 100%;
-  border-collapse: collapse;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow-x: auto;
 }
 
-.user-table th {
-  background: #f4f4f4;
-  padding: 10px;
-  text-align: left;
-}
-
+/* Ancho mínimo para celdas en pantallas chicas */
+.user-table th,
 .user-table td {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
+  min-width: 120px;
+}
+
+/* En móviles, reducir fuente y padding */
+@media (max-width: 600px) {
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .user-table {
+    font-size: 14px;
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 400px) {
+  .user-table th,
+  .user-table td {
+    padding: 6px;
+    font-size: 13px;
+  }
 }

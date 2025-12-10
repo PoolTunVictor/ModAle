@@ -24,5 +24,6 @@ export class HeaderAdminComponent {
       this.router.navigate(['/login']);
     }
   }
+  menuAbierto = false;
 }
 

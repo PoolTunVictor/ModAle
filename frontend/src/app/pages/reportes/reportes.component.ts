@@ -23,7 +23,7 @@ export class ReportesComponent implements OnInit {
   productosTop = [
     { nombre: 'Gloss Mágico de Sandía', categoria: 'Maquillaje', vendidos: 35, ingresos: 875 },
     { nombre: 'Pinzas para depilar', categoria: 'Accesorios', vendidos: 30, ingresos: 450 },
-    { nombre: 'HOMME Eau de Parfum', categoria: 'Perfumes', vendidos: 7, ingresos: 525 },
+    { nombre: 'Pattern Eau de Parfum', categoria: 'Perfumes', vendidos: 7, ingresos: 525 },
     { nombre: 'Salvace For Men', categoria: 'Perfumes', vendidos: 10, ingresos: 750},
     { nombre: 'Boss Orange For Men', categoria: 'Perfumes', vendidos: 7, ingresos: 525},
     { nombre: 'Mangas protectoras para el sol', categoria: 'Prendas', vendidos: 20, ingresos: 400},

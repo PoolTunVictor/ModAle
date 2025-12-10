@@ -1,23 +1,25 @@
 <h2 class="title">Usuarios Registrados</h2>
 
-<table class="user-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th>Rol</th>
-      <th>Fecha creación</th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Fecha creación</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr *ngFor="let user of usuarios">
-      <td>{{ user.id_usuario }}</td>
-    <td>{{ user.nombre }}</td>
-    <td>{{ user.email }}</td>
-    <td>{{ user.rol }}</td>
-    <td>{{ user.fecha_registro }}</td>
-        </tr>
-  </tbody>
-</table>
+    <tbody>
+      <tr *ngFor="let user of usuarios">
+        <td>{{ user.id_usuario }}</td>
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.rol }}</td>
+        <td>{{ user.fecha_registro }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

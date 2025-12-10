@@ -4,22 +4,24 @@
   padding: 0;
 }
 
+/* =============================
+   SECCIÓN BANNER (HOME)
+============================= */
 .support-section {
   width: 100%;
   background: url('/assets/banner/HomePage.png') no-repeat center;
   background-size: cover;
-
   text-align: center;
-  padding: 60px 30px; 
+  padding: 60px 30px;
   color: #ffffff;
   position: relative;
-  margin-top: 70px; /* evita que el header tape el contenido */
+  margin-top: 70px;
 }
 
 .support-section::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -39,12 +41,28 @@
   margin-bottom: 30px;
 }
 
+
+/* =============================
+   TITULOS
+============================= */
 .recent-title {
   font-size: 30px;
   text-align: center;
   margin: 50px 0 20px;
 }
 
+.popular-title {
+  padding: 20px 0;
+  border-radius: 15px 15px 0 0;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* =============================
+   GRID DE PRODUCTOS
+============================= */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -55,7 +73,7 @@
 }
 
 .tool-card {
-  background: #ffffff; 
+  background: #ffffff;
   border-radius: 15px;
   padding: 20px;
   text-align: center;
@@ -66,7 +84,7 @@
   justify-content: space-between;
   width: 100%;
   min-height: 420px;
-   border: 1px solid #dcdcdc;
+  border: 1px solid #dcdcdc;
 }
 
 .tool-card:hover {
@@ -79,7 +97,7 @@
   margin: 10px 0 5px;
 }
 
-.tool-card a, 
+.tool-card a,
 .tool-card .price {
   font-size: 18px;
   color: #000;
@@ -87,29 +105,119 @@
   text-decoration: none;
 }
 
-.tool-card .product-image {
+/* Imagen del producto */
+.product-image {
   width: 100%;
-  height: 250px;           /* ✔ más alto */
-  object-fit: contain;       /* ✔ asegura que siempre llene el espacio */
-  object-position: center; /* ✔ centra la imagen */
+  height: 250px;
+  object-fit: contain;
+  object-position: center;
   border-radius: 12px;
-  background-color: #ffffff; /* ✔ por si la imagen es muy pequeña */
+  background-color: #ffffff;
 }
 
-
+/* =============================
+   SECCIÓN POPULARES
+============================= */
 .popular-products-section {
   width: 100%;
-  background-color:#ffffff; 
+  background-color: #ffffff;
   padding: 20px 20px 80px;
-  margin-bottom: 0;
 }
 
-.popular-title {
-  background-color: #ffffff; 
-  padding: 20px 0;
-  border-radius: 15px 15px 0 0;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 32px;
-  color: #000;
+
+/* =============================
+   🌟 RESPONSIVE REAL
+============================= */
+
+/* === Tablets (≤ 992px) === */
+@media (max-width: 992px) {
+  .support-title {
+    font-size: 60px;
+  }
+
+  .support-section p {
+    font-size: 18px;
+  }
+
+  .tool-card {
+    min-height: 380px;
+  }
+
+  .product-image {
+    height: 220px;
+  }
+}
+
+/* === Celulares grandes (≤ 768px) === */
+@media (max-width: 768px) {
+  .support-section {
+    padding: 40px 20px;
+    margin-top: 65px;
+  }
+
+  .support-title {
+    font-size: 42px;
+  }
+
+  .support-section p {
+    font-size: 16px;
+  }
+
+  .recent-title,
+  .popular-title {
+    font-size: 24px;
+  }
+
+  .tools-grid {
+    padding: 0 10px;
+    gap: 18px;
+  }
+
+  .tool-card {
+    min-height: 350px;
+  }
+
+  .product-image {
+    height: 200px;
+  }
+}
+
+/* === Celulares pequeños (≤ 480px) === */
+@media (max-width: 480px) {
+  .support-title {
+    font-size: 34px;
+  }
+
+  .support-section p {
+    font-size: 14px;
+  }
+
+  .tool-card {
+    min-height: 300px;
+    padding: 15px;
+  }
+
+  .tool-card h3 {
+    font-size: 18px;
+  }
+
+  .product-image {
+    height: 170px;
+  }
+
+  .recent-title,
+  .popular-title {
+    font-size: 20px;
+  }
+}
+
+/* === Ultra pequeños (≤ 360px) === */
+@media (max-width: 360px) {
+  .support-title {
+    font-size: 28px;
+  }
+
+  .product-image {
+    height: 150px;
+  }
 }

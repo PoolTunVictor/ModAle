@@ -19,13 +19,12 @@
   animation: fadeIn 0.6s ease-in-out;
 }
 
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-
+/* Icono */
 .login-icon {
   width: 80px;
   height: 80px;
@@ -41,7 +40,6 @@
               inset 0 -4px 10px rgba(0,0,0,0.08);
 }
 
-
 h2 {
   color: #4a2c38;
   margin-bottom: 0.3rem;
@@ -53,7 +51,7 @@ p {
   font-size: 0.9rem;
 }
 
-
+/* Input */
 .input-group {
   position: relative;
   width: 100%;
@@ -105,14 +103,12 @@ p {
   color: #6d5660;
 }
 
-
 input:invalid {
   box-shadow: none !important;
   border: 1px solid rgba(255,255,255,0.5) !important;
 }
 
-
-
+/* Remember me */
 .options {
   margin: 1rem 0;
   text-align: left;
@@ -147,7 +143,7 @@ input:invalid {
   color: white;
 }
 
-
+/* Botón */
 .sign-in-btn {
   width: 100%;
   padding: 14px;
@@ -167,14 +163,13 @@ input:invalid {
   box-shadow: 0 12px 25px rgba(192, 107, 138, 0.55);
 }
 
-
 .or-text {
   margin: 1.4rem 0 1rem;
   font-size: 0.8rem;
   color: #5e4d53;
 }
 
-
+/* Redes */
 .social-buttons {
   display: flex;
   justify-content: center;
@@ -199,13 +194,96 @@ input:invalid {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
+
 .register-link {
   color: #3f51b5;
-  cursor: pointer; /* necesario para que se vea clickeable */
+  cursor: pointer;
   text-decoration: none;
   font-weight: 500;
 }
 
 .register-link:hover {
   text-decoration: underline;
+}
+
+/* ======================================================
+   📱 RESPONSIVE SOLO PARA MÓVILES
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+  .login-container {
+    padding: 20px;
+    height: auto;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 2.2rem 1.7rem;
+  }
+
+  .login-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .input-group input {
+    padding: 12px 40px 12px 38px;
+    font-size: 0.9rem;
+  }
+
+  .sign-in-btn {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .social-buttons button {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+  }
+
+  .or-text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .login-card {
+    max-width: 330px;
+    padding: 2rem 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .login-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+  }
+
+  .input-group input {
+    padding: 10px 36px 10px 34px;
+    font-size: 0.85rem;
+  }
+
+  .sign-in-btn {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .social-buttons button {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
 }

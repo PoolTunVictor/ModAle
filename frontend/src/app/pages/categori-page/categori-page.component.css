@@ -15,7 +15,9 @@ html, body {
   box-sizing: border-box;
 }
 
-
+/* =========================================
+   ESTRUCTURA GENERAL
+   ========================================= */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -43,7 +45,6 @@ html, body {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
-  letter-spacing: 1px;
 }
 
 .footer-info p {
@@ -82,7 +83,7 @@ html, body {
   position: relative;
   white-space: nowrap;
   border-radius: 6px;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .categoria-item::after {
@@ -111,7 +112,7 @@ html, body {
 }
 
 /* =========================================
-   CONTENIDO Y GRID DE PRODUCTOS
+   CONTENIDO Y GRID
    ========================================= */
 .contenido {
   width: 100%;
@@ -121,40 +122,29 @@ html, body {
 
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 4 productos por fila */
-  justify-content: center; /* centra las columnas si hay menos productos */
-  gap: 10px; /* separación entre tarjetas */
-  max-width: 1800px; /* limita ancho máximo */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 0 10px;
 }
 
-/* Responsive: reducir columnas según pantalla */
+/* BREAKPOINTS */
 @media (max-width: 1200px) {
-  .productos-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .productos-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 900px) {
-  .productos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .productos-grid {
-    grid-template-columns: 1fr;
-  }
+  .productos-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* =========================================
-   TARJETAS DE PRODUCTO
+   PRODUCT CARDS
    ========================================= */
 .producto-card {
-    width: 100%;
-  max-width: 320px; /* tamaño controlado */
-  margin: 0 auto; /* centra dentro de su columna */
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 20px;
@@ -193,7 +183,6 @@ html, body {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s ease;
   width: 100%;
   margin-top: 10px;
 }
@@ -203,107 +192,7 @@ html, body {
   transform: scale(1.03);
 }
 
-/* =========================================
-   MODAL INLINE
-   ========================================= */
-.modal-inline {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 10;
-  padding: 15px;
-  animation: slideDown 0.3s ease;
-}
-
-.modal-contenido-inline {
-  max-height: 250px;
-  overflow-y: auto;
-}
-
-.cerrar-btn {
-  margin-top: 10px;
-  padding: 8px 14px;
-  border: none;
-  background-color: #df7c9d;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.cerrar-btn:hover {
-  background-color: #d44b7d;
-}
-
-/* =========================================
-   MENSAJE AGREGADO DENTRO DE TARJETA
-   ========================================= */
-.mensaje-agregado {
-  position: absolute;
-  bottom: 200px; 
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #efd1df;
-  color: #000;
-  padding: 8px 14px;
-  border-radius: 25px;
-  font-weight: 400;
-  text-align: center;
-  z-index: 900;
-  animation: fadeInOutProducto 2.5s ease-in-out forwards;
-}
-
-@keyframes fadeInOutProducto {
-  0% { opacity: 0; transform: translate(-50%, 10px); }
-  15% { opacity: 1; transform: translate(-50%, 0); }
-  85% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -10px); }
-}
-
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-@media (max-width: 1200px) {
-  .contenido {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  .contenido {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .titulo-categoria {
-    font-size: 2.2rem;
-  }
-
-  .categoria-item {
-    font-size: 16px;
-    padding: 10px 16px;
-    min-width: 120px;
-    white-space: normal;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .filtros-categorias {
-    gap: 10px;
-  }
-
-  .productos-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-}
-
+/* BADGE DESCUENTO */
 .badge-descuento {
   position: absolute;
   top: 12px;
@@ -318,16 +207,125 @@ html, body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
+/* PRECIOS */
 .precio-original {
   text-decoration: line-through;
   color: #777;
-  margin: 5px 0 0;
-  font-size: 1rem;
+  margin-top: 5px;
 }
 
 .precio-descuento {
   color: #b30000;
   font-weight: bold;
   font-size: 1.25rem;
-  margin: 0;
+}
+
+/* =========================================
+   MODAL INLINE
+   ========================================= */
+.modal-inline {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10;
+  padding: 15px;
+}
+
+/* Modal scroll */
+.modal-contenido-inline {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* =========================================
+   MENSAJE AGREGADO
+   ========================================= */
+.mensaje-agregado {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #efd1df;
+  padding: 8px 14px;
+  border-radius: 25px;
+  animation: fadeInOutProducto 2.5s ease-out forwards;
+}
+
+@keyframes fadeInOutProducto {
+  0% { opacity: 0; transform: translate(-50%, 10px); }
+  15% { opacity: 1; transform: translate(-50%, 0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -10px); }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .titulo-categoria {
+    font-size: 2.5rem;
+    margin-top: 80px;
+  }
+
+  .producto-card {
+    padding: 15px;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+  .titulo-categoria {
+    font-size: 2rem;
+    margin-top: 70px;
+  }
+
+  .categoria-item {
+    font-size: 15px;
+    padding: 10px;
+    white-space: normal;
+  }
+
+  .productos-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+
+  .producto-card {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .modal-inline {
+    top: 5px;
+    left: 5px;
+    right: 5px;
+  }
+}
+
+/* Móviles pequeños (iPhone SE, Android chicos) */
+@media (max-width: 380px) {
+  .titulo-categoria {
+    font-size: 1.7rem;
+  }
+
+  .categoria-item {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .producto-card {
+    padding: 12px;
+  }
+
+  .btn-carrito {
+    font-size: 14px;
+    padding: 8px;
+  }
 }

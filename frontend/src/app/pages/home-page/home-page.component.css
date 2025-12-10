@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -7,17 +6,15 @@
 
 html, body {
   width: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   font-family: "Poppins", sans-serif;
 }
 
-/* SECCIÓN DE SOPORTE / BANNER= */
+/* SECCIÓN DE SOPORTE / BANNER*/
 .support-section {
   width: 100%;
-  box-sizing: border-box;
   background: url('/assets/banner/HomePage.png') no-repeat center;
   background-size: cover;
-
   text-align: center;
   padding: 50px 30px;
   color: #ffffff;
@@ -41,7 +38,6 @@ html, body {
   font-family: "Playwrite DE SAS", cursive;
   font-size: 80px;
   margin-bottom: 20px;
-  letter-spacing: normal;
 }
 
 .support-section p {
@@ -49,7 +45,7 @@ html, body {
   margin-bottom: 30px;
 }
 
-/* SECCIÓN DE CATEGORÍAS  */
+/* CATEGORÍAS */
 .catalogo {
   padding: 0 20px 60px;
   background-color: #ffffff;
@@ -68,16 +64,11 @@ html, body {
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  overflow: hidden;
   width: 280px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  transition: 0.3s ease;
   cursor: pointer;
   border: 1px solid #f0f0f0;
-}
-
-.tool-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .imagen-categoria {
@@ -104,28 +95,22 @@ html, body {
   color: #333;
 }
 
-/* SECCIÓN DE ANUNCIOS */
+/* ANUNCIOS */
 .anuncios-dobles-completos {
   display: flex;
   width: 100%;
-  max-width: 100vw; 
-  overflow: hidden;  
   height: 500px;
+  overflow: hidden;
 }
 
 .anuncio-banner {
   flex: 1;
-  position: relative;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: flex-end;
   padding: 40px;
-  transition: flex 0.4s ease;
-}
-
-.anuncio-banner:hover {
-  flex: 1.2; 
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .anuncio-perfumes {
@@ -139,44 +124,12 @@ html, body {
 .anuncio-contenido {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 25px;
-  max-width: 350px;
   border-radius: 12px;
+  max-width: 350px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.anuncio-contenido h4 {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.anuncio-contenido p {
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-  color: #555;
-}
-
-.btn-comprar {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-comprar:hover {
-  background-color: #e3b1c8;
-  color: #000;
-  transform: scale(1.05);
-}
-
-/*FOOTER */
+/* FOOTER */
 .main-footer {
   background-color: #f9f9f9;
   color: #333;
@@ -185,23 +138,66 @@ html, body {
   border-top: 1px solid #eee;
 }
 
-.footer-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
+/* ============================================================
+   📱📱📱  RESPONSIVIDAD SOLO PARA MÓVILES (≤ 768px)
+   ============================================================ */
 @media (max-width: 768px) {
+
+  /* Ajustar título */
   .support-title {
     font-size: 45px;
   }
 
+  .support-section p {
+    font-size: 16px;
+  }
+
+  /* Tarjetas más pequeñas */
+  .tool-card {
+    width: 100%;
+    max-width: 330px;
+  }
+
+  .imagen-categoria {
+    height: 200px;
+  }
+
+  /* Anuncios en columna */
   .anuncios-dobles-completos {
     flex-direction: column;
     height: auto;
   }
 
   .anuncio-banner {
-    height: 300px;
     width: 100%;
+    height: 250px;
+    padding: 25px;
   }
+
+  .anuncio-contenido {
+    max-width: 100%;
+  }
+}
+
+/* ============================================================
+   📱 EXTRA PEQUEÑOS (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+
+  .support-title {
+    font-size: 32px;
+  }
+
+  .tool-card {
+    max-width: 100%;
+  }
+
+  .imagen-categoria {
+    height: 160px;
+  }
+
+  .categoria-nombre {
+    font-size: 1.1rem;
+  }
+
 }

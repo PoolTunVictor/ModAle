@@ -1,31 +1,42 @@
-<div class="header-admin">
+<div class="header-admin" [class.open]="menuAbierto">
+
+  <!-- BOTÓN HAMBURGUESA -->
+  <button class="hamburger" (click)="menuAbierto = !menuAbierto">
+    <span></span><span></span><span></span>
+  </button>
+
   <!-- LOGO -->
   <div class="logo">
     <a routerLink="/" class="brand">MODALE & Co</a>
   </div>
 
-  <!-- MENÚ DASHBOARD -->
- <nav class="nav-links">
+  <!-- MENÚ -->
+  <nav class="nav-links">
+
     <a routerLink="/admin/reportes" class="nav-item">
       <span class="material-icons">inventory_2</span>
-      Reportes
+      <span class="item-text">Reportes</span>
     </a>
+
     <a routerLink="/admin/inicio" class="nav-item">
       <span class="material-icons">home</span>
-      Pedidos
+      <span class="item-text">Pedidos</span>
     </a>
+
     <a routerLink="/admin/agregar-producto" class="nav-item">
       <span class="material-icons">add_circle</span>
-      Agregar productos
+      <span class="item-text">Agregar productos</span>
     </a>
+
     <a routerLink="/admin/products-table" class="nav-item">
       <span class="material-icons">inventory_2</span>
-      Inventario
+      <span class="item-text">Inventario</span>
     </a>
-    <button class="logout-icon-btn" (click)="logout()"></button>
-  <!--<a routerLink="/admin/admin-user" class="nav-item">
-      <span class="material-icons">inventory_2</span>
-      Usuarios
-    </a> -->
+
+    <button class="logout-icon-btn nav-item" (click)="logout()">
+      <span class="material-icons">logout</span>
+      <span class="item-text">Salir</span>
+    </button>
+
   </nav>
 </div>

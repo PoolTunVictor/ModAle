@@ -40,7 +40,6 @@
       <label><input type="checkbox" [(ngModel)]="producto.oferta"><span>En oferta</span></label>
     </div>
 
-    <!-- Input de descuento solo si está en oferta -->
     <div class="block" *ngIf="producto.oferta">
       <label>Porcentaje de descuento (%)</label>
       <input type="number" [(ngModel)]="producto.descuento" min="0" max="100" placeholder="Ej: 20">

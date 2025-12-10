@@ -5,7 +5,7 @@ body {
   color: #222;
 }
 
-/* ===== CONTENEDOR GENERAL (igual que en fichas) ===== */
+/* ===== CONTENEDOR GENERAL ===== */
 .content-admin {
   margin-left: 220px;
   padding: 40px 60px;
@@ -23,22 +23,22 @@ body {
   border-radius: 20px;
   padding: 35px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-  border-left: 4px solid #315aff; /* mismo acento azul suave */
+  border-left: 4px solid #315aff;
   display: flex;
   flex-direction: column;
   gap: 28px;
 }
 
-/* ===== TÍTULO DE LA TARJETA ===== */
+/* ===== TÍTULO ===== */
 .form-title {
   font-size: 28px;
   font-weight: 800;
   text-align: center;
   color: #2f3640;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-/* ===== BLOQUES DE INPUT ===== */
+/* ===== BLOQUES ===== */
 .block {
   background: #fafafa;
   border-radius: 14px;
@@ -69,7 +69,6 @@ body {
   box-shadow: inset 1px 1px 3px #e3e3e3, inset -1px -1px 3px #ffffff;
 }
 
-/* ===== ENFOQUE ===== */
 .block input:focus,
 .block textarea:focus,
 .block select:focus {
@@ -77,10 +76,11 @@ body {
   box-shadow: 0 0 8px rgba(49, 90, 255, 0.3);
 }
 
-/* ===== TOGGLE CHECKBOXES estilizados ===== */
+/* ===== TOGGLES ===== */
 .toggle-group {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .toggle-group label {
@@ -105,7 +105,7 @@ body {
   box-shadow: 0 3px 8px rgba(49,90,255,0.4);
 }
 
-/* ===== PREVIEW DE IMAGEN ===== */
+/* ===== PREVIEW ===== */
 .preview-img {
   width: 250px;
   border-radius: 16px;
@@ -115,7 +115,7 @@ body {
   margin-top: 10px;
 }
 
-/* ===== BOTÓN GUARDAR ===== */
+/* ===== BOTÓN ===== */
 .submit-btn {
   padding: 16px 40px;
   font-weight: bold;
@@ -135,9 +135,15 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+@media (max-width: 968px) {
   .content-admin {
     margin-left: 0;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-admin {
     padding: 20px;
   }
 

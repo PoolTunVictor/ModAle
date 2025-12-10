@@ -1,3 +1,10 @@
+/* ==== RESET ==== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 /* ==== HEADER GLOBAL ==== */
 .main-header {
   position: fixed;
@@ -7,22 +14,22 @@
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   z-index: 1000;
-  padding: 10px 16px;
+  padding: 10px 0;
   font-family: 'Times New Roman', Times, serif;
-      box-sizing: border-box;
 }
 
 /* CONTENEDOR */
 .container-header {
-  width: 100%;
-  margin: 10px;
+  max-width: 1400px;
+  margin: auto;
 
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  flex-wrap: nowrap;        
-  overflow: hidden;         
+  gap: 12px;
+  flex-wrap: nowrap;
 }
 
 /* LOGO */
@@ -37,23 +44,21 @@
 
 .logo h1 {
   font-family: "Playwrite DE SAS", cursive;
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
   font-weight: 500;
 }
 
 /* NAV MENU */
 .nav-menu {
-  margin-left: auto;        
-  flex-shrink: 1;
+  flex-grow: 1;          /* empuja para distribuir bien */
+  display: flex;
+  justify-content: center; /* centra el menú */
 }
 
 .nav-menu ul {
   display: flex;
   list-style: none;
-  gap: clamp(18px, 2vw, 35px);
-  margin: 0;
-  padding: 0;
+  gap: clamp(12px, 2vw, 35px);
   white-space: nowrap;
 }
 
@@ -63,11 +68,13 @@
   font-weight: 500;
   font-size: clamp(0.85rem, 1.2vw, 1rem);
   transition: .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .nav-menu a:hover {
   color: #e3b1c8;
-  transform: translateY(-1px);
 }
 
 .nav-menu a.active {
@@ -79,14 +86,13 @@
 .social-icons-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-left: 20px;
+  gap: 14px;
   flex-shrink: 0;
 }
 
 .social-icons-header a {
   color: #000;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
   transition: color .2s;
 }
 
@@ -110,39 +116,43 @@
 
 
 /* ====== RESPONSIVE ====== */
-@media (max-width: 768px) {
-  
-  /* Reduce espacios para que todo quepa */
-  .container-header {
-    gap: 6px;
-  }
-
-  /* Menú más compacto */
+@media (max-width: 900px) {
   .nav-menu ul {
-    gap: 14px;
-  }
-
-  /* Íconos más pequeños */
-  .social-icons-header {
-    gap: 8px;
-    margin-left: 10px;
-  }
-
-  /* Logo un poco más pequeño para que no empuje todo */
-  .logo h1 {
-    font-size: 1.1rem;
+    gap: clamp(8px, 2vw, 16px);
   }
 }
 
-@media (max-width: 480px) {
-
-  /* Comprimir más el menú */
-  .nav-menu ul {
+@media (max-width: 768px) {
+  .container-header {
     gap: 10px;
   }
 
   .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .nav-menu ul {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-menu {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-header {
+    gap: 6px;
+  }
+
+  .logo h1 {
     font-size: 1rem;
+  }
+
+  .nav-menu ul {
+    gap: 6px;
   }
 
   .logout-icon-btn {
