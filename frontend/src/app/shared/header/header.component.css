@@ -50,9 +50,12 @@
 
 /* NAV MENU */
 .nav-menu {
-  flex-grow: 1;          /* empuja para distribuir bien */
+  flex-grow: 1;
   display: flex;
-  justify-content: center; /* centra el menú */
+
+  /* 🔥 MENÚ MÁS A LA DERECHA 🔥 */
+  justify-content: flex-end;
+  padding-right: 40px;
 }
 
 .nav-menu ul {
@@ -100,7 +103,6 @@
   color: #e3b1c8;
 }
 
-/* Ícono de logout */
 .logout-icon-btn {
   background: none;
   border: none;
@@ -114,7 +116,6 @@
   transform: translateY(-2px);
 }
 
-
 /* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
   .nav-menu ul {
@@ -123,6 +124,13 @@
 }
 
 @media (max-width: 768px) {
+
+  /* En móvil lo centramos para que no se apelmace */
+  .nav-menu {
+    justify-content: center;
+    padding-right: 0;
+  }
+
   .container-header {
     gap: 10px;
   }

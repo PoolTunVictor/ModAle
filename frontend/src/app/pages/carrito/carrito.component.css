@@ -1,25 +1,27 @@
+/* =====================
+   BANNER SUPERIOR (CARRITO)
+===================== */
 .support-section {
   width: 100%;
-  background: url('/assets/banner/HomePage.png') no-repeat center; 
+  background: url('/assets/banner/HomePage.png') no-repeat center;
   background-size: cover;
-
   text-align: center;
-  padding: 50px 30px; 
+  padding: 50px 30px;
   color: #ffffff;
-  position: relative; 
-  margin-top: 80px; 
+  position: relative;
+  margin-top: 80px;
 }
 
 .support-section::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.4); 
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .support-content {
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .support-title {
@@ -34,7 +36,9 @@
   margin-bottom: 30px;
 }
 
-/* === CONFIGURACIÓN GENERAL === */
+/* =====================
+   GENERAL
+===================== */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -43,10 +47,12 @@
   min-height: 100vh;
   background-color: #ffffff;
   font-family: "Poppins", sans-serif;
-  padding: 0 0 130px; 
+  padding: 0 0 130px;
 }
 
-/* === CONTENIDO PRINCIPAL (PRODUCTOS Y RESUMEN) === */
+/* =====================
+   CONTENIDO PRINCIPAL
+===================== */
 .main-content {
   display: flex;
   gap: 60px;
@@ -55,7 +61,9 @@
   margin: 0 auto;
 }
 
-/* --- LADO IZQUIERDO: LISTA DE PRODUCTOS --- */
+/* =====================
+   PRODUCTOS (IZQUIERDA)
+===================== */
 .productos-section {
   flex: 2;
 }
@@ -101,7 +109,9 @@
   color: #333;
 }
 
-/* --- CONTROLES DE CANTIDAD --- */
+/* =====================
+   CANTIDAD
+===================== */
 .cantidad-section {
   display: flex;
   align-items: center;
@@ -151,7 +161,9 @@
   text-align: center;
 }
 
-/* --- PRECIO Y ELIMINAR --- */
+/* =====================
+   PRECIO Y ELIMINAR
+===================== */
 .producto-precio {
   text-align: right;
   min-width: 120px;
@@ -179,7 +191,9 @@
   color: #c999af;
 }
 
-/* === LADO DERECHO: RESUMEN === */
+/* =====================
+   RESUMEN (DERECHA)
+===================== */
 .resumen-section {
   flex: 1;
 }
@@ -225,8 +239,6 @@
 
 .resumen-form select {
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   cursor: pointer;
 }
 
@@ -234,11 +246,6 @@
 .resumen-form select:focus {
   outline: none;
   box-shadow: inset 5px 5px 10px #d4b0c3, inset -5px -5px 10px #ffffff;
-}
-
-.resumen-form select option {
-  color: #333;
-  background: #f3dcee;
 }
 
 .resumen-total {
@@ -253,6 +260,9 @@
   padding-top: 15px;
 }
 
+/* =====================
+   BOTONES
+===================== */
 .checkout-btn {
   width: 100%;
   padding: 15px;
@@ -280,7 +290,9 @@
   cursor: pointer;
 }
 
-/* === RESPONSIVE === */
+/* =====================
+   RESPONSIVE
+===================== */
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
@@ -290,13 +302,41 @@
 
   .productos-section,
   .resumen-section {
-    flex: auto;
     width: 100%;
-    max-width: none;
   }
 
   .producto-item {
     flex-wrap: wrap;
     padding: 15px;
+  }
+
+  /* FIX DEL BANNER PARA QUE NO SE CORTE */
+  .support-section {
+    padding: 70px 20px;
+    margin-top: 70px;
+    background-size: cover;
+  }
+
+  .support-title {
+    font-size: 48px;
+    line-height: 1.1;
+  }
+
+  .support-section p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-section {
+    padding: 90px 15px;
+  }
+
+  .support-title {
+    font-size: 36px;
+  }
+
+  .support-section p {
+    font-size: 14px;
   }
 }
